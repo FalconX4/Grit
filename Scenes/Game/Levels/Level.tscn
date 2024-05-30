@@ -310,6 +310,10 @@ position = Vector2(567, 180)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("3_j873k")]
 position = Vector2(569, 173)
+age_sprite_frames = {
+0.0: ExtResource("8_gdy0r"),
+1.0: ExtResource("9_to3mj")
+}
 
 [node name="Sand" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_wdu2q")

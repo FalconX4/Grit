@@ -1,0 +1,277 @@
+[gd_scene load_steps=15 format=3 uid="uid://c57t666n0b1m3"]
+
+[ext_resource type="Script" path="res://Scripts/Screen/Menu/Journal.gd" id="1_4xf27"]
+[ext_resource type="PackedScene" uid="uid://bs35r6gtgyr8n" path="res://Scenes/Screen/Menu/JournalPage.tscn" id="1_45ey5"]
+[ext_resource type="Texture2D" uid="uid://bw722igpmnykp" path="res://Assets/Screen/Menu/Journal/Journal 1.png" id="2_44eym"]
+[ext_resource type="Texture2D" uid="uid://c0xboxq3cdtcq" path="res://Assets/Screen/Menu/Journal/Journal 0.png" id="2_a77it"]
+[ext_resource type="Texture2D" uid="uid://8i6jgp6ownm2" path="res://Assets/Screen/Menu/Journal/Journal 2.png" id="4_e2bqb"]
+[ext_resource type="Texture2D" uid="uid://b2ad7xcxjoyg2" path="res://Assets/Screen/Menu/Journal/Journal 3.png" id="5_tdb38"]
+[ext_resource type="Texture2D" uid="uid://bcr8lw41g46my" path="res://Assets/Screen/Menu/Journal/Journal 4.png" id="6_ssodj"]
+[ext_resource type="Texture2D" uid="uid://ckkhla5nolh0p" path="res://Assets/Screen/Menu/Journal/Journal 5.png" id="7_s550t"]
+[ext_resource type="Texture2D" uid="uid://cidujw3mj2vgm" path="res://Assets/Screen/Menu/Journal/Journal 6.png" id="8_wb53s"]
+
+[sub_resource type="Animation" id="Animation_jq7s4"]
+resource_name = "NextPage"
+length = 0.35
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Book:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_a77it"), ExtResource("2_44eym"), ExtResource("4_e2bqb"), ExtResource("5_tdb38"), ExtResource("6_ssodj"), ExtResource("7_s550t"), ExtResource("8_wb53s"), ExtResource("2_a77it")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PagePanel/JournalPage2:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.15),
+"transitions": PackedFloat32Array(0, 0, 0),
+"update": 0,
+"values": [Vector2(630, 850), Vector2(500, 850), Vector2(630, 850)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PagePanel/JournalPage1:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.25, 0.3),
+"transitions": PackedFloat32Array(0, 0, 0, 0),
+"update": 0,
+"values": [Vector2(630, 850), Vector2(315, 850), Vector2(550, 850), Vector2(630, 850)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PagePanel/JournalPage2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.2),
+"transitions": PackedFloat32Array(0, 0, 1),
+"update": 0,
+"values": [Vector2(675, 0), Vector2(820, 0), Vector2(675, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PagePanel/JournalPage1:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.3),
+"transitions": PackedFloat32Array(0, 0, 0),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(75, 0), Vector2(0, 0)]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("..")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.15, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"update_page_2"
+}, {
+"args": [],
+"method": &"update_page_1"
+}]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PagePanel/JournalPage2/Panel:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.2),
+"transitions": PackedFloat32Array(0, 0, 0),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-145, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_um2jy"]
+resource_name = "PreviousPage"
+length = 0.35
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Book:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_a77it"), ExtResource("8_wb53s"), ExtResource("7_s550t"), ExtResource("6_ssodj"), ExtResource("5_tdb38"), ExtResource("4_e2bqb"), ExtResource("2_44eym"), ExtResource("2_a77it")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PagePanel/JournalPage1:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(-0.0256336, 0, 0.1, 0.15, 0.2),
+"transitions": PackedFloat32Array(1, 0, 0, 0, 0),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(630, 850), Vector2(550, 850), Vector2(300, 850), Vector2(650, 850)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PagePanel/JournalPage1:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.15),
+"transitions": PackedFloat32Array(0, 0, 0),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(75, 0), Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PagePanel/JournalPage2:size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.3),
+"transitions": PackedFloat32Array(0, 0, 0),
+"update": 0,
+"values": [Vector2(630, 850), Vector2(500, 850), Vector2(650, 850)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PagePanel/JournalPage2:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.25),
+"transitions": PackedFloat32Array(0, 0, 0),
+"update": 0,
+"values": [Vector2(675, 0), Vector2(900, 0), Vector2(675, 0)]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("..")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.15, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"update_page_1"
+}, {
+"args": [],
+"method": &"update_page_2"
+}]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PagePanel/JournalPage2/Panel:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.25),
+"transitions": PackedFloat32Array(0, 0, 0),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-225, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_36lhg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Book:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_a77it")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3frt5"]
+_data = {
+"NextPage": SubResource("Animation_jq7s4"),
+"PreviousPage": SubResource("Animation_um2jy"),
+"RESET": SubResource("Animation_36lhg")
+}
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_guryo"]
+
+[node name="Journal" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4xf27")
+
+[node name="Container" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PageAnimation" type="AnimationPlayer" parent="Container"]
+libraries = {
+"": SubResource("AnimationLibrary_3frt5")
+}
+
+[node name="Book" type="TextureRect" parent="Container"]
+layout_mode = 2
+texture = ExtResource("2_a77it")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="PagePanel" type="Panel" parent="Container"]
+clip_contents = true
+custom_minimum_size = Vector2(1300, 850)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 12.9
+theme_override_styles/panel = SubResource("StyleBoxEmpty_guryo")
+
+[node name="JournalPage1" parent="Container/PagePanel" instance=ExtResource("1_45ey5")]
+layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 630.0
+offset_bottom = 850.0
+
+[node name="JournalPage2" parent="Container/PagePanel" instance=ExtResource("1_45ey5")]
+layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 675.0
+offset_right = 1305.0
+offset_bottom = 850.0

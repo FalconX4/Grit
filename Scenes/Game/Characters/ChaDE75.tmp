@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://bog2fwt2cvggb"]
+
+[ext_resource type="Script" path="res://Scripts/Game/Characters/Character.gd" id="1_ohnkk"]
+[ext_resource type="Script" path="res://Scripts/Game/Characters/CharacterInput.gd" id="2_52eob"]
+[ext_resource type="SpriteFrames" uid="uid://ld0t10aujxwi" path="res://Data/Game/Characters/YoungMan.tres" id="2_mx74b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ghfrl"]
+size = Vector2(10, 10)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_ohnkk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_ghfrl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = ExtResource("2_mx74b")
+animation = &"WalkUp"
+speed_scale = 2.0
+
+[node name="CharacterInput" type="Node" parent="."]
+script = ExtResource("2_52eob")
+is_player = true
+
+[node name="InteractButton" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -36.0
+offset_right = 8.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(8, 22)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 10
+text = "A"

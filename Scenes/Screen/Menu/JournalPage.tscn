@@ -1,0 +1,77 @@
+[gd_scene load_steps=6 format=3 uid="uid://bs35r6gtgyr8n"]
+
+[ext_resource type="Script" path="res://Scripts/Screen/Menu/JournalPage.gd" id="1_aerg4"]
+[ext_resource type="Texture2D" uid="uid://c4ghyk50n3fd0" path="res://Assets/Game/Items/FlowersSketch/Something6.png" id="3_btfia"]
+[ext_resource type="FontFile" uid="uid://ceewc0pjugkr0" path="res://Fonts/AMOS_FONT.ttf" id="3_k3qi5"]
+[ext_resource type="FontFile" uid="uid://b8ojtqn56ikrr" path="res://Fonts/HandwritingCR-2.ttf" id="4_gw2kt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6t2st"]
+
+[node name="JournalPage" type="Control"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1290.0
+offset_bottom = -230.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_aerg4")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 630.0
+offset_bottom = 850.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_6t2st")
+
+[node name="Image" type="TextureRect" parent="Panel"]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 80.0
+offset_top = 92.0
+offset_right = -80.0
+offset_bottom = -338.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_btfia")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Title" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -228.5
+offset_top = -6.0
+offset_right = 229.5
+offset_bottom = 81.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_k3qi5")
+theme_override_font_sizes/font_size = 86
+text = "Something 1"
+
+[node name="Description" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 25.0
+offset_top = 538.0
+offset_right = -15.0
+offset_bottom = 838.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_gw2kt")
+theme_override_font_sizes/font_size = 32
+text = "From:
+- Devil's Seed. We don't know where it came from but here it is.
+Effect
+- ???
+-g
+-g"
+autowrap_mode = 3

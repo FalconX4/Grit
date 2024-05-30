@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://befhoix5ssrvy"]
+
+[ext_resource type="Script" path="res://Scripts/Game/Levels/InteractionTile.gd" id="1_qk7qy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rpmfy"]
+size = Vector2(10, 10)
+
+[node name="InteractionTile" type="StaticBody2D"]
+collision_layer = 128
+collision_mask = 0
+script = ExtResource("1_qk7qy")
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_rpmfy")

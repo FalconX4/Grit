@@ -1,0 +1,14 @@
+[gd_resource type="SpriteFrames" load_steps=2 format=3 uid="uid://2pq31l58h40h"]
+
+[ext_resource type="Texture2D" uid="uid://b64dclmcelcn1" path="res://Assets/Game/Items/Seeds/Test/TestSeed.png" id="1_oa04w"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_oa04w")
+}],
+"loop": true,
+"name": &"planted",
+"speed": 5.0
+}]

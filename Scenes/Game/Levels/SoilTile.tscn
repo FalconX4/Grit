@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://vfhp66n38qaf"]
+
+[ext_resource type="PackedScene" uid="uid://befhoix5ssrvy" path="res://Scenes/Game/Levels/InteractionTile.tscn" id="1_ci1nt"]
+[ext_resource type="Script" path="res://Scripts/Game/Levels/SoilTile.gd" id="2_1l71y"]
+[ext_resource type="Texture2D" uid="uid://ddkv4gsr2cwfg" path="res://Assets/Game/Levels/SoilTile.png" id="3_b2mgs"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qjp3n"]
+
+[node name="SoilTile" type="Node2D"]
+
+[node name="InteractionTile" parent="." instance=ExtResource("1_ci1nt")]
+script = ExtResource("2_1l71y")
+age = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_b2mgs")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_qjp3n")
+offset = Vector2(0, -70)

@@ -1,0 +1,93 @@
+[gd_resource type="SpriteFrames" load_steps=11 format=3 uid="uid://b4jt8r7n574ya"]
+
+[ext_resource type="Texture2D" uid="uid://011fl4c7gygb" path="res://Assets/Game/Characters/AnimalCrossing.png" id="1_cr0ly"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m55m5"]
+atlas = ExtResource("1_cr0ly")
+region = Rect2(19, 2, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nhwa7"]
+atlas = ExtResource("1_cr0ly")
+region = Rect2(2, 2, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ocqon"]
+atlas = ExtResource("1_cr0ly")
+region = Rect2(36, 2, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0xnkv"]
+atlas = ExtResource("1_cr0ly")
+region = Rect2(70, 2, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bo76t"]
+atlas = ExtResource("1_cr0ly")
+region = Rect2(53, 2, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ai3l1"]
+atlas = ExtResource("1_cr0ly")
+region = Rect2(87, 2, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_veluh"]
+atlas = ExtResource("1_cr0ly")
+region = Rect2(121, 2, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_56pyl"]
+atlas = ExtResource("1_cr0ly")
+region = Rect2(104, 2, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h47e3"]
+atlas = ExtResource("1_cr0ly")
+region = Rect2(138, 2, 16, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m55m5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nhwa7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m55m5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ocqon")
+}],
+"loop": true,
+"name": &"WalkDown",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0xnkv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bo76t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0xnkv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ai3l1")
+}],
+"loop": true,
+"name": &"WalkLeft",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_veluh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_56pyl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_veluh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h47e3")
+}],
+"loop": true,
+"name": &"WalkUp",
+"speed": 5.0
+}]

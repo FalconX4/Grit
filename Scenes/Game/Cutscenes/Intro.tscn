@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0fyxiq6m6toy"]
+
+[ext_resource type="PackedScene" uid="uid://em8rg08tey1f" path="res://Scenes/Game/Cutscenes/DialogPopup.tscn" id="1_ivodf"]
+
+[node name="Intro" type="AnimationPlayer"]
+
+[node name="Container" type="Node2D" parent="."]
+
+[node name="DialogPopup" parent="Container" instance=ExtResource("1_ivodf")]
+
+[node name="LovePopup" parent="Container" instance=ExtResource("1_ivodf")]
+
+[node name="Label" parent="Container/LovePopup/Text" index="1"]
+text = "<3"
+
+[editable path="Container/LovePopup"]

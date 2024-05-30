@@ -1,0 +1,122 @@
+[gd_scene load_steps=7 format=3 uid="uid://em8rg08tey1f"]
+
+[ext_resource type="Texture2D" uid="uid://c2rb24iuy0af4" path="res://Assets/Game/Dialogs/Bubble.png" id="1_jvy3r"]
+[ext_resource type="Texture2D" uid="uid://bdubjnao4w622" path="res://Assets/Game/Dialogs/BubbleTip.png" id="2_jvthf"]
+
+[sub_resource type="Animation" id="Animation_ldoh7"]
+resource_name = "Close"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Text:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Text:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="Animation" id="Animation_ehy4c"]
+resource_name = "Open"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Text:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Text:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vkw15"]
+resource_name = "RESET"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nfkyt"]
+_data = {
+"Close": SubResource("Animation_ldoh7"),
+"Open": SubResource("Animation_ehy4c"),
+"RESET": SubResource("Animation_vkw15")
+}
+
+[node name="DialogPopup" type="AnimationPlayer"]
+root_node = NodePath(".")
+libraries = {
+"": SubResource("AnimationLibrary_nfkyt")
+}
+
+[node name="Text" type="Node2D" parent="."]
+
+[node name="Bubble" type="NinePatchRect" parent="Text"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_jvy3r")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 4
+
+[node name="Tip" type="TextureRect" parent="Text/Bubble"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = -1.0
+offset_right = 3.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_jvthf")
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="Text"]
+modulate = Color(0, 0, 0, 1)
+offset_left = -19.0
+offset_top = -12.0
+offset_right = 21.0
+offset_bottom = 11.0
+text = "!"
+horizontal_alignment = 1
+vertical_alignment = 1

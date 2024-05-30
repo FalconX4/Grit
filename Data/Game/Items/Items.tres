@@ -1,0 +1,129 @@
+[gd_resource type="Resource" script_class="ItemsListData" load_steps=27 format=3 uid="uid://cv3ll817t3loo"]
+
+[ext_resource type="Script" path="res://Scripts/Game/Items/ItemsListData.gd" id="1_1qu8n"]
+[ext_resource type="Texture2D" uid="uid://dc3fiijvmyvd1" path="res://Assets/Game/Items/Seeds/Test/TestPlantedSeed.png" id="1_1vtlj"]
+[ext_resource type="Texture2D" uid="uid://b64dclmcelcn1" path="res://Assets/Game/Items/Seeds/Test/TestSeed.png" id="1_xpeb7"]
+[ext_resource type="Script" path="res://Scripts/Game/Items/SeedData.gd" id="2_oo3w1"]
+[ext_resource type="Texture2D" uid="uid://dplhxkulucp0q" path="res://Assets/Game/Items/FlowersSketch/Something1.png" id="4_bt3dx"]
+[ext_resource type="Script" path="res://Scripts/Game/Items/ItemData.gd" id="5_4fge7"]
+[ext_resource type="Texture2D" uid="uid://cugcoh8pmw4t5" path="res://Assets/Game/Items/FlowersSketch/Something2.png" id="6_k45gn"]
+[ext_resource type="Texture2D" uid="uid://bea3gtsqty7ln" path="res://Assets/Game/Items/FlowersSketch/Something3.png" id="7_nxmh7"]
+[ext_resource type="Texture2D" uid="uid://b86jglngrqrwl" path="res://Assets/Game/Items/FlowersSketch/Something4.png" id="8_0bfjd"]
+[ext_resource type="Texture2D" uid="uid://8bh8j3xifkej" path="res://Assets/Game/Items/FlowersSketch/Something5.png" id="9_bvnql"]
+[ext_resource type="Texture2D" uid="uid://c4ghyk50n3fd0" path="res://Assets/Game/Items/FlowersSketch/Something6.png" id="10_brp20"]
+[ext_resource type="Texture2D" uid="uid://bwov4kyf46c0q" path="res://Assets/Game/Items/FlowersSketch/Something7.png" id="11_5v1ko"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lqlfw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y6xtu"]
+radius = 30.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tstqk"]
+atlas = ExtResource("1_1vtlj")
+region = Rect2(0, 0, 36, 144)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8v227"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tstqk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ktjv6"]
+atlas = ExtResource("1_1vtlj")
+region = Rect2(252, 0, 36, 144)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_25apd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ktjv6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Resource" id="Resource_vnhfe"]
+script = ExtResource("2_oo3w1")
+frames_each_step = Array[SpriteFrames]([SubResource("SpriteFrames_8v227"), SubResource("SpriteFrames_25apd")])
+age_each_step = Array[int]([0, 1])
+collision_each_step = Array[CircleShape2D]([SubResource("CircleShape2D_lqlfw"), SubResource("CircleShape2D_y6xtu")])
+grass_area_each_step = Array[float]([30.0, 90.0])
+items_to_give_each_step = [null, [0]]
+name = "Tree"
+description = "Placeholder Tree"
+description_from = ""
+description_effect = ""
+inventory_image = ExtResource("1_xpeb7")
+inventory_bar_image = ExtResource("1_xpeb7")
+
+[sub_resource type="Resource" id="Resource_5w8xh"]
+script = ExtResource("5_4fge7")
+name = "Pink Tuberso"
+description = "Potato Patati"
+description_from = ""
+description_effect = ""
+inventory_image = ExtResource("4_bt3dx")
+inventory_bar_image = ExtResource("4_bt3dx")
+
+[sub_resource type="Resource" id="Resource_r2owx"]
+script = ExtResource("5_4fge7")
+name = "Sativus"
+description = "3 Raddish is better then 1"
+description_from = ""
+description_effect = ""
+inventory_image = ExtResource("6_k45gn")
+inventory_bar_image = ExtResource("6_k45gn")
+
+[sub_resource type="Resource" id="Resource_neusc"]
+script = ExtResource("5_4fge7")
+name = "Glumberry"
+description = "Poisonous or not?"
+description_from = ""
+description_effect = ""
+inventory_image = ExtResource("7_nxmh7")
+inventory_bar_image = ExtResource("7_nxmh7")
+
+[sub_resource type="Resource" id="Resource_u007p"]
+script = ExtResource("5_4fge7")
+name = "Blue Daucus"
+description = "Carrot with 3 pointy ends"
+description_from = ""
+description_effect = ""
+inventory_image = ExtResource("8_0bfjd")
+
+[sub_resource type="Resource" id="Resource_ialil"]
+script = ExtResource("5_4fge7")
+name = "Kaarkide Flower"
+description = "Cute flower"
+description_from = ""
+description_effect = ""
+inventory_image = ExtResource("9_bvnql")
+inventory_bar_image = ExtResource("9_bvnql")
+
+[sub_resource type="Resource" id="Resource_x8hwv"]
+script = ExtResource("5_4fge7")
+name = "FlowerGlowtus Flower2"
+description = "Cute flower2"
+description_from = ""
+description_effect = ""
+inventory_image = ExtResource("10_brp20")
+inventory_bar_image = ExtResource("10_brp20")
+
+[sub_resource type="Resource" id="Resource_64rjl"]
+script = ExtResource("5_4fge7")
+name = "Purtato"
+description = "Delishious"
+description_from = ""
+description_effect = ""
+inventory_image = ExtResource("11_5v1ko")
+inventory_bar_image = ExtResource("11_5v1ko")
+
+[resource]
+script = ExtResource("1_1qu8n")
+items = Array[ExtResource("5_4fge7")]([SubResource("Resource_vnhfe"), SubResource("Resource_5w8xh"), SubResource("Resource_r2owx"), SubResource("Resource_neusc"), SubResource("Resource_u007p"), SubResource("Resource_ialil"), SubResource("Resource_x8hwv"), SubResource("Resource_64rjl")])

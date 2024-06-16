@@ -21,7 +21,3 @@ script = ExtResource("1_w530w")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("NoiseTexture2D_3gtx0")
-
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-visible = false
-texture = SubResource("NoiseTexture2D_3gtx0")

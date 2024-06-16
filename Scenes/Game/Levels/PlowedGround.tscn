@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://b5bo5ty2cq6o4"]
+
+[ext_resource type="Shader" uid="uid://na3gxb5luc3k" path="res://Scenes/Game/Levels/GrassCircleFade.tres" id="1_5x4om"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wkbrg"]
+shader = ExtResource("1_5x4om")
+
+[sub_resource type="Gradient" id="Gradient_bxv8s"]
+colors = PackedColorArray(0.431373, 0.2, 0, 1, 0.745098, 0.470588, 0.160784, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_6vwok"]
+resource_local_to_scene = true
+frequency = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dkqgm"]
+resource_local_to_scene = true
+width = 54
+height = 54
+color_ramp = SubResource("Gradient_bxv8s")
+noise = SubResource("FastNoiseLite_6vwok")
+
+[node name="PlowedGround" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_wkbrg")
+texture = SubResource("NoiseTexture2D_dkqgm")

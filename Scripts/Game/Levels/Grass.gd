@@ -1,15 +1,15 @@
 extends Node
 class_name Grass
 
-@export var starting_age = 0
-@export var age_max = 10
-@export var age_speed = 1
+@export var starting_age = 0.0
+@export var age_max = 10.0
+@export var age_speed = 1.0
 @export var sprite_2d: Sprite2D
-@export var texture_size_start = 0
+@export var texture_size_start = 0.0
 @export var texture_size_growing_speed = 3.6
 
-var age = 0
-var size = 0
+var age = 0.0
+var size = 0.0
 var size_start = 0
 var size_max = 0
 var noise_texture: NoiseTexture2D
@@ -33,6 +33,9 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("Interact"):
+		grow(108)
+	
 	if age >= age_max and size >= size_max:
 		return
 
@@ -44,11 +47,17 @@ func _process(delta: float) -> void:
 func age_grass() -> void:
 	var grewOf = size - size_start
 	var newSize = (int)(texture_size_start + age * texture_size_growing_speed + grewOf)
-	if newSize % 2 == 0:
-		texture_size = newSize
-	noise.offset = -Vector3((int)((grewOf) / 2), (int)((grewOf) / 2), 0)
-	noise_texture.width = texture_size
-	noise_texture.height = texture_size
+	var diffSize = newSize - texture_size
+	if diffSize > 1:
+		if ((int)(diffSize / 2.0) * 2.0) != diffSize:
+			texture_size = newSize - 1
+		else:
+			texture_size = newSize
+		
+		# BUG : Sometimes it jitters... even though the values are correct
+		noise.offset = -Vector3((int)(newSize / 2.0), (int)(newSize / 2.0), 0.0)
+		noise_texture.width = texture_size
+		noise_texture.height = texture_size
 
 	var startColor = start_color
 	var endColor = end_color

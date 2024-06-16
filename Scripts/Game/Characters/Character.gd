@@ -17,7 +17,7 @@ var last_moved_direction : Vector2
 
 func add_item(item: ItemData): items.append(item)
 func remove_item(index: int): items.remove_at(index)
-func show_interact_button(show: bool): interact_button.visible = show
+func show_interact_button(show_it: bool): interact_button.visible = show_it
 
 func update_input_buttons(): update_input_button(interact_button, "Interact")
 func update_input_button(button: Button, input_action: String):

@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://vfhp66n38qaf"]
+
+[ext_resource type="PackedScene" uid="uid://befhoix5ssrvy" path="res://Scenes/Game/Levels/InteractionTile.tscn" id="1_ci1nt"]
+[ext_resource type="Script" path="res://Scripts/Game/Levels/SoilTile.gd" id="2_1l71y"]
+[ext_resource type="PackedScene" uid="uid://dfgv3aac2dya7" path="res://Scenes/Game/Levels/Ground.tscn" id="3_lmpf1"]
+[ext_resource type="PackedScene" uid="uid://bssp7ogpwvyqt" path="res://Scenes/Game/Levels/Grass.tscn" id="4_8wbse"]
+[ext_resource type="SpriteFrames" uid="uid://2pq31l58h40h" path="res://Data/Game/Items/SeedsSpriteFrames/TestSeed.tres" id="5_psjya"]
+
+[node name="SoilTile" type="Node2D"]
+
+[node name="InteractionTile" parent="." instance=ExtResource("1_ci1nt")]
+script = ExtResource("2_1l71y")
+age = 0
+
+[node name="Ground" parent="." instance=ExtResource("3_lmpf1")]
+position = Vector2(-9, -9)
+
+[node name="Ground2" parent="." instance=ExtResource("3_lmpf1")]
+position = Vector2(9, -9)
+
+[node name="Ground3" parent="." instance=ExtResource("3_lmpf1")]
+position = Vector2(-9, 9)
+
+[node name="Ground4" parent="." instance=ExtResource("3_lmpf1")]
+position = Vector2(9, 9)
+
+[node name="Grass" parent="." instance=ExtResource("4_8wbse")]
+visible = false
+position = Vector2(-9, -9)
+age = 10
+
+[node name="Grass2" parent="." instance=ExtResource("4_8wbse")]
+visible = false
+position = Vector2(9, -9)
+age = 10
+
+[node name="Grass3" parent="." instance=ExtResource("4_8wbse")]
+visible = false
+position = Vector2(-9, 9)
+age = 10
+
+[node name="Grass4" parent="." instance=ExtResource("4_8wbse")]
+visible = false
+position = Vector2(9, 9)
+age = 10
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = ExtResource("5_psjya")

@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfgv3aac2dya7"]
+
+[ext_resource type="Script" path="res://Scripts/Game/Levels/Ground.gd" id="1_w530w"]
+
+[sub_resource type="Gradient" id="Gradient_wkq8h"]
+colors = PackedColorArray(0.745098, 0.584314, 0.419608, 1, 0.843137, 0.690196, 0.505882, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_1k8ip"]
+resource_local_to_scene = true
+frequency = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3gtx0"]
+resource_local_to_scene = true
+width = 54
+height = 54
+color_ramp = SubResource("Gradient_wkq8h")
+noise = SubResource("FastNoiseLite_1k8ip")
+
+[node name="Ground" type="Node2D"]
+script = ExtResource("1_w530w")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("NoiseTexture2D_3gtx0")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+visible = false
+texture = SubResource("NoiseTexture2D_3gtx0")

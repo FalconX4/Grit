@@ -38,7 +38,7 @@ default_input_values = [0, Quaternion(0, 0, 0, 0)]
 op_type = 2
 
 [sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_gu8y3"]
-constant = 5.0
+constant = 0.5
 
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_4awm4"]
 input_name = "time"
@@ -84,7 +84,7 @@ void vertex() {
 
 
 // FloatConstant:10
-	float n_out10p0 = 5.000000;
+	float n_out10p0 = 0.500000;
 
 
 // FloatOp:9
@@ -148,6 +148,7 @@ void fragment() {
 
 }
 "
+graph_offset = Vector2(-85.2786, -18.5227)
 mode = 1
 flags/light_only = false
 nodes/vertex/0/position = Vector2(860, 140)
@@ -189,4 +190,4 @@ nodes/fragment/12/node = SubResource("VisualShaderNodeInput_jgd1l")
 nodes/fragment/12/position = Vector2(-180, 240)
 nodes/fragment/13/node = SubResource("VisualShaderNodeVectorOp_o7ytq")
 nodes/fragment/13/position = Vector2(160, 260)
-nodes/fragment/connections = PackedInt32Array(6, 0, 7, 0, 3, 0, 7, 1, 8, 0, 9, 0, 10, 0, 0, 1, 7, 0, 10, 1, 9, 3, 10, 0, 11, 0, 13, 1, 12, 0, 13, 0, 2, 0, 3, 0)
+nodes/fragment/connections = PackedInt32Array(6, 0, 7, 0, 3, 0, 7, 1, 8, 0, 9, 0, 7, 0, 10, 1, 9, 3, 10, 0, 11, 0, 13, 1, 12, 0, 13, 0, 2, 0, 3, 0, 10, 0, 0, 1)

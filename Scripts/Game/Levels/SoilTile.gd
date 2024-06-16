@@ -1,7 +1,8 @@
 extends InteractionTile
 class_name SoilTile
 
-@onready var animated_sprite_2d: AnimatedSprite2D = $"../AnimatedSprite2D"
+@export var animated_sprite_2d: AnimatedSprite2D
+@export var plowedSprite: Sprite2D
 @export var age = 0
 var is_empty = true
 var item : SeedData = null
@@ -12,13 +13,13 @@ func is_interactable(character: Character) -> bool:
 		and character.items[character.selected_item_index] != null \
 		and character.items[character.selected_item_index].type() == ItemData.Type.SEED
 
-func interact(character: Character):
+func interact(character: Character) -> void:
 	super.interact(character)
 	if interacted:
+		plowedSprite.visible = true
 		item = character.items[character.selected_item_index] as SeedData
 		character.items.remove_at(character.selected_item_index)
 		animated_sprite_2d.visible = true
-		animated_sprite_2d.play("default")
 		is_empty = false
 
 func _process(_delta: float) -> void:

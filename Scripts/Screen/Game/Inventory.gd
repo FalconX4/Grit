@@ -35,7 +35,7 @@ func show_slot_animation(index : int):
 func hide_slot_animation(index : int):
 	slots[index].hide_animation()
 	
-func on_inventory_slot_clicked(slot_index: int):
+func on_inventory_slot_clicked(_slot_index: int):
 	if selected_character != null:
 		for i in len(slots):
 			if slots[i].selected and i != selected_character.selected_item_index:

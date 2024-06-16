@@ -1,14 +1,67 @@
-[gd_resource type="SpriteFrames" load_steps=2 format=3 uid="uid://2pq31l58h40h"]
+[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://2pq31l58h40h"]
 
-[ext_resource type="Texture2D" uid="uid://b64dclmcelcn1" path="res://Assets/Game/Items/Seeds/Test/TestSeed.png" id="1_oa04w"]
+[ext_resource type="Texture2D" uid="uid://dc3fiijvmyvd1" path="res://Assets/Game/Items/Seeds/Test/TestPlantedSeed.png" id="1_h0vec"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xrn68"]
+atlas = ExtResource("1_h0vec")
+region = Rect2(0, 0, 36, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1xolf"]
+atlas = ExtResource("1_h0vec")
+region = Rect2(36, 0, 36, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x4a63"]
+atlas = ExtResource("1_h0vec")
+region = Rect2(72, 0, 36, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wooc3"]
+atlas = ExtResource("1_h0vec")
+region = Rect2(108, 0, 36, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y32fw"]
+atlas = ExtResource("1_h0vec")
+region = Rect2(144, 0, 36, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aki7y"]
+atlas = ExtResource("1_h0vec")
+region = Rect2(180, 0, 36, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0d4s"]
+atlas = ExtResource("1_h0vec")
+region = Rect2(216, 0, 36, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b5q2a"]
+atlas = ExtResource("1_h0vec")
+region = Rect2(252, 0, 36, 144)
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_oa04w")
+"texture": SubResource("AtlasTexture_xrn68")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1xolf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x4a63")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wooc3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y32fw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aki7y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g0d4s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b5q2a")
 }],
 "loop": true,
-"name": &"planted",
+"name": &"default",
 "speed": 5.0
 }]

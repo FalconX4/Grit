@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://bssp7ogpwvyqt"]
+
+[ext_resource type="Script" path="res://Scripts/Game/Levels/Grass.gd" id="1_qohys"]
+[ext_resource type="Shader" uid="uid://na3gxb5luc3k" path="res://Scenes/Game/Levels/GrassCircleFade.tres" id="2_fey7w"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0en2h"]
+shader = ExtResource("2_fey7w")
+
+[sub_resource type="Gradient" id="Gradient_5vwxp"]
+resource_local_to_scene = true
+colors = PackedColorArray(0.431373, 0.6, 0.180392, 1, 0.545098, 0.760784, 0.176471, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_hp43n"]
+resource_local_to_scene = true
+frequency = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1vnq2"]
+resource_local_to_scene = true
+width = 108
+height = 108
+color_ramp = SubResource("Gradient_5vwxp")
+noise = SubResource("FastNoiseLite_hp43n")
+
+[node name="Grass" type="Node2D" node_paths=PackedStringArray("sprite_2d")]
+script = ExtResource("1_qohys")
+starting_age = 10
+sprite_2d = NodePath("Sprite2D")
+texture_size_growing_speed = 10.8
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_0en2h")
+texture = SubResource("NoiseTexture2D_1vnq2")

@@ -59,12 +59,12 @@ _data = {
 }
 
 [node name="InventorySlot" type="Control"]
-custom_minimum_size = Vector2(40, 40)
+custom_minimum_size = Vector2(120, 120)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-pivot_offset = Vector2(20, 20)
+pivot_offset = Vector2(60, 60)
 script = ExtResource("1_vpxvb")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -80,7 +80,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1e-05, 1e-05)
-pivot_offset = Vector2(20, 20)
+pivot_offset = Vector2(60, 60)
 
 [node name="Background" type="NinePatchRect" parent="Panel"]
 layout_mode = 1
@@ -117,10 +117,11 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -10.0
-offset_top = -4.0
-offset_bottom = 19.0
+offset_left = -27.0
+offset_top = -8.0
+offset_bottom = 59.0
 grow_horizontal = 0
+theme_override_font_sizes/font_size = 48
 text = "1"
 horizontal_alignment = 2
 

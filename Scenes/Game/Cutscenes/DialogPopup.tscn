@@ -77,15 +77,16 @@ libraries = {
 
 [node name="Text" type="Node2D" parent="."]
 visible = false
+scale = Vector2(1e-05, 1e-05)
 
 [node name="Bubble" type="NinePatchRect" parent="Text"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -10.0
-offset_top = -10.0
-offset_right = 10.0
-offset_bottom = 10.0
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -103,21 +104,21 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -2.0
+offset_left = -8.0
 offset_top = -1.0
-offset_right = 3.0
-offset_bottom = 2.0
+offset_right = 7.0
+offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("2_jvthf")
-stretch_mode = 2
 
 [node name="Label" type="Label" parent="Text"]
 modulate = Color(0, 0, 0, 1)
-offset_left = -19.0
-offset_top = -12.0
-offset_right = 21.0
-offset_bottom = 11.0
+offset_left = -20.0
+offset_top = -35.0
+offset_right = 20.0
+offset_bottom = 32.0
+theme_override_font_sizes/font_size = 48
 text = "!"
 horizontal_alignment = 1
 vertical_alignment = 1

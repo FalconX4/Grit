@@ -1,0 +1,25 @@
+[remap]
+
+importer="font_data_image"
+type="FontFile"
+uid="uid://cxaedkq38g7jn"
+path="res://.godot/imported/FontMouseIcon.png-b3c234ec4f03e64d1ed10641725f66e0.fontdata"
+
+[deps]
+
+source_file="res://Fonts/Images/FontMouseIcon.png"
+dest_files=["res://.godot/imported/FontMouseIcon.png-b3c234ec4f03e64d1ed10641725f66e0.fontdata"]
+
+[params]
+
+character_ranges=PackedStringArray("\'\' 0 0 -6", "\'\' 0 0 -6", "\'\' 0 0 -6")
+kerning_pairs=PackedStringArray()
+columns=3
+rows=1
+image_margin=Rect2i(0, 0, 0, 0)
+character_margin=Rect2i(0, 0, 0, 0)
+ascent=0
+descent=0
+fallbacks=[]
+compress=true
+scaling_mode=2

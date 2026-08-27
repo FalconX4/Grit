@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ItemSeedData" format=3 uid="uid://c84fqc4u3xkgs"]
+
+[ext_resource type="SpriteFrames" uid="uid://bvftk5edaq7a3" path="res://Assets/Game/Items/Seeds/Test/Age0.tres" id="1_wsiu7"]
+[ext_resource type="SpriteFrames" uid="uid://btvhtx5qyl4vr" path="res://Assets/Game/Items/Seeds/Test/Age1.tres" id="2_x531n"]
+[ext_resource type="Texture2D" uid="uid://c83ro4eogl0vo" path="res://Assets/Game/Items/Seeds/Test/Tree.png" id="3_bpfk1"]
+[ext_resource type="Script" uid="uid://rt56tv1ywv6d" path="res://Scripts/Game/Items/ItemSeedData.gd" id="4_jy7ph"]
+[ext_resource type="Script" uid="uid://borv0e0o8qojk" path="res://Scripts/Game/Items/ItemData.gd" id="4_x531n"]
+
+[resource]
+script = ExtResource("4_jy7ph")
+frames_each_step = Array[SpriteFrames]([ExtResource("1_wsiu7"), ExtResource("2_x531n")])
+pivot_each_step = Array[Vector2]([Vector2(0, -72), Vector2(0, -246)])
+age_each_step = Array[int]([0, 1])
+collision_each_step = Array[float]([10.0, 30.0])
+grass_area_each_step = Array[float]([30.0, 90.0])
+items_to_give_each_step = Array[ExtResource("4_x531n")]([null])
+name = "TREE_NAME"
+description = "TREE_DESCRIPTION"
+inventory_image = ExtResource("3_bpfk1")
+journal_image = ExtResource("3_bpfk1")

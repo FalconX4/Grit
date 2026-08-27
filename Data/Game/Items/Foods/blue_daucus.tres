@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemFoodData" format=3 uid="uid://by06op57v11fs"]
+
+[ext_resource type="Texture2D" uid="uid://b86jglngrqrwl" path="res://Assets/Game/Items/FlowersSketch/Something4.png" id="1_0phxv"]
+[ext_resource type="Script" uid="uid://cd237tp574rj0" path="res://Scripts/Game/Items/ItemFoodData.gd" id="2_3lamt"]
+
+[resource]
+script = ExtResource("2_3lamt")
+name = "BLUE_DAUCUS_NAME"
+description = "BLUE_DAUCUS_DESCRIPTION"
+inventory_image = ExtResource("1_0phxv")
+journal_image = ExtResource("1_0phxv")

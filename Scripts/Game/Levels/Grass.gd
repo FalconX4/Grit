@@ -33,7 +33,7 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("Interact"):
+	if InputManager.is_action_just_pressed(InputMapNames.GAME_INTERACT):
 		grow(108)
 	
 	if age >= age_max and size >= size_max:
@@ -69,6 +69,7 @@ func age_grass() -> void:
 
 func grow(sizeToGrow: float) -> void:
 	size_max = size_max + sizeToGrow
+
 
 func instant_grow(sizeToGrow: float) -> void:
 	size_max = size_max + sizeToGrow

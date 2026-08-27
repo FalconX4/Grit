@@ -1,0 +1,2 @@
+Name;Description;InventoryImage;InventoryBarImage;Species;PivotEachStep;AgeEachStep;CollisionEachStep;GrassAreaEachStep;ItemsToGiveEachStep
+TREE_NAME;TREE_DESCRIPTION;res://Assets/Game/Items/Seeds/Test/Tree.png;res://Assets/Game/Items/Seeds/Test/Tree.png;["res://Assets/Game/Items/Seeds/Test/Age0.tres", "res://Assets/Game/Items/Seeds/Test/Age1.tres"];[Vector2(0, -72), Vector2(0, -246)];[0, 1];[10, 30];[30, 90];["res://Data/Game/Items/Seeds/tree.tres"]

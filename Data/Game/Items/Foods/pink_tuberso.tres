@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemFoodData" format=3 uid="uid://bi6rus0wp557v"]
+
+[ext_resource type="Texture2D" uid="uid://dplhxkulucp0q" path="res://Assets/Game/Items/FlowersSketch/Something1.png" id="1_5r7xq"]
+[ext_resource type="Script" uid="uid://cd237tp574rj0" path="res://Scripts/Game/Items/ItemFoodData.gd" id="2_cjgch"]
+
+[resource]
+script = ExtResource("2_cjgch")
+name = "PINK_TUBERSO_NAME"
+description = "PINK_TUBERSO_DESCRIPTION"
+inventory_image = ExtResource("1_5r7xq")
+journal_image = ExtResource("1_5r7xq")

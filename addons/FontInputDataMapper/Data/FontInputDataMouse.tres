@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="FontInputData" format=3 uid="uid://dwsaajgwp5j2s"]
+
+[ext_resource type="Script" uid="uid://b7q7u01wxo2dh" path="res://addons/FontInputDataMapper/FontInputData.gd" id="1_fn8vh"]
+[ext_resource type="FontFile" uid="uid://cxaedkq38g7jn" path="res://Fonts/Images/FontMouseIcon.png" id="1_v07vu"]
+[ext_resource type="Script" uid="uid://cnyhlyl6ricni" path="res://addons/FontInputDataMapper/FontInputDataRange.gd" id="2_epk25"]
+[ext_resource type="Script" uid="uid://cqpb80lwgfst7" path="res://addons/FontInputDataMapper/FontInputDataRangeMouse.gd" id="3_sp8ej"]
+
+[sub_resource type="Resource" id="Resource_1irv4"]
+script = ExtResource("3_sp8ej")
+value = 1
+character = "E000"
+range = "0 0 -6"
+metadata/_custom_type_script = "uid://cqpb80lwgfst7"
+
+[sub_resource type="Resource" id="Resource_epk25"]
+script = ExtResource("3_sp8ej")
+value = 2
+character = "E001"
+range = "0 0 -6"
+metadata/_custom_type_script = "uid://cqpb80lwgfst7"
+
+[sub_resource type="Resource" id="Resource_sp8ej"]
+script = ExtResource("3_sp8ej")
+value = 3
+character = "E002"
+range = "0 0 -6"
+metadata/_custom_type_script = "uid://cqpb80lwgfst7"
+
+[resource]
+script = ExtResource("1_fn8vh")
+font = ExtResource("1_v07vu")
+device_id = 1
+font_ranges = Array[ExtResource("2_epk25")]([SubResource("Resource_1irv4"), SubResource("Resource_epk25"), SubResource("Resource_sp8ej")])
+metadata/_custom_type_script = "uid://b7q7u01wxo2dh"

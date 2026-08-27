@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemFoodData" format=3 uid="uid://7dgcwg4xdivw"]
+
+[ext_resource type="Texture2D" uid="uid://cugcoh8pmw4t5" path="res://Assets/Game/Items/FlowersSketch/Something2.png" id="1_1enrd"]
+[ext_resource type="Script" uid="uid://cd237tp574rj0" path="res://Scripts/Game/Items/ItemFoodData.gd" id="2_w0ydg"]
+
+[resource]
+script = ExtResource("2_w0ydg")
+name = "SATIVUS_NAME"
+description = "SATIVUS_DESCRIPTION"
+inventory_image = ExtResource("1_1enrd")
+journal_image = ExtResource("1_1enrd")

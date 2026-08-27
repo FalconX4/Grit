@@ -1,0 +1,18 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://bvftk5edaq7a3"]
+
+[ext_resource type="Texture2D" uid="uid://dc3fiijvmyvd1" path="res://Assets/Game/Items/Seeds/Test/TestPlantedSeed.png" id="1_frt8q"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1teu7"]
+atlas = ExtResource("1_frt8q")
+region = Rect2(0, 0, 36, 144)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1teu7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

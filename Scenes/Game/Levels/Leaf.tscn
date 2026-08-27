@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://bhxusgj8ue264"]
+
+[ext_resource type="Shader" path="res://Scenes/Game/Levels/ProceduralTree.gdshader" id="1_v66io"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7c5xa"]
+shader = ExtResource("1_v66io")
+shader_parameter/leaf_size = Vector2(100, 50)
+shader_parameter/leaf_color = Vector4(0.165, 0.251, 0.2, 1)
+shader_parameter/vein_width = 2.0
+shader_parameter/vein_color = Vector4(0.647, 0.78, 0.435, 1)
+
+[sub_resource type="Gradient" id="Gradient_h7t8i"]
+colors = PackedColorArray(0.647059, 0.780392, 0.435294, 1, 0.164706, 0.25098, 0.2, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_neylm"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_c3axm"]
+resource_local_to_scene = true
+width = 10
+height = 40
+color_ramp = SubResource("Gradient_h7t8i")
+noise = SubResource("FastNoiseLite_neylm")
+
+[node name="Leaf" type="Sprite2D"]
+material = SubResource("ShaderMaterial_7c5xa")
+texture = SubResource("NoiseTexture2D_c3axm")

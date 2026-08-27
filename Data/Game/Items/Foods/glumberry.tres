@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemFoodData" format=3 uid="uid://m0pdmwlqymyy"]
+
+[ext_resource type="Texture2D" uid="uid://bea3gtsqty7ln" path="res://Assets/Game/Items/FlowersSketch/Something3.png" id="1_phxu6"]
+[ext_resource type="Script" uid="uid://cd237tp574rj0" path="res://Scripts/Game/Items/ItemFoodData.gd" id="2_a44tp"]
+
+[resource]
+script = ExtResource("2_a44tp")
+name = "GLUMBERRY_NAME"
+description = "GLUMBERRY_DESCRIPTION"
+inventory_image = ExtResource("1_phxu6")
+journal_image = ExtResource("1_phxu6")

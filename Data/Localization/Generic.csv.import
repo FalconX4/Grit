@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://dr5osttvw5ax5"
+
+[deps]
+
+files=["res://Data/Localization/Generic.en.translation", "res://Data/Localization/Generic.fr.translation", "res://Data/Localization/Generic.fr.translation"]
+
+source_file="res://Data/Localization/Generic.csv"
+dest_files=["res://Data/Localization/Generic.en.translation", "res://Data/Localization/Generic.fr.translation", "res://Data/Localization/Generic.fr.translation"]
+
+[params]
+
+compress=1
+delimiter=1
+unescape_keys=false
+unescape_translations=true

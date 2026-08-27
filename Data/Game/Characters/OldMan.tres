@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=14 format=3 uid="uid://c62yw8o6ukqa6"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://c62yw8o6ukqa6"]
 
 [ext_resource type="Texture2D" uid="uid://cqf7amido1gpf" path="res://Assets/Game/Characters/OldMan.png" id="1_sixri"]
 

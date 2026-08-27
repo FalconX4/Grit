@@ -1,0 +1,126 @@
+[gd_scene format=3 uid="uid://b3vxkcpskg46u"]
+
+[ext_resource type="Script" uid="uid://wppqqijjprei" path="res://Scripts/Screen/Game/InventoryBarSlot.gd" id="1_0vpx7"]
+[ext_resource type="Resource" uid="uid://by06op57v11fs" path="res://Data/Game/Items/Foods/blue_daucus.tres" id="2_4wrd4"]
+[ext_resource type="Texture2D" uid="uid://cwk6eho5o17ts" path="res://Assets/Screen/Game/InventorySlot.png" id="3_fqvpw"]
+[ext_resource type="PackedScene" uid="uid://cs7yuj6usifdl" path="res://Scenes/Screen/Game/InputLabel.tscn" id="4_4wrd4"]
+
+[sub_resource type="Animation" id="Animation_w7thl"]
+resource_name = "Hide"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_stg4o"]
+resource_name = "RESET"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0m150"]
+resource_name = "Show"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j518x"]
+_data = {
+&"Hide": SubResource("Animation_w7thl"),
+&"RESET": SubResource("Animation_stg4o"),
+&"Show": SubResource("Animation_0m150")
+}
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4wrd4"]
+
+[node name="InventorySlot" type="Control" unique_id=717849473]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+pivot_offset = Vector2(60, 60)
+script = ExtResource("1_0vpx7")
+default_item_data = ExtResource("2_4wrd4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2129283998]
+libraries/ = SubResource("AnimationLibrary_j518x")
+
+[node name="Panel" type="Panel" parent="." unique_id=1999458863]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(60, 60)
+
+[node name="Background" type="NinePatchRect" parent="Panel" unique_id=439682381]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_fqvpw")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="Button" type="Button" parent="Panel" unique_id=1195100139]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4wrd4")
+
+[node name="Item" type="TextureRect" parent="Panel" unique_id=614772523]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 2
+
+[node name="Label" parent="Panel" unique_id=1137563605 instance=ExtResource("4_4wrd4")]
+layout_mode = 1
+offset_top = -9.0
+offset_bottom = 58.0
+
+[connection signal="button_down" from="Panel/Button" to="." method="_on_button_button_down"]

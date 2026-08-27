@@ -21,5 +21,6 @@ func _process(delta: float) -> void:
 	age = age + growing_speed * delta
 	process_tree(delta)
 
+
 func process_tree(delta: float) -> void:
 	pass

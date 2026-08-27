@@ -1,9 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://bog2fwt2cvggb"]
+[gd_scene format=3 uid="uid://bog2fwt2cvggb"]
 
-[ext_resource type="Script" path="res://Scripts/Game/Characters/Character.gd" id="1_ohnkk"]
-[ext_resource type="Script" path="res://Scripts/Game/Characters/CharacterInput.gd" id="2_52eob"]
+[ext_resource type="Script" uid="uid://dlp70lvqucg10" path="res://Scripts/Game/Characters/Character.gd" id="1_ohnkk"]
 [ext_resource type="SpriteFrames" uid="uid://ld0t10aujxwi" path="res://Data/Game/Characters/YoungMan.tres" id="2_mx74b"]
 [ext_resource type="SpriteFrames" uid="uid://c62yw8o6ukqa6" path="res://Data/Game/Characters/OldMan.tres" id="3_mikcp"]
+[ext_resource type="Script" uid="uid://d35g02d5des6y" path="res://Scripts/Game/Characters/CharacterInput/PlayerInput.gd" id="4_vo7bq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ghfrl"]
 size = Vector2(10, 5)
@@ -87,16 +87,16 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_navol"]
 _data = {
-"WalkDown": SubResource("Animation_mny82"),
-"WalkLeft": SubResource("Animation_1e22y"),
-"WalkRight": SubResource("Animation_sx5hc"),
-"WalkUp": SubResource("Animation_m601j")
+&"WalkDown": SubResource("Animation_mny82"),
+&"WalkLeft": SubResource("Animation_1e22y"),
+&"WalkRight": SubResource("Animation_sx5hc"),
+&"WalkUp": SubResource("Animation_m601j")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2eae3"]
 size = Vector2(10, 10)
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=962902777]
 collision_layer = 2
 script = ExtResource("1_ohnkk")
 age_sprite_frames = {
@@ -104,27 +104,25 @@ age_sprite_frames = {
 1.0: ExtResource("2_mx74b")
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=749177035]
 position = Vector2(0, 10.5)
 shape = SubResource("RectangleShape2D_ghfrl")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_navol")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=217963581]
+libraries/ = SubResource("AnimationLibrary_navol")
 speed_scale = 2.0
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=229642326]
 scale = Vector2(0.5, 0.5)
 sprite_frames = ExtResource("2_mx74b")
 animation = &"WalkUp"
 speed_scale = 2.0
 
-[node name="CharacterInput" type="Node" parent="."]
-script = ExtResource("2_52eob")
+[node name="CharacterInput" type="Node" parent="." unique_id=1749681625]
+script = ExtResource("4_vo7bq")
 is_player = true
 
-[node name="InteractButton" type="Button" parent="."]
+[node name="InteractButton" type="Button" parent="." unique_id=924531067]
 visible = false
 anchors_preset = 7
 anchor_left = 0.5
@@ -143,10 +141,10 @@ size_flags_vertical = 4
 theme_override_font_sizes/font_size = 10
 text = "A"
 
-[node name="DirectionNode" type="Node2D" parent="."]
+[node name="DirectionNode" type="Node2D" parent="." unique_id=1337037281]
 position = Vector2(0, 10.5)
 
-[node name="InteractTrigger" type="ShapeCast2D" parent="DirectionNode"]
+[node name="InteractTrigger" type="ShapeCast2D" parent="DirectionNode" unique_id=2075452924]
 shape = SubResource("RectangleShape2D_2eae3")
 target_position = Vector2(5, 0)
 collision_mask = 128

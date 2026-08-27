@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemFoodData" format=3 uid="uid://85qbwnf7p2f6"]
+
+[ext_resource type="Texture2D" uid="uid://c4ghyk50n3fd0" path="res://Assets/Game/Items/FlowersSketch/Something6.png" id="1_jvdu4"]
+[ext_resource type="Script" uid="uid://cd237tp574rj0" path="res://Scripts/Game/Items/ItemFoodData.gd" id="2_puvbn"]
+
+[resource]
+script = ExtResource("2_puvbn")
+name = "GLOWTUS_FLOWER_NAME"
+description = "GLOWTUS_FLOWER_DESCRIPTION"
+inventory_image = ExtResource("1_jvdu4")
+journal_image = ExtResource("1_jvdu4")

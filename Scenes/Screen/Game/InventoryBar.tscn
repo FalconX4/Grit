@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://c4j6sntedyxm1"]
+
+[ext_resource type="Script" uid="uid://45550mo7t762" path="res://Scripts/Screen/Game/InventoryBar.gd" id="1_1750b"]
+[ext_resource type="PackedScene" uid="uid://b3vxkcpskg46u" path="res://Scenes/Screen/Game/InventoryBarSlot.tscn" id="2_wvlx8"]
+
+[node name="Inventory" type="Control" unique_id=635438718]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -960.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1750b")
+inventory_slot = ExtResource("2_wvlx8")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=722538330]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 5
+alignment = 1

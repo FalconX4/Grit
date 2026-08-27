@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemFoodData" format=3 uid="uid://brgr18ggtov80"]
+
+[ext_resource type="Texture2D" uid="uid://8bh8j3xifkej" path="res://Assets/Game/Items/FlowersSketch/Something5.png" id="1_tey0o"]
+[ext_resource type="Script" uid="uid://cd237tp574rj0" path="res://Scripts/Game/Items/ItemFoodData.gd" id="2_k1ium"]
+
+[resource]
+script = ExtResource("2_k1ium")
+name = "KAARKIDE_FLOWER_NAME"
+description = "KAARKIDE_FLOWER_DESCRIPTION"
+inventory_image = ExtResource("1_tey0o")
+journal_image = ExtResource("1_tey0o")

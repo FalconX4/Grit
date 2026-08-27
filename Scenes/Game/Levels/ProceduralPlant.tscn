@@ -1,0 +1,75 @@
+[gd_scene load_steps=11 format=3 uid="uid://dpjqx5fy7ap5m"]
+
+[ext_resource type="Script" path="res://Scripts/Game/Levels/ProceduralTree.gd" id="1_3m2ls"]
+[ext_resource type="Shader" uid="uid://na3gxb5luc3k" path="res://Scenes/Game/Levels/GrassCircleFade.tres" id="2_v2xii"]
+
+[sub_resource type="Curve" id="Curve_qdyky"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.8022, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_t4ncu"]
+colors = PackedColorArray(0.478431, 0.34902, 0.203922, 1, 0.301961, 0.227451, 0.156863, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_c2kuu"]
+frequency = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cc1og"]
+color_ramp = SubResource("Gradient_t4ncu")
+noise = SubResource("FastNoiseLite_c2kuu")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ysds1"]
+shader = ExtResource("2_v2xii")
+
+[sub_resource type="Gradient" id="Gradient_y182i"]
+colors = PackedColorArray(0.141176, 0.631373, 0.0941176, 1, 0.2, 0.835294, 0.152941, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_jhppo"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1f5ul"]
+width = 540
+height = 540
+color_ramp = SubResource("Gradient_y182i")
+noise = SubResource("FastNoiseLite_jhppo")
+
+[node name="ProceduralTree" type="Node2D"]
+script = ExtResource("1_3m2ls")
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 0, -500)
+width = 20.0
+width_curve = SubResource("Curve_qdyky")
+texture = SubResource("NoiseTexture2D_cc1og")
+texture_mode = 1
+
+[node name="Line2D" type="Line2D" parent="Line2D"]
+points = PackedVector2Array(0, -250, -127, -359)
+width = 15.0
+width_curve = SubResource("Curve_qdyky")
+texture = SubResource("NoiseTexture2D_cc1og")
+texture_mode = 1
+
+[node name="Line2D" type="Line2D" parent="Line2D/Line2D"]
+points = PackedVector2Array(-83, -320, -66, -399)
+width = 7.0
+width_curve = SubResource("Curve_qdyky")
+texture = SubResource("NoiseTexture2D_cc1og")
+texture_mode = 1
+
+[node name="Line2D2" type="Line2D" parent="Line2D"]
+points = PackedVector2Array(0, -351, 158, -473)
+width = 9.0
+width_curve = SubResource("Curve_qdyky")
+texture = SubResource("NoiseTexture2D_cc1og")
+texture_mode = 1
+
+[node name="Line2D" type="Line2D" parent="Line2D/Line2D2"]
+points = PackedVector2Array(84, -416, 96, -485)
+width = 6.0
+width_curve = SubResource("Curve_qdyky")
+texture = SubResource("NoiseTexture2D_cc1og")
+texture_mode = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="Line2D/Line2D2/Line2D"]
+material = SubResource("ShaderMaterial_ysds1")
+position = Vector2(0, -402)
+texture = SubResource("NoiseTexture2D_1f5ul")

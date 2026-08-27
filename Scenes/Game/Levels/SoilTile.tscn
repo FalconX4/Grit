@@ -23,4 +23,3 @@ visible = false
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 visible = false
 sprite_frames = ExtResource("5_psjya")
-offset = Vector2(0, -72)

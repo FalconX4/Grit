@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://b1am65lu3eirj"]
+[gd_scene format=3 uid="uid://b1am65lu3eirj"]
 
-[ext_resource type="PackedScene" uid="uid://c4j6sntedyxm1" path="res://Scenes/Screen/Game/Inventory.tscn" id="1_d7bsd"]
-[ext_resource type="Script" path="res://Scripts/Screen/Game/GameUI.gd" id="1_fu8e7"]
+[ext_resource type="PackedScene" uid="uid://c4j6sntedyxm1" path="res://Scenes/Screen/Game/InventoryBar.tscn" id="1_d7bsd"]
+[ext_resource type="Script" uid="uid://ymp5og7bdj4e" path="res://Scripts/Screen/Game/GameUI.gd" id="1_fu8e7"]
 
-[node name="GameUi" type="Control"]
+[node name="GameUi" type="Control" unique_id=1312754734]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,7 +12,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fu8e7")
 
-[node name="Inventory" parent="." instance=ExtResource("1_d7bsd")]
+[node name="InventoryBar" parent="." unique_id=489721073 instance=ExtResource("1_d7bsd")]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5

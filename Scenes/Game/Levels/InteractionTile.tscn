@@ -1,14 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://befhoix5ssrvy"]
+[gd_scene format=3 uid="uid://befhoix5ssrvy"]
 
-[ext_resource type="Script" path="res://Scripts/Game/Levels/InteractionTile.gd" id="1_qk7qy"]
+[ext_resource type="Script" uid="uid://3d62lye1eu7x" path="res://Scripts/Game/Levels/InteractionTile.gd" id="1_qk7qy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rpmfy"]
-size = Vector2(10, 10)
+size = Vector2(100, 100)
 
-[node name="InteractionTile" type="StaticBody2D"]
+[node name="InteractionTile" type="StaticBody2D" unique_id=1913672792]
 collision_layer = 128
 collision_mask = 0
 script = ExtResource("1_qk7qy")
 
-[node name="Shape" type="CollisionShape2D" parent="."]
+[node name="Shape" type="CollisionShape2D" parent="." unique_id=610011290]
 shape = SubResource("RectangleShape2D_rpmfy")

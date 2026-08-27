@@ -5,8 +5,16 @@ class_name JournalPage
 @onready var image: TextureRect = $Panel/Image
 @onready var title: Label = $Panel/Title
 @onready var description: Label = $Panel/Description
+@export var default_item_data: ItemData
+var current_item_data: ItemData
 
-func set_data(itemData: ItemData) -> void:
-	image.texture = itemData.inventory_image
-	title.text = itemData.name
-	description.text = itemData.description
+func _ready() -> void:
+	if get_tree().current_scene == self:
+		set_data(default_item_data)
+
+
+func set_data(item_data: ItemData) -> void:
+	current_item_data = item_data
+	image.texture = item_data.journal_image
+	title.text = item_data.name
+	description.text = item_data.description

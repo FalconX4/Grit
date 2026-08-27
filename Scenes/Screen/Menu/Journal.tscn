@@ -1,6 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://c57t666n0b1m3"]
+[gd_scene format=3 uid="uid://c57t666n0b1m3"]
 
-[ext_resource type="Script" path="res://Scripts/Screen/Menu/Journal.gd" id="1_4xf27"]
+[ext_resource type="Script" uid="uid://b5xpy8ner1h3j" path="res://Scripts/Screen/Menu/Journal.gd" id="1_4xf27"]
 [ext_resource type="PackedScene" uid="uid://bs35r6gtgyr8n" path="res://Scenes/Screen/Menu/JournalPage.tscn" id="1_45ey5"]
 [ext_resource type="Texture2D" uid="uid://bw722igpmnykp" path="res://Assets/Screen/Menu/Journal/Journal 1.png" id="2_44eym"]
 [ext_resource type="Texture2D" uid="uid://c0xboxq3cdtcq" path="res://Assets/Screen/Menu/Journal/Journal 0.png" id="2_a77it"]
@@ -215,14 +215,14 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3frt5"]
 _data = {
-"NextPage": SubResource("Animation_jq7s4"),
-"PreviousPage": SubResource("Animation_um2jy"),
-"RESET": SubResource("Animation_36lhg")
+&"NextPage": SubResource("Animation_jq7s4"),
+&"PreviousPage": SubResource("Animation_um2jy"),
+&"RESET": SubResource("Animation_36lhg")
 }
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_guryo"]
 
-[node name="Journal" type="Control"]
+[node name="Journal" type="Control" unique_id=565972687]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -231,7 +231,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_4xf27")
 
-[node name="Container" type="PanelContainer" parent="."]
+[node name="Container" type="PanelContainer" parent="." unique_id=135521992]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -239,18 +239,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PageAnimation" type="AnimationPlayer" parent="Container"]
-libraries = {
-"": SubResource("AnimationLibrary_3frt5")
-}
+[node name="PageAnimation" type="AnimationPlayer" parent="Container" unique_id=603048733]
+libraries/ = SubResource("AnimationLibrary_3frt5")
 
-[node name="Book" type="TextureRect" parent="Container"]
+[node name="Book" type="TextureRect" parent="Container" unique_id=2111780049]
 layout_mode = 2
 texture = ExtResource("2_a77it")
 expand_mode = 5
 stretch_mode = 5
 
-[node name="PagePanel" type="Panel" parent="Container"]
+[node name="PagePanel" type="Panel" parent="Container" unique_id=31530480]
 clip_contents = true
 custom_minimum_size = Vector2(1300, 850)
 layout_mode = 2
@@ -259,19 +257,40 @@ size_flags_vertical = 4
 size_flags_stretch_ratio = 12.9
 theme_override_styles/panel = SubResource("StyleBoxEmpty_guryo")
 
-[node name="JournalPage1" parent="Container/PagePanel" instance=ExtResource("1_45ey5")]
-layout_mode = 2
+[node name="JournalPage1" parent="Container/PagePanel" unique_id=1872251334 instance=ExtResource("1_45ey5")]
+layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
 offset_right = 630.0
 offset_bottom = 850.0
+grow_horizontal = 1
+grow_vertical = 1
 
-[node name="JournalPage2" parent="Container/PagePanel" instance=ExtResource("1_45ey5")]
-layout_mode = 2
+[node name="JournalPage2" parent="Container/PagePanel" unique_id=946057774 instance=ExtResource("1_45ey5")]
+layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
 offset_left = 675.0
 offset_right = 1305.0
 offset_bottom = 850.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Container" unique_id=2034591621]
+layout_mode = 2
+alignment = 1
+
+[node name="LeftPage" type="Button" parent="Container/HBoxContainer" unique_id=1722407162]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(960, 0)
+layout_mode = 2
+
+[node name="RightPage" type="Button" parent="Container/HBoxContainer" unique_id=1750875811]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(960, 0)
+layout_mode = 2
+
+[connection signal="pressed" from="Container/HBoxContainer/LeftPage" to="." method="previous"]
+[connection signal="pressed" from="Container/HBoxContainer/RightPage" to="." method="next"]

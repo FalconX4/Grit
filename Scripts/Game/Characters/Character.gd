@@ -11,6 +11,7 @@ const SPEED = 150.0
 @export var age_sprite_frames: Dictionary
 @export var age = 0.0
 
+var input_handler: CharacterInputHandler = CharacterInputHandler.new()
 var items : Array[ItemData]
 var selected_item_index = -1
 var last_moved_direction : Vector2
@@ -19,15 +20,17 @@ func add_item(item: ItemData): items.append(item)
 func remove_item(index: int): items.remove_at(index)
 func show_interact_button(show_it: bool): interact_button.visible = show_it
 
-func update_input_buttons(): update_input_button(interact_button, "Interact")
+
+func update_input_buttons(): update_input_button(interact_button, InputMapNames.GAME_INTERACT)
 func update_input_button(button: Button, input_action: String):
 	if character_input.using_controller:
+		var playerInput = character_input as PlayerInput
 		for event in InputMap.action_get_events(input_action):
 			if event is InputEventJoypadButton:
-				button.text = Helpers.controller_input_to_text(event, character_input.last_device_id)
+				button.text = Helpers.input_to_text(event, playerInput.joypad.device_id_enum)
 				break
 			elif event is InputEventJoypadMotion:
-				button.text = Helpers.controller_input_to_text(event, character_input.last_device_id)
+				button.text = Helpers.input_to_text(event, playerInput.joypad.device_id_enum)
 				break
 	else:
 		for event in InputMap.action_get_events(input_action):
@@ -37,16 +40,20 @@ func update_input_button(button: Button, input_action: String):
 			elif event is InputEventMouseButton:
 				button.text = str((event as InputEventMouseButton).button_index)
 				break
-	
+
+
 func _ready() -> void:
-	add_item(DataManager.itemsData.items[0])
+	input_handler.input = character_input
+	add_item(DataManager.items_data.items[len(DataManager.items_data.items) - 1])
 	update_input_buttons()
 
+
 func _process(_delta: float) -> void:
+	input_handler._process(_delta)
 	if character_input.was_using_controller != character_input.using_controller:
 		update_input_buttons()
-	if character_input.inventory >= 0:
-		selected_item_index = character_input.inventory
+	if input_handler.inventory >= 0:
+		selected_item_index = input_handler.inventory
 
 	if interact_trigger.is_colliding():
 		for i in interact_trigger.get_collision_count():
@@ -54,11 +61,12 @@ func _process(_delta: float) -> void:
 			if collider is InteractionTile:
 				var tile = collider as InteractionTile
 				show_interact_button(tile.is_interactable(self))
-				if character_input.interact:
+				if input_handler.interact:
 					tile.interact(self)
 
+
 func _physics_process(_delta: float) -> void:
-	var direction := character_input.move
+	var direction := input_handler.move
 	if direction:
 		velocity = direction * SPEED
 	else:
@@ -70,7 +78,7 @@ func _physics_process(_delta: float) -> void:
 	direction_node.rotation = last_moved_direction.angle()
 	move_and_slide()
 	
-	if character_input.interact:
+	if input_handler.interact:
 		age = 1.0 if age == 0.0 else 0.0
 	
 	var frameToSet = animated_sprite_2d.sprite_frames

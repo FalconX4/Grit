@@ -47,7 +47,7 @@ version_control/autoload_on_startup=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/ControllerInputGenerator/plugin.cfg", "res://addons/FontInputDataMapper/plugin.cfg", "res://addons/InputMapGeneratorScript/plugin.cfg", "res://addons/ItemParser/plugin.cfg", "res://addons/LocalizationMapGeneratorScript/plugin.cfg", "res://addons/controllerinputgenerator/plugin.cfg")
+enabled=PackedStringArray("res://addons/FontInputDataMapper/plugin.cfg", "res://addons/InputMapGeneratorScript/plugin.cfg", "res://addons/ItemParser/plugin.cfg", "res://addons/LocalizationMapGeneratorScript/plugin.cfg")
 
 [gui]
 

@@ -5,7 +5,7 @@ const SPEED = 150.0
 @onready var character_input: CharacterInput = $CharacterInput
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var interact_button: Button = $InteractButton
+@onready var keyboard_input_label: Label = $KeyboardInputLabel
 @onready var interact_trigger: ShapeCast2D = $DirectionNode/InteractTrigger
 @onready var direction_node: Node2D = $DirectionNode
 @export var age_sprite_frames: Dictionary
@@ -18,28 +18,17 @@ var last_moved_direction : Vector2
 
 func add_item(item: ItemData): items.append(item)
 func remove_item(index: int): items.remove_at(index)
-func show_interact_button(show_it: bool): interact_button.visible = show_it
+func show_interact_button(show_it: bool): keyboard_input_label.visible = show_it
 
 
-func update_input_buttons(): update_input_button(interact_button, InputMapNames.GAME_INTERACT)
-func update_input_button(button: Button, input_action: String):
-	if character_input.using_controller:
-		var playerInput = character_input as PlayerInput
-		for event in InputMap.action_get_events(input_action):
-			if event is InputEventJoypadButton:
-				button.text = Helpers.input_to_text(event, playerInput.joypad.device_id_enum)
-				break
-			elif event is InputEventJoypadMotion:
-				button.text = Helpers.input_to_text(event, playerInput.joypad.device_id_enum)
-				break
-	else:
-		for event in InputMap.action_get_events(input_action):
-			if event is InputEventKey:
-				button.text = (event as InputEventKey).as_text_physical_keycode()
-				break
-			elif event is InputEventMouseButton:
-				button.text = str((event as InputEventMouseButton).button_index)
-				break
+func update_input_buttons(): update_input_button(keyboard_input_label, InputMapNames.GAME_INTERACT)
+func update_input_button(label: Label, input_action: String):
+	var player_input = character_input as PlayerInput
+	if player_input != null:
+		if player_input.using_controller:
+			label.text = InputManager.get_action_text(input_action, player_input.joypad.device_type)
+		else:
+			label.text = InputManager.get_action_text(input_action, DeviceTypeMapNames.DeviceType.KEYBOARD)
 
 
 func _ready() -> void:

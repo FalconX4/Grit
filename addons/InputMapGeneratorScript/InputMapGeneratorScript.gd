@@ -6,10 +6,15 @@ const generated_script_template: String = "class_name InputMapNames
 # Auto generated class by InputMapGeneratorScript
 	
 enum InputAction {
+	INVALID = -1,
 %s
 }
 
 %s
+
+# Game specific
+const GAME_INVENTORY_BAR_: StringName = &\"Game_Inventory_Bar_\"
+# Finished Game specific
 
 static func get_action_string(action: InputAction) -> StringName:
 	match action:
@@ -17,6 +22,13 @@ static func get_action_string(action: InputAction) -> StringName:
 		_:
 			push_error(\"Unknown InputAction enum value: %%d\" %% action)
 			return &\"\"
+
+static func get_action_input(action: StringName) -> InputAction:
+	match action:
+%s
+		_:
+			push_error(\"Unknown Action String value: %%s\" %% action)
+			return InputAction.INVALID
 
 static func get_all_actions() -> Array[StringName]:
 	return [
@@ -39,6 +51,7 @@ func _on_button_pressed() -> void:
 		get_input_action_enum(actions),
 		get_input_action_constants(actions),
 		get_input_action_match_cases(actions),
+		get_action_string_match_cases(actions),
 		get_input_action_array(actions)]
 	var file = FileAccess.open(script_path, FileAccess.WRITE)
 	file.store_string(generated_script)
@@ -64,6 +77,13 @@ func get_input_action_match_cases(actions: Array[StringName]) -> String:
 	for action in actions:
 		if not action.contains("/") and not action.contains("."):
 			result += "\t\tInputAction.%s: return %s\n" % [action.to_upper(), action.to_upper()]
+	return result
+	
+func get_action_string_match_cases(actions: Array[StringName]) -> String:
+	var result = ""
+	for action in actions:
+		if not action.contains("/") and not action.contains("."):
+			result += "\t\t%s: return InputAction.%s\n" % [action.to_upper(), action.to_upper()]
 	return result
 
 func get_input_action_array(actions: Array[StringName]) -> String:

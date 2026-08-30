@@ -4,6 +4,7 @@
 [ext_resource type="SpriteFrames" uid="uid://ld0t10aujxwi" path="res://Data/Game/Characters/YoungMan.tres" id="2_mx74b"]
 [ext_resource type="SpriteFrames" uid="uid://c62yw8o6ukqa6" path="res://Data/Game/Characters/OldMan.tres" id="3_mikcp"]
 [ext_resource type="Script" uid="uid://d35g02d5des6y" path="res://Scripts/Game/Characters/CharacterInput/PlayerInput.gd" id="4_vo7bq"]
+[ext_resource type="PackedScene" uid="uid://bdx8725jh8kyo" path="res://Scenes/Generic/KeyboardInputLabel.tscn" id="5_1vbuj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ghfrl"]
 size = Vector2(10, 5)
@@ -93,6 +94,9 @@ _data = {
 &"WalkUp": SubResource("Animation_m601j")
 }
 
+[sub_resource type="LabelSettings" id="LabelSettings_6d5ii"]
+font_size = 20
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2eae3"]
 size = Vector2(10, 10)
 
@@ -120,26 +124,15 @@ speed_scale = 2.0
 
 [node name="CharacterInput" type="Node" parent="." unique_id=1749681625]
 script = ExtResource("4_vo7bq")
-is_player = true
 
-[node name="InteractButton" type="Button" parent="." unique_id=924531067]
+[node name="KeyboardInputLabel" parent="." unique_id=101772238 instance=ExtResource("5_1vbuj")]
 visible = false
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -8.0
+offset_left = -5.0
 offset_top = -36.0
-offset_right = 8.0
+offset_right = 5.0
 offset_bottom = -14.0
-grow_horizontal = 2
-grow_vertical = 0
-pivot_offset = Vector2(8, 22)
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_font_sizes/font_size = 10
 text = "A"
+label_settings = SubResource("LabelSettings_6d5ii")
 
 [node name="DirectionNode" type="Node2D" parent="." unique_id=1337037281]
 position = Vector2(0, 10.5)

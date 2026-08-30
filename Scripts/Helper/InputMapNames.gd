@@ -1,6 +1,8 @@
 class_name InputMapNames
+# Auto generated class by InputMapGeneratorScript
 	
 enum InputAction {
+	INVALID = -1,
 	UI_ACCEPT,
 	UI_SELECT,
 	UI_CANCEL,
@@ -184,6 +186,10 @@ const GAME_INVENTORY_BAR_LEFT: StringName = &"Game_Inventory_Bar_Left"
 const GAME_INVENTORY_BAR_RIGHT: StringName = &"Game_Inventory_Bar_Right"
 
 
+# Game specific
+const GAME_INVENTORY_BAR_: StringName = &"Game_Inventory_Bar_"
+# Finished Game specific
+
 static func get_action_string(action: InputAction) -> StringName:
 	match action:
 		InputAction.UI_ACCEPT: return UI_ACCEPT
@@ -280,6 +286,101 @@ static func get_action_string(action: InputAction) -> StringName:
 			push_error("Unknown InputAction enum value: %d" % action)
 			return &""
 
+static func get_action_input(action: StringName) -> InputAction:
+	match action:
+		UI_ACCEPT: return InputAction.UI_ACCEPT
+		UI_SELECT: return InputAction.UI_SELECT
+		UI_CANCEL: return InputAction.UI_CANCEL
+		UI_CLOSE_DIALOG: return InputAction.UI_CLOSE_DIALOG
+		UI_FOCUS_NEXT: return InputAction.UI_FOCUS_NEXT
+		UI_FOCUS_PREV: return InputAction.UI_FOCUS_PREV
+		UI_LEFT: return InputAction.UI_LEFT
+		UI_RIGHT: return InputAction.UI_RIGHT
+		UI_UP: return InputAction.UI_UP
+		UI_DOWN: return InputAction.UI_DOWN
+		UI_PAGE_UP: return InputAction.UI_PAGE_UP
+		UI_PAGE_DOWN: return InputAction.UI_PAGE_DOWN
+		UI_HOME: return InputAction.UI_HOME
+		UI_END: return InputAction.UI_END
+		UI_ACCESSIBILITY_DRAG_AND_DROP: return InputAction.UI_ACCESSIBILITY_DRAG_AND_DROP
+		UI_CUT: return InputAction.UI_CUT
+		UI_COPY: return InputAction.UI_COPY
+		UI_FOCUS_MODE: return InputAction.UI_FOCUS_MODE
+		UI_PASTE: return InputAction.UI_PASTE
+		UI_UNDO: return InputAction.UI_UNDO
+		UI_REDO: return InputAction.UI_REDO
+		UI_TEXT_COMPLETION_QUERY: return InputAction.UI_TEXT_COMPLETION_QUERY
+		UI_TEXT_COMPLETION_ACCEPT: return InputAction.UI_TEXT_COMPLETION_ACCEPT
+		UI_TEXT_COMPLETION_REPLACE: return InputAction.UI_TEXT_COMPLETION_REPLACE
+		UI_TEXT_NEWLINE: return InputAction.UI_TEXT_NEWLINE
+		UI_TEXT_NEWLINE_BLANK: return InputAction.UI_TEXT_NEWLINE_BLANK
+		UI_TEXT_NEWLINE_ABOVE: return InputAction.UI_TEXT_NEWLINE_ABOVE
+		UI_TEXT_INDENT: return InputAction.UI_TEXT_INDENT
+		UI_TEXT_DEDENT: return InputAction.UI_TEXT_DEDENT
+		UI_TEXT_BACKSPACE: return InputAction.UI_TEXT_BACKSPACE
+		UI_TEXT_BACKSPACE_WORD: return InputAction.UI_TEXT_BACKSPACE_WORD
+		UI_TEXT_BACKSPACE_ALL_TO_LEFT: return InputAction.UI_TEXT_BACKSPACE_ALL_TO_LEFT
+		UI_TEXT_DELETE: return InputAction.UI_TEXT_DELETE
+		UI_TEXT_DELETE_WORD: return InputAction.UI_TEXT_DELETE_WORD
+		UI_TEXT_DELETE_ALL_TO_RIGHT: return InputAction.UI_TEXT_DELETE_ALL_TO_RIGHT
+		UI_TEXT_CARET_LEFT: return InputAction.UI_TEXT_CARET_LEFT
+		UI_TEXT_CARET_WORD_LEFT: return InputAction.UI_TEXT_CARET_WORD_LEFT
+		UI_TEXT_CARET_RIGHT: return InputAction.UI_TEXT_CARET_RIGHT
+		UI_TEXT_CARET_WORD_RIGHT: return InputAction.UI_TEXT_CARET_WORD_RIGHT
+		UI_TEXT_CARET_UP: return InputAction.UI_TEXT_CARET_UP
+		UI_TEXT_CARET_DOWN: return InputAction.UI_TEXT_CARET_DOWN
+		UI_TEXT_CARET_LINE_START: return InputAction.UI_TEXT_CARET_LINE_START
+		UI_TEXT_CARET_LINE_END: return InputAction.UI_TEXT_CARET_LINE_END
+		UI_TEXT_CARET_PAGE_UP: return InputAction.UI_TEXT_CARET_PAGE_UP
+		UI_TEXT_CARET_PAGE_DOWN: return InputAction.UI_TEXT_CARET_PAGE_DOWN
+		UI_TEXT_CARET_DOCUMENT_START: return InputAction.UI_TEXT_CARET_DOCUMENT_START
+		UI_TEXT_CARET_DOCUMENT_END: return InputAction.UI_TEXT_CARET_DOCUMENT_END
+		UI_TEXT_CARET_ADD_BELOW: return InputAction.UI_TEXT_CARET_ADD_BELOW
+		UI_TEXT_CARET_ADD_ABOVE: return InputAction.UI_TEXT_CARET_ADD_ABOVE
+		UI_TEXT_SCROLL_UP: return InputAction.UI_TEXT_SCROLL_UP
+		UI_TEXT_SCROLL_DOWN: return InputAction.UI_TEXT_SCROLL_DOWN
+		UI_TEXT_SELECT_ALL: return InputAction.UI_TEXT_SELECT_ALL
+		UI_TEXT_SELECT_WORD_UNDER_CARET: return InputAction.UI_TEXT_SELECT_WORD_UNDER_CARET
+		UI_TEXT_ADD_SELECTION_FOR_NEXT_OCCURRENCE: return InputAction.UI_TEXT_ADD_SELECTION_FOR_NEXT_OCCURRENCE
+		UI_TEXT_SKIP_SELECTION_FOR_NEXT_OCCURRENCE: return InputAction.UI_TEXT_SKIP_SELECTION_FOR_NEXT_OCCURRENCE
+		UI_TEXT_CLEAR_CARETS_AND_SELECTION: return InputAction.UI_TEXT_CLEAR_CARETS_AND_SELECTION
+		UI_TEXT_TOGGLE_INSERT_MODE: return InputAction.UI_TEXT_TOGGLE_INSERT_MODE
+		UI_MENU: return InputAction.UI_MENU
+		UI_TEXT_SUBMIT: return InputAction.UI_TEXT_SUBMIT
+		UI_UNICODE_START: return InputAction.UI_UNICODE_START
+		UI_GRAPH_DUPLICATE: return InputAction.UI_GRAPH_DUPLICATE
+		UI_GRAPH_DELETE: return InputAction.UI_GRAPH_DELETE
+		UI_GRAPH_FOLLOW_LEFT: return InputAction.UI_GRAPH_FOLLOW_LEFT
+		UI_GRAPH_FOLLOW_RIGHT: return InputAction.UI_GRAPH_FOLLOW_RIGHT
+		UI_FILEDIALOG_DELETE: return InputAction.UI_FILEDIALOG_DELETE
+		UI_FILEDIALOG_UP_ONE_LEVEL: return InputAction.UI_FILEDIALOG_UP_ONE_LEVEL
+		UI_FILEDIALOG_REFRESH: return InputAction.UI_FILEDIALOG_REFRESH
+		UI_FILEDIALOG_SHOW_HIDDEN: return InputAction.UI_FILEDIALOG_SHOW_HIDDEN
+		UI_FILEDIALOG_FIND: return InputAction.UI_FILEDIALOG_FIND
+		UI_FILEDIALOG_FOCUS_PATH: return InputAction.UI_FILEDIALOG_FOCUS_PATH
+		UI_SWAP_INPUT_DIRECTION: return InputAction.UI_SWAP_INPUT_DIRECTION
+		UI_COLORPICKER_DELETE_PRESET: return InputAction.UI_COLORPICKER_DELETE_PRESET
+		GAME_MOVE_UP: return InputAction.GAME_MOVE_UP
+		GAME_MOVE_DOWN: return InputAction.GAME_MOVE_DOWN
+		GAME_MOVE_LEFT: return InputAction.GAME_MOVE_LEFT
+		GAME_MOVE_RIGHT: return InputAction.GAME_MOVE_RIGHT
+		GAME_INTERACT: return InputAction.GAME_INTERACT
+		GAME_INVENTORY_BAR_1: return InputAction.GAME_INVENTORY_BAR_1
+		GAME_INVENTORY_BAR_2: return InputAction.GAME_INVENTORY_BAR_2
+		GAME_INVENTORY_BAR_3: return InputAction.GAME_INVENTORY_BAR_3
+		GAME_INVENTORY_BAR_4: return InputAction.GAME_INVENTORY_BAR_4
+		GAME_INVENTORY_BAR_5: return InputAction.GAME_INVENTORY_BAR_5
+		GAME_INVENTORY_BAR_6: return InputAction.GAME_INVENTORY_BAR_6
+		GAME_INVENTORY_BAR_7: return InputAction.GAME_INVENTORY_BAR_7
+		GAME_INVENTORY_BAR_8: return InputAction.GAME_INVENTORY_BAR_8
+		GAME_INVENTORY_BAR_9: return InputAction.GAME_INVENTORY_BAR_9
+		GAME_INVENTORY_BAR_0: return InputAction.GAME_INVENTORY_BAR_0
+		GAME_INVENTORY_BAR_LEFT: return InputAction.GAME_INVENTORY_BAR_LEFT
+		GAME_INVENTORY_BAR_RIGHT: return InputAction.GAME_INVENTORY_BAR_RIGHT
+
+		_:
+			push_error("Unknown Action String value: %s" % action)
+			return InputAction.INVALID
 
 static func get_all_actions() -> Array[StringName]:
 	return [

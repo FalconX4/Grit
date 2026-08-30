@@ -3,7 +3,7 @@ extends Resource
 class_name FontInputData
 
 @export var font : Font
-@export var device_id : DeviceIdMapNames.DeviceId
+@export var device_type : DeviceTypeMapNames.DeviceType
 @export var font_ranges: Array[FontInputDataRange] = []
 
 @export_tool_button("Update Generated Script", "Reload") var update_generated_script_action: Callable = update_generated_script

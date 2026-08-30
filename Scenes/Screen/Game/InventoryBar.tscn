@@ -2,15 +2,20 @@
 
 [ext_resource type="Script" uid="uid://45550mo7t762" path="res://Scripts/Screen/Game/InventoryBar.gd" id="1_1750b"]
 [ext_resource type="PackedScene" uid="uid://b3vxkcpskg46u" path="res://Scenes/Screen/Game/InventoryBarSlot.tscn" id="2_wvlx8"]
+[ext_resource type="PackedScene" uid="uid://bdx8725jh8kyo" path="res://Scenes/Generic/KeyboardInputLabel.tscn" id="3_wvlx8"]
 
 [node name="Inventory" type="Control" unique_id=635438718]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = -960.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_right = -25.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
 script = ExtResource("1_1750b")
 inventory_slot = ExtResource("2_wvlx8")
 
@@ -23,3 +28,23 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 5
 alignment = 1
+
+[node name="KeyboardInputLabelLeft" parent="." unique_id=101772238 instance=ExtResource("3_wvlx8")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0
+anchor_right = 0.0
+offset_left = -20.0
+offset_right = -37.0
+text = "L"
+input_action = 87
+
+[node name="KeyboardInputLabelRight" parent="." unique_id=1661678840 instance=ExtResource("3_wvlx8")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 20.0
+offset_right = 37.0
+text = "R"
+input_action = 88

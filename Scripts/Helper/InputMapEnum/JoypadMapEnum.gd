@@ -31,7 +31,7 @@ enum ButtonMap
 enum AxisMap
 {
 	INVALID = JOY_AXIS_INVALID,
-	LEFT_X  = JOY_AXIS_LEFT_X,
+	LEFT_X = JOY_AXIS_LEFT_X,
 	LEFT_Y = JOY_AXIS_LEFT_Y,
 	RIGHT_X = JOY_AXIS_RIGHT_X,
 	RIGHT_Y = JOY_AXIS_RIGHT_Y,
@@ -40,3 +40,33 @@ enum AxisMap
 	SDL_MAX = JOY_AXIS_SDL_MAX,
 	MAX = JOY_AXIS_MAX
 }
+
+enum AxisExtendedMap
+{
+	INVALID = -1,
+	LEFT_X_POS,
+	LEFT_X_NEG,
+	LEFT_Y_POS,
+	LEFT_Y_NEG,
+	RIGHT_X_POS,
+	RIGHT_X_NEG,
+	RIGHT_Y_POS,
+	RIGHT_Y_NEG,
+	TRIGGER_LEFT,
+	TRIGGER_RIGHT,
+}
+
+static func get_axis_extended(joy_axis: JoyAxis, value: float) -> AxisExtendedMap:
+	if joy_axis == JOY_AXIS_LEFT_X:
+		return AxisExtendedMap.LEFT_X_NEG if value < 0.0 else AxisExtendedMap.LEFT_X_POS
+	elif joy_axis == JOY_AXIS_LEFT_Y:
+		return AxisExtendedMap.LEFT_Y_NEG if value < 0.0 else AxisExtendedMap.LEFT_Y_POS
+	elif joy_axis == JOY_AXIS_RIGHT_X:
+		return AxisExtendedMap.RIGHT_X_NEG if value < 0.0 else AxisExtendedMap.RIGHT_X_POS
+	elif joy_axis == JOY_AXIS_RIGHT_Y:
+		return AxisExtendedMap.RIGHT_Y_NEG if value < 0.0 else AxisExtendedMap.RIGHT_Y_POS
+	elif joy_axis == JOY_AXIS_TRIGGER_LEFT:
+		return AxisExtendedMap.TRIGGER_LEFT
+	elif joy_axis == JOY_AXIS_TRIGGER_RIGHT:
+		return AxisExtendedMap.TRIGGER_RIGHT
+	return AxisExtendedMap.INVALID

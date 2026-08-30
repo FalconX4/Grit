@@ -7,28 +7,25 @@
 
 [sub_resource type="Resource" id="Resource_1irv4"]
 script = ExtResource("3_sp8ej")
-value = 1
-character = "E000"
-range = "0 0 -6"
+button = 1
+character = "E001"
 metadata/_custom_type_script = "uid://cqpb80lwgfst7"
 
 [sub_resource type="Resource" id="Resource_epk25"]
 script = ExtResource("3_sp8ej")
-value = 2
-character = "E001"
-range = "0 0 -6"
+button = 2
+character = "E002"
 metadata/_custom_type_script = "uid://cqpb80lwgfst7"
 
 [sub_resource type="Resource" id="Resource_sp8ej"]
 script = ExtResource("3_sp8ej")
-value = 3
-character = "E002"
-range = "0 0 -6"
+button = 3
+character = "E003"
 metadata/_custom_type_script = "uid://cqpb80lwgfst7"
 
 [resource]
 script = ExtResource("1_fn8vh")
 font = ExtResource("1_v07vu")
-device_id = 1
+device_type = 1
 font_ranges = Array[ExtResource("2_epk25")]([SubResource("Resource_1irv4"), SubResource("Resource_epk25"), SubResource("Resource_sp8ej")])
 metadata/_custom_type_script = "uid://b7q7u01wxo2dh"

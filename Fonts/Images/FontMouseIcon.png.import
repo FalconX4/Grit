@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/FontMouseIcon.png-b3c234ec4f03e64d1ed10641725
 
 [params]
 
-character_ranges=PackedStringArray("\'\' 0 0 -6", "\'\' 0 0 -6", "\'\' 0 0 -6")
+character_ranges=PackedStringArray("\'\' 0 0 -6", "\'\' 0 0 -6", "\'\' 0 0 -6")
 kerning_pairs=PackedStringArray()
 columns=3
 rows=1

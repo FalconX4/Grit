@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://wppqqijjprei" path="res://Scripts/Screen/Game/InventoryBarSlot.gd" id="1_0vpx7"]
 [ext_resource type="Resource" uid="uid://by06op57v11fs" path="res://Data/Game/Items/Foods/blue_daucus.tres" id="2_4wrd4"]
 [ext_resource type="Texture2D" uid="uid://cwk6eho5o17ts" path="res://Assets/Screen/Game/InventorySlot.png" id="3_fqvpw"]
-[ext_resource type="PackedScene" uid="uid://cs7yuj6usifdl" path="res://Scenes/Screen/Game/InputLabel.tscn" id="4_4wrd4"]
+[ext_resource type="PackedScene" uid="uid://bdx8725jh8kyo" path="res://Scenes/Generic/KeyboardInputLabel.tscn" id="5_fqvpw"]
 
 [sub_resource type="Animation" id="Animation_w7thl"]
 resource_name = "Hide"
@@ -68,7 +68,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-pivot_offset = Vector2(60, 60)
+pivot_offset_ratio = Vector2(0.5, 0.5)
 script = ExtResource("1_0vpx7")
 default_item_data = ExtResource("2_4wrd4")
 
@@ -118,9 +118,18 @@ grow_vertical = 2
 mouse_filter = 2
 expand_mode = 2
 
-[node name="Label" parent="Panel" unique_id=1137563605 instance=ExtResource("4_4wrd4")]
+[node name="KeyboardInputLabel" parent="Panel" unique_id=101772238 instance=ExtResource("5_fqvpw")]
 layout_mode = 1
-offset_top = -9.0
-offset_bottom = 58.0
+anchors_preset = 1
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+offset_left = -28.0
+offset_top = 1.0
+offset_right = -11.0
+offset_bottom = 43.0
+grow_horizontal = 0
+grow_vertical = 1
 
 [connection signal="button_down" from="Panel/Button" to="." method="_on_button_button_down"]

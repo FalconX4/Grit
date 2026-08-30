@@ -4,7 +4,7 @@ class JoypadData:
 	var device_id: int
 	var connected: bool
 	var name: String
-	var device_id_enum: DeviceIdMapNames.DeviceId
+	var device_type: DeviceTypeMapNames.DeviceType
 	var buttons: Dictionary[String, String]
 
 const _default_joypad_buttons: Array[String] = [
@@ -31,9 +31,30 @@ const JOYPAD_KEY = "Joypad"
 const VERSION = "0.0.1"
 
 signal input_version_changed
+signal last_input_joypad_changed
 
 var keyboard_buttons: Dictionary[String, String]
 var _joypads: Array[JoypadData] = []
+var _last_input_joypad: bool = false
+var _last_device_type: DeviceTypeMapNames.DeviceType
+
+func _input(event: InputEvent) -> void:
+	var old_input_joypad = _last_input_joypad
+	if event is InputEventMouseMotion:
+		return
+
+	_last_input_joypad = event is InputEventJoypadButton or event is InputEventJoypadMotion
+	
+	if _last_input_joypad:
+		_last_device_type = DeviceTypeMapNames.DeviceType.INVALID
+		for joypad in _joypads:
+			if joypad.device_id == event.device:
+				_last_device_type = joypad.device_type
+	else:
+		_last_device_type = DeviceTypeMapNames.DeviceType.KEYBOARD if event is InputEventKey else DeviceTypeMapNames.DeviceType.MOUSE
+
+	if old_input_joypad != _last_input_joypad:
+		last_input_joypad_changed.emit(_last_input_joypad)
 
 func _init() -> void:
 	Input.joy_connection_changed.connect(_on_joy_connection_changed)
@@ -74,7 +95,7 @@ func add_new_joy(device: int) -> void:
 	joypad.device_id = device
 	joypad.connected = true
 	joypad.name = Input.get_joy_name(device)
-	joypad.device_id_enum = DeviceIdMapNames.joypad_name_to_device_id(joypad.name)
+	joypad.device_type = DeviceTypeMapNames.joypad_name_to_device_type(joypad.name)
 	print("New joypad connected: " + joypad.name)
 	_joypads.append(joypad)
 
@@ -132,3 +153,9 @@ func is_action_just_released(action_id: String) -> bool:
 			if Input.is_action_just_released(joypad.buttons[action_id]):
 				return true
 	return false
+
+func get_action_text(action_id: String, device_type: DeviceTypeMapNames.DeviceType) -> String:
+	for event in InputMap.action_get_events(action_id):
+		if DeviceTypeMapNames.is_event_as_device(event, device_type):
+			return FontInputDataMapNames.input_to_text(event, device_type)
+	return action_id

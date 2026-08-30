@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b86jglngrqrwl"
-path="res://.godot/imported/Something4.png-ed399b990e74054f370af4d7a5a5264e.ctex"
+uid="uid://duy48v67nnskg"
+path="res://.godot/imported/KeyboarIcon.png-582227c0ab97afb146a3cb79297fc0c6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Game/Items/FlowersSketch/Something4.png"
-dest_files=["res://.godot/imported/Something4.png-ed399b990e74054f370af4d7a5a5264e.ctex"]
+source_file="res://Fonts/Images/KeyboarIcon.png"
+dest_files=["res://.godot/imported/KeyboarIcon.png-582227c0ab97afb146a3cb79297fc0c6.ctex"]
 
 [params]
 

@@ -60,23 +60,34 @@ func _ready() -> void:
 		if get_tree().current_scene == self:
 			slot.set_item_data(DataManager.items_data.items[randi() % len(DataManager.items_data.items)])
 
+	call_deferred("_after_ready")
+
+
+func _after_ready() -> void:
+	var old_size = size
+	size = h_box_container.size
+	position -= (size - old_size) * 0.5
+
 
 func show_slot():
 	for slot in slots:
 		slot.show_animation()
 
 
+static func get_inventory_index_from_input(last_index: int) -> int:
+	if InputManager.is_action_just_pressed(InputMapNames.GAME_INVENTORY_BAR_LEFT):
+		return 9 if last_index <= 0 else last_index - 1
+	if InputManager.is_action_just_pressed(InputMapNames.GAME_INVENTORY_BAR_RIGHT):
+		return 0 if last_index >= 9 else last_index + 1
+	for i in 10:
+		if InputManager.is_action_just_pressed(InputMapNames.GAME_INVENTORY_BAR_ + str(i)):
+			return i - 1 if i != 0 else 9
+	return last_index
+
+
 func _process(_delta: float) -> void:
 	if selected_character == null:
-		var inventory_index = _last_selected_index
-		if InputManager.is_action_just_pressed(InputMapNames.GAME_INVENTORY_BAR_LEFT):
-			inventory_index = 9 if inventory_index <= 0 else inventory_index - 1
-		if InputManager.is_action_just_pressed(InputMapNames.GAME_INVENTORY_BAR_RIGHT):
-			inventory_index = 0 if inventory_index >= 9 else inventory_index + 1
-		for i in 10:
-			if InputManager.is_action_just_pressed(InputMapNames.GAME_INVENTORY_BAR_0.left(len(InputMapNames.GAME_INVENTORY_BAR_0) - 1) + str(i)):
-				inventory_index = i - 1 if i != 0 else 9
-
+		var inventory_index = get_inventory_index_from_input(_last_selected_index)
 		if inventory_index != _last_selected_index:
 			if _last_selected_index >= 0:
 				slots[_last_selected_index].selected = false

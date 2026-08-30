@@ -8,7 +8,6 @@ const mapping_button: Dictionary[int, String] = {
 	JoypadMapEnum.ButtonMap.X: '',
 	JoypadMapEnum.ButtonMap.Y: '',
 	JoypadMapEnum.ButtonMap.BACK: '',
-	JoypadMapEnum.ButtonMap.GUIDE: '',
 	JoypadMapEnum.ButtonMap.START: '',
 	JoypadMapEnum.ButtonMap.LEFT_STICK: '',
 	JoypadMapEnum.ButtonMap.RIGHT_STICK: '',
@@ -18,21 +17,19 @@ const mapping_button: Dictionary[int, String] = {
 	JoypadMapEnum.ButtonMap.DPAD_DOWN: '',
 	JoypadMapEnum.ButtonMap.DPAD_LEFT: '',
 	JoypadMapEnum.ButtonMap.DPAD_RIGHT: '',
-	JoypadMapEnum.ButtonMap.MISC1: '',
-	JoypadMapEnum.ButtonMap.PADDLE1: '',
-	JoypadMapEnum.ButtonMap.PADDLE2: '',
-	JoypadMapEnum.ButtonMap.PADDLE3: '',
-	JoypadMapEnum.ButtonMap.PADDLE4: '',
-	JoypadMapEnum.ButtonMap.TOUCHPAD: '',
 
 }
 
 const mapping_axis: Dictionary[int, String] = {
-	JoypadMapEnum.AxisMap.LEFT_X: '',
-	JoypadMapEnum.AxisMap.LEFT_Y: '',
-	JoypadMapEnum.AxisMap.RIGHT_X: '',
-	JoypadMapEnum.AxisMap.RIGHT_Y: '',
-	JoypadMapEnum.AxisMap.TRIGGER_LEFT: '',
-	JoypadMapEnum.AxisMap.TRIGGER_RIGHT: '',
+	JoypadMapEnum.AxisExtendedMap.LEFT_X_POS: '',
+	JoypadMapEnum.AxisExtendedMap.LEFT_X_NEG: '',
+	JoypadMapEnum.AxisExtendedMap.LEFT_Y_POS: '',
+	JoypadMapEnum.AxisExtendedMap.LEFT_Y_NEG: '',
+	JoypadMapEnum.AxisExtendedMap.RIGHT_X_POS: '',
+	JoypadMapEnum.AxisExtendedMap.RIGHT_X_NEG: '',
+	JoypadMapEnum.AxisExtendedMap.RIGHT_Y_POS: '',
+	JoypadMapEnum.AxisExtendedMap.RIGHT_Y_NEG: '',
+	JoypadMapEnum.AxisExtendedMap.TRIGGER_LEFT: '',
+	JoypadMapEnum.AxisExtendedMap.TRIGGER_RIGHT: '',
 
 }

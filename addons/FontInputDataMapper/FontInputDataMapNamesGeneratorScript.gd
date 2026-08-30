@@ -12,24 +12,39 @@ enum MappingEnum
 	AXIS
 }
 
-const mapping: Dictionary[DeviceIdMapNames.DeviceId, Array] = {
+const mapping: Dictionary[DeviceTypeMapNames.DeviceType, Array] = {
 %s
 }
 
-static func get_button(device_id: DeviceIdMapNames.DeviceId, button_id: int) -> String:
-	return mapping[device_id][MappingEnum.BUTTONS][button_id]
+static func get_button(device_type: DeviceTypeMapNames.DeviceType, button_id: int) -> String:
+	return mapping[device_type][MappingEnum.BUTTONS][button_id]
 
-static func get_axis(device_id: DeviceIdMapNames.DeviceId, axis_id: int) -> String:
-	return mapping[device_id][MappingEnum.AXIS][axis_id]
+static func get_axis(device_type: DeviceTypeMapNames.DeviceType, axis_id: JoyAxis, value: float) -> String:
+	var axis_extended = JoypadMapEnum.get_axis_extended(axis_id, value)
+	return mapping[device_type][MappingEnum.AXIS][axis_extended]
 
-static func input_to_text(event: InputEvent, device_id_enum: DeviceIdMapNames.DeviceId) -> String:
-	if event is InputEventJoypadButton:
-		return FontInputDataMapNames.get_button(device_id_enum, event.button_index)
+static func input_to_text(event: InputEvent, device_type: DeviceTypeMapNames.DeviceType) -> String:
+	if event is InputEventMouseButton:
+		return get_button(device_type, event.button_index)
+	elif event is InputEventJoypadButton:
+		return get_button(device_type, event.button_index)
 	elif event is InputEventJoypadMotion:
-		return FontInputDataMapNames.get_axis(device_id_enum, event.axis)
-	elif event is InputEventMouseButton:
-		return FontInputDataMapNames.get_button(device_id_enum, event.button_index)
-	return str(event.button_index)
+		return get_axis(device_type, event.axis, event.axis_value)
+	elif event is InputEventKey:
+		return get_keyboard_localized(event.physical_keycode if event.physical_keycode != 0 else event.keycode)
+	return event.as_text()
+
+static func get_keyboard_localized(keycode: int) -> String:
+	if keycode == 0:
+		return \"\"
+	var os_keycode = OS.get_keycode_string(keycode)
+	if os_keycode.is_empty():
+		return \"\"
+	var key: String = \"KEY_%%s\" %% os_keycode.strip_edges().replace(\" \", \"_\").to_upper()
+	var key_translated: String = TranslationServer.translate(key)
+	if key_translated != key:
+		return key_translated
+	return os_keycode
 "
 
 func _enter_tree() -> void:
@@ -57,5 +72,5 @@ func get_value(path: String) -> String:
 		else:
 			var font_input_data = ResourceLoader.load(path + value) as FontInputData
 			font_input_data.update_generated_script()
-			result += "\tDeviceIdMapNames.DeviceId.%s: [ %sMapNames.mapping_button, %sMapNames.mapping_axis ],\n" % [ FontInputDataRange.get_input_string_helper(DeviceIdMapNames.DeviceId, font_input_data.device_id, ""), value.get_basename(), value.get_basename() ]
+			result += "\tDeviceTypeMapNames.DeviceType.%s: [ %sMapNames.mapping_button, %sMapNames.mapping_axis ],\n" % [ FontInputDataRange.get_input_string_helper(DeviceTypeMapNames.DeviceType, font_input_data.device_type, ""), value.get_basename(), value.get_basename() ]
 	return result

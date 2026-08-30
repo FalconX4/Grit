@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/FontKeyboarIcon.png-6a9c9f246c3590649e80edf5c
 
 [params]
 
-character_ranges=PackedStringArray()
+character_ranges=PackedStringArray("\'\' -15 0 -7")
 kerning_pairs=PackedStringArray()
 columns=1
 rows=1

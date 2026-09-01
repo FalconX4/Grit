@@ -5,7 +5,7 @@ class_name InventoryBarSlot
 @onready var background: NinePatchRect = $Panel/Background
 @onready var button: Button = $Panel/Button
 @onready var item: TextureRect = $Panel/Item
-@onready var keyboard_input_label: InputLabel = $Panel/KeyboardInputLabel
+@onready var input_label: InputLabel = $Panel/InputLabel
 @export var default_item_data: ItemData
 var current_item_data: ItemData
 var slot_index = 0
@@ -29,7 +29,7 @@ func hide_animation():
 
 
 func _ready() -> void:
-	keyboard_input_label.set_input(InputMapNames.GAME_INVENTORY_BAR_ + str((slot_index + 1) % 10))
+	input_label.set_input(InputMapNames.GAME_INVENTORY_BAR_ + str((slot_index + 1) % 10))
 	if get_tree().current_scene == self:
 		setup(1)
 		set_item_data(default_item_data)

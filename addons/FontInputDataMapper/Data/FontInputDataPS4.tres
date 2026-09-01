@@ -1,0 +1,155 @@
+[gd_resource type="Resource" script_class="FontInputData" format=3 uid="uid://b63b68x44mbuf"]
+
+[ext_resource type="FontFile" uid="uid://dskandgeghp51" path="res://Fonts/Images/FontPlayStation4Icon.png" id="1_houn1"]
+[ext_resource type="Script" uid="uid://cnyhlyl6ricni" path="res://addons/FontInputDataMapper/FontInputDataRange.gd" id="2_sblib"]
+[ext_resource type="Script" uid="uid://cu6vsy1s7anif" path="res://addons/FontInputDataMapper/FontInputDataRangeJoypadButton.gd" id="3_vw6f1"]
+[ext_resource type="Script" uid="uid://b7q7u01wxo2dh" path="res://addons/FontInputDataMapper/FontInputData.gd" id="4_if8gk"]
+[ext_resource type="Script" uid="uid://dk270cv8e0sd7" path="res://addons/FontInputDataMapper/FontInputDataRangeJoypadAxisRange.gd" id="4_sblib"]
+
+[sub_resource type="Resource" id="Resource_uaq6x"]
+script = ExtResource("3_vw6f1")
+character = "E100"
+metadata/_custom_type_script = "uid://cu6vsy1s7anif"
+
+[sub_resource type="Resource" id="Resource_c8j2t"]
+script = ExtResource("3_vw6f1")
+button = 1
+character = "E101"
+metadata/_custom_type_script = "uid://cu6vsy1s7anif"
+
+[sub_resource type="Resource" id="Resource_sblib"]
+script = ExtResource("3_vw6f1")
+button = 2
+character = "E102"
+metadata/_custom_type_script = "uid://cu6vsy1s7anif"
+
+[sub_resource type="Resource" id="Resource_vw6f1"]
+script = ExtResource("3_vw6f1")
+button = 3
+character = "E103"
+metadata/_custom_type_script = "uid://cu6vsy1s7anif"
+
+[sub_resource type="Resource" id="Resource_if8gk"]
+script = ExtResource("3_vw6f1")
+button = 4
+character = "E104"
+metadata/_custom_type_script = "uid://cu6vsy1s7anif"
+
+[sub_resource type="Resource" id="Resource_radu1"]
+script = ExtResource("3_vw6f1")
+button = 6
+character = "E106"
+metadata/_custom_type_script = "uid://cu6vsy1s7anif"
+
+[sub_resource type="Resource" id="Resource_i5es2"]
+script = ExtResource("3_vw6f1")
+button = 7
+character = "E107"
+metadata/_custom_type_script = "uid://cu6vsy1s7anif"
+
+[sub_resource type="Resource" id="Resource_d2s21"]
+script = ExtResource("3_vw6f1")
+button = 8
+character = "E108"
+metadata/_custom_type_script = "uid://cu6vsy1s7anif"
+
+[sub_resource type="Resource" id="Resource_nb7rf"]
+script = ExtResource("3_vw6f1")
+button = 9
+character = "E109"
+metadata/_custom_type_script = "uid://cu6vsy1s7anif"
+
+[sub_resource type="Resource" id="Resource_a3u6i"]
+script = ExtResource("3_vw6f1")
+button = 10
+character = "E10A"
+metadata/_custom_type_script = "uid://cu6vsy1s7anif"
+
+[sub_resource type="Resource" id="Resource_r3wdq"]
+script = ExtResource("3_vw6f1")
+button = 11
+character = "E10B"
+metadata/_custom_type_script = "uid://cu6vsy1s7anif"
+
+[sub_resource type="Resource" id="Resource_vp67h"]
+script = ExtResource("3_vw6f1")
+button = 12
+character = "E10C"
+metadata/_custom_type_script = "uid://cu6vsy1s7anif"
+
+[sub_resource type="Resource" id="Resource_0o5a5"]
+script = ExtResource("3_vw6f1")
+button = 13
+character = "E10D"
+metadata/_custom_type_script = "uid://cu6vsy1s7anif"
+
+[sub_resource type="Resource" id="Resource_btfhj"]
+script = ExtResource("3_vw6f1")
+button = 14
+character = "E10E"
+metadata/_custom_type_script = "uid://cu6vsy1s7anif"
+
+[sub_resource type="Resource" id="Resource_wstip"]
+script = ExtResource("4_sblib")
+character = "E150"
+metadata/_custom_type_script = "uid://dk270cv8e0sd7"
+
+[sub_resource type="Resource" id="Resource_t6ea6"]
+script = ExtResource("4_sblib")
+axis = 1
+character = "E151"
+metadata/_custom_type_script = "uid://dk270cv8e0sd7"
+
+[sub_resource type="Resource" id="Resource_8kt3l"]
+script = ExtResource("4_sblib")
+axis = 2
+character = "E152"
+metadata/_custom_type_script = "uid://dk270cv8e0sd7"
+
+[sub_resource type="Resource" id="Resource_g87am"]
+script = ExtResource("4_sblib")
+axis = 3
+character = "E153"
+metadata/_custom_type_script = "uid://dk270cv8e0sd7"
+
+[sub_resource type="Resource" id="Resource_n3478"]
+script = ExtResource("4_sblib")
+axis = 4
+character = "E154"
+metadata/_custom_type_script = "uid://dk270cv8e0sd7"
+
+[sub_resource type="Resource" id="Resource_2lxkq"]
+script = ExtResource("4_sblib")
+axis = 5
+character = "E155"
+metadata/_custom_type_script = "uid://dk270cv8e0sd7"
+
+[sub_resource type="Resource" id="Resource_k5dai"]
+script = ExtResource("4_sblib")
+axis = 6
+character = "E156"
+metadata/_custom_type_script = "uid://dk270cv8e0sd7"
+
+[sub_resource type="Resource" id="Resource_p4i3e"]
+script = ExtResource("4_sblib")
+axis = 7
+character = "E157"
+metadata/_custom_type_script = "uid://dk270cv8e0sd7"
+
+[sub_resource type="Resource" id="Resource_kr2ly"]
+script = ExtResource("4_sblib")
+axis = 8
+character = "E158"
+metadata/_custom_type_script = "uid://dk270cv8e0sd7"
+
+[sub_resource type="Resource" id="Resource_31kuw"]
+script = ExtResource("4_sblib")
+axis = 9
+character = "E159"
+metadata/_custom_type_script = "uid://dk270cv8e0sd7"
+
+[resource]
+script = ExtResource("4_if8gk")
+font = ExtResource("1_houn1")
+device_type = 3
+font_ranges = Array[ExtResource("2_sblib")]([SubResource("Resource_uaq6x"), SubResource("Resource_c8j2t"), SubResource("Resource_sblib"), SubResource("Resource_vw6f1"), SubResource("Resource_if8gk"), SubResource("Resource_radu1"), SubResource("Resource_i5es2"), SubResource("Resource_d2s21"), SubResource("Resource_nb7rf"), SubResource("Resource_a3u6i"), SubResource("Resource_r3wdq"), SubResource("Resource_vp67h"), SubResource("Resource_0o5a5"), SubResource("Resource_btfhj"), SubResource("Resource_wstip"), SubResource("Resource_t6ea6"), SubResource("Resource_8kt3l"), SubResource("Resource_g87am"), SubResource("Resource_n3478"), SubResource("Resource_2lxkq"), SubResource("Resource_k5dai"), SubResource("Resource_p4i3e"), SubResource("Resource_kr2ly"), SubResource("Resource_31kuw")])

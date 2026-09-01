@@ -9,6 +9,7 @@ enum MappingEnum
 
 const mapping: Dictionary[DeviceTypeMapNames.DeviceType, Array] = {
 	DeviceTypeMapNames.DeviceType.MOUSE: [ FontInputDataMouseMapNames.mapping_button, FontInputDataMouseMapNames.mapping_axis ],
+	DeviceTypeMapNames.DeviceType.PLAYSTATION: [ FontInputDataPS4MapNames.mapping_button, FontInputDataPS4MapNames.mapping_axis ],
 	DeviceTypeMapNames.DeviceType.XBOX: [ FontInputDataXboxMapNames.mapping_button, FontInputDataXboxMapNames.mapping_axis ],
 
 }

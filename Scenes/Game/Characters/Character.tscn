@@ -4,7 +4,7 @@
 [ext_resource type="SpriteFrames" uid="uid://ld0t10aujxwi" path="res://Data/Game/Characters/YoungMan.tres" id="2_mx74b"]
 [ext_resource type="SpriteFrames" uid="uid://c62yw8o6ukqa6" path="res://Data/Game/Characters/OldMan.tres" id="3_mikcp"]
 [ext_resource type="Script" uid="uid://d35g02d5des6y" path="res://Scripts/Game/Characters/CharacterInput/PlayerInput.gd" id="4_vo7bq"]
-[ext_resource type="PackedScene" uid="uid://bdx8725jh8kyo" path="res://Scenes/Generic/KeyboardInputLabel.tscn" id="5_1vbuj"]
+[ext_resource type="PackedScene" uid="uid://bdx8725jh8kyo" path="res://Scenes/Generic/InputLabel.tscn" id="5_1vbuj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ghfrl"]
 size = Vector2(10, 5)
@@ -125,7 +125,7 @@ speed_scale = 2.0
 [node name="CharacterInput" type="Node" parent="." unique_id=1749681625]
 script = ExtResource("4_vo7bq")
 
-[node name="KeyboardInputLabel" parent="." unique_id=101772238 instance=ExtResource("5_1vbuj")]
+[node name="InputLabel" parent="." unique_id=101772238 instance=ExtResource("5_1vbuj")]
 visible = false
 offset_left = -5.0
 offset_top = -36.0

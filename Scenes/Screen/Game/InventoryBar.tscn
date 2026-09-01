@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://45550mo7t762" path="res://Scripts/Screen/Game/InventoryBar.gd" id="1_1750b"]
 [ext_resource type="PackedScene" uid="uid://b3vxkcpskg46u" path="res://Scenes/Screen/Game/InventoryBarSlot.tscn" id="2_wvlx8"]
-[ext_resource type="PackedScene" uid="uid://bdx8725jh8kyo" path="res://Scenes/Generic/KeyboardInputLabel.tscn" id="3_wvlx8"]
+[ext_resource type="PackedScene" uid="uid://bdx8725jh8kyo" path="res://Scenes/Generic/InputLabel.tscn" id="3_wvlx8"]
 
 [node name="Inventory" type="Control" unique_id=635438718]
 layout_mode = 3

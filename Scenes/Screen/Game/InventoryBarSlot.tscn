@@ -62,7 +62,7 @@ _data = {
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4wrd4"]
 
-[node name="InventorySlot" type="Control" unique_id=717849473]
+[node name="InventoryBarSlot" type="Control" unique_id=717849473 node_paths=PackedStringArray("animation_player", "background", "button", "item", "input_label")]
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 3
 anchors_preset = 0
@@ -70,6 +70,11 @@ offset_right = 40.0
 offset_bottom = 40.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 script = ExtResource("1_0vpx7")
+animation_player = NodePath("AnimationPlayer")
+background = NodePath("Panel/Background")
+button = NodePath("Panel/Button")
+item = NodePath("Panel/Item")
+input_label = NodePath("Panel/InputLabel")
 default_item_data = ExtResource("2_4wrd4")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2129283998]

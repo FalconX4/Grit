@@ -5,6 +5,13 @@ class_name CharacterInput
 var was_using_controller : bool
 var using_controller : bool
 
+func get_device_type() -> DeviceTypeMapNames.DeviceType:
+	return DeviceTypeMapNames.DeviceType.INVALID
+
+
+func get_device_action_id(action_id: String) -> String:
+	return action_id
+
 func is_action_just_pressed(_action_id: String) -> bool:
 	return false
 

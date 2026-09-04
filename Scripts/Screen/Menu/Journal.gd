@@ -1,28 +1,31 @@
 extends Control
 class_name Journal
 
-@onready var journal_page_1: JournalPage = $Container/PagePanel/JournalPage1
-@onready var journal_page_2: JournalPage = $Container/PagePanel/JournalPage2
-@onready var page_animation: AnimationPlayer = $Container/PageAnimation
+@export var journal_page_1: JournalPage
+@export var journal_page_2: JournalPage
+@export var page_animation: AnimationPlayer
 
 var lastIndex = 0
-var previous_key_pressed = false
-var next_key_pressed = false
-
+var character_input: CharacterInput
 
 func _ready() -> void:
 	update_page_1()
 	update_page_2()
 
+
 func _process(_delta: float) -> void:
-	var previousPressed = InputManager.is_action_just_pressed(InputMapNames.GAME_MOVE_LEFT)
-	var nextPressed = InputManager.is_action_just_pressed(InputMapNames.GAME_MOVE_RIGHT)
-	if not previous_key_pressed and previousPressed:
+	var previous_action_id = character_input.get_device_action_id(InputMapNames.GAME_MOVE_LEFT) if character_input != null else str(InputMapNames.GAME_MOVE_LEFT)
+	var next_action_id = character_input.get_device_action_id(InputMapNames.GAME_MOVE_RIGHT) if character_input != null else str(InputMapNames.GAME_MOVE_RIGHT)
+	if InputManager.is_action_just_pressed(previous_action_id):
 		previous()
-	if not next_key_pressed and nextPressed:
+	if InputManager.is_action_just_pressed(next_action_id):
 		next()
-	previous_key_pressed = previousPressed
-	next_key_pressed = nextPressed
+
+
+func open(new_character_input: CharacterInput) -> void:
+	visible = true
+	process_mode = Node.PROCESS_MODE_INHERIT
+	character_input = new_character_input
 
 
 func update_page_1():

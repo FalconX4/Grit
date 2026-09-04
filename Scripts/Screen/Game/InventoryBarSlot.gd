@@ -1,19 +1,23 @@
 extends Control
 class_name InventoryBarSlot
 
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var background: NinePatchRect = $Panel/Background
-@onready var button: Button = $Panel/Button
-@onready var item: TextureRect = $Panel/Item
-@onready var input_label: InputLabel = $Panel/InputLabel
+@export var animation_player: AnimationPlayer
+@export var background: NinePatchRect
+@export var button: Button
+@export var item: TextureRect
+@export var input_label: InputLabel
 @export var default_item_data: ItemData
 var current_item_data: ItemData
 var slot_index = 0
 var selected = false
 signal inventory_click(slot_index)
 
-func setup(slotIndex : int):
+
+func setup(slotIndex : int, character_input: CharacterInput = null):
 	slot_index = slotIndex
+	var action = InputMapNames.GAME_INVENTORY_BAR_ + str((slot_index + 1) % 10)
+	var input_action = InputMapNames.get_action_input(action)
+	input_label.set_input_action(input_action, character_input)
 
 
 func set_item_data(item_data: ItemData):
@@ -22,16 +26,15 @@ func set_item_data(item_data: ItemData):
 
 func show_animation():
 	animation_player.play("Show")
-	
+
 
 func hide_animation():
 	animation_player.play("Hide")
 
 
 func _ready() -> void:
-	input_label.set_input(InputMapNames.GAME_INVENTORY_BAR_ + str((slot_index + 1) % 10))
 	if get_tree().current_scene == self:
-		setup(1)
+		setup(0)
 		set_item_data(default_item_data)
 		show_animation()
 

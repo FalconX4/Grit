@@ -37,12 +37,14 @@ var keyboard_buttons: Dictionary[String, String]
 var _joypads: Array[JoypadData] = []
 var _last_input_joypad: bool = false
 var _last_device_type: DeviceTypeMapNames.DeviceType
+var _last_device_id: int = -1
 
 func _input(event: InputEvent) -> void:
 	var old_input_joypad = _last_input_joypad
 	if event is InputEventMouseMotion:
 		return
 
+	_last_device_id = event.device
 	_last_input_joypad = event is InputEventJoypadButton or event is InputEventJoypadMotion
 	
 	if _last_input_joypad:

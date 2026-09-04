@@ -4,7 +4,7 @@ class_name Character
 @onready var character_input: CharacterInput = $CharacterInput
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var input_label: Label = $InputLabel
+@onready var input_label: InputLabel = $InputLabel
 @onready var interact_trigger: ShapeCast2D = $DirectionNode/InteractTrigger
 @onready var direction_node: Node2D = $DirectionNode
 @export var age_sprite_frames: Dictionary
@@ -21,14 +21,9 @@ func remove_item(index: int): items.remove_at(index)
 func show_interact_button(show_it: bool): input_label.visible = show_it
 
 
-func update_input_buttons(): update_input_button(input_label, InputMapNames.GAME_INTERACT)
-func update_input_button(label: Label, input_action: String):
-	var player_input = character_input as PlayerInput
-	if player_input != null:
-		if player_input.using_controller:
-			label.text = InputManager.get_action_text(input_action, player_input.joypad.device_type)
-		else:
-			label.text = InputManager.get_action_text(input_action, DeviceTypeMapNames.DeviceType.KEYBOARD)
+func update_input_buttons(): update_input_button(input_label, InputMapNames.InputAction.GAME_INTERACT)
+func update_input_button(label: InputLabel, input_action: InputMapNames.InputAction):
+	label.set_input_action(input_action, character_input)
 
 
 func _ready() -> void:

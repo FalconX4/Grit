@@ -222,7 +222,7 @@ _data = {
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_guryo"]
 
-[node name="Journal" type="Control" unique_id=565972687]
+[node name="Journal" type="Control" unique_id=565972687 node_paths=PackedStringArray("journal_page_1", "journal_page_2", "page_animation")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -230,6 +230,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_4xf27")
+journal_page_1 = NodePath("Container/PagePanel/JournalPage1")
+journal_page_2 = NodePath("Container/PagePanel/JournalPage2")
+page_animation = NodePath("Container/PageAnimation")
 
 [node name="Container" type="PanelContainer" parent="." unique_id=135521992]
 layout_mode = 1

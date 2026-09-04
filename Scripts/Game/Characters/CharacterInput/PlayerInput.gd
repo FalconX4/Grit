@@ -15,6 +15,13 @@ func _input(event: InputEvent) -> void:
 			set_device_id(event.device)
 
 
+func get_device_type() -> DeviceTypeMapNames.DeviceType:
+	if joypad != null:
+		return joypad.device_type
+	else:
+		return DeviceTypeMapNames.DeviceType.KEYBOARD
+
+
 func get_device_action_id(action_id: String) -> String:
 	if using_controller:
 		return joypad.buttons[action_id] if joypad.buttons.has(action_id) else ""

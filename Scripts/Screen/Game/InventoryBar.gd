@@ -16,10 +16,11 @@ func set_character(character: Character, doAnimations: bool):
 	else:
 		var lenItems = len(selected_character.items)
 		for i in len(slots):
+			slots[i].setup(i, selected_character.character_input)
 			if i >= lenItems:
-				slots[i].item.texture = null
+				slots[i].set_item_data(null)
 			else:
-				slots[i].item.texture = selected_character.items[i].inventory_image
+				slots[i].set_item_data(selected_character.items[i])
 
 		if doAnimations:
 			show_animation()
@@ -55,7 +56,7 @@ func _ready() -> void:
 		slot.inventory_click.connect(on_inventory_slot_clicked)
 		slots.append(slot)
 		h_box_container.add_child(slot)
-		call_deferred("show_slot")
+		show_slot()
 
 		if get_tree().current_scene == self:
 			slot.set_item_data(DataManager.items_data.items[randi() % len(DataManager.items_data.items)])
@@ -74,13 +75,17 @@ func show_slot():
 		slot.show_animation()
 
 
-static func get_inventory_index_from_input(last_index: int) -> int:
-	if InputManager.is_action_just_pressed(InputMapNames.GAME_INVENTORY_BAR_LEFT):
+static func get_inventory_index_from_input(last_index: int, character_input: CharacterInput = null) -> int:
+	var left_device_action_id = character_input.get_device_action_id(InputMapNames.GAME_INVENTORY_BAR_LEFT) if character_input != null else str(InputMapNames.GAME_INVENTORY_BAR_LEFT)
+	var right_device_action_id = character_input.get_device_action_id(InputMapNames.GAME_INVENTORY_BAR_RIGHT) if character_input != null else str(InputMapNames.GAME_INVENTORY_BAR_RIGHT)
+	if InputManager.is_action_just_pressed(left_device_action_id):
 		return 9 if last_index <= 0 else last_index - 1
-	if InputManager.is_action_just_pressed(InputMapNames.GAME_INVENTORY_BAR_RIGHT):
+	if InputManager.is_action_just_pressed(right_device_action_id):
 		return 0 if last_index >= 9 else last_index + 1
 	for i in 10:
-		if InputManager.is_action_just_pressed(InputMapNames.GAME_INVENTORY_BAR_ + str(i)):
+		var inventory_action_id = InputMapNames.GAME_INVENTORY_BAR_ + str(i)
+		var inventory_device_action_id = character_input.get_device_action_id(inventory_action_id) if character_input != null else inventory_action_id
+		if InputManager.is_action_just_pressed(inventory_device_action_id):
 			return i - 1 if i != 0 else 9
 	return last_index
 

@@ -1,10 +1,10 @@
 extends Control
 class_name JournalPage
 
-@onready var panel: Panel = $Panel
-@onready var image: TextureRect = $Panel/Image
-@onready var title: Label = $Panel/Title
-@onready var description: Label = $Panel/Description
+@export var panel: Panel
+@export var image: TextureRect
+@export var title: Label
+@export var description: Label
 @export var default_item_data: ItemData
 var current_item_data: ItemData
 

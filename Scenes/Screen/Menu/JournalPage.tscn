@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://bs35r6gtgyr8n"]
 
 [ext_resource type="Script" uid="uid://c43jrrg56mmb5" path="res://Scripts/Screen/Menu/JournalPage.gd" id="1_aerg4"]
-[ext_resource type="Resource" uid="uid://c84fqc4u3xkgs" path="res://Data/Game/Items/Seeds/tree.tres" id="2_gu8qw"]
+[ext_resource type="Resource" uid="uid://by06op57v11fs" path="res://Data/Game/Items/Foods/blue_daucus.tres" id="2_gu8qw"]
 [ext_resource type="Texture2D" uid="uid://c4ghyk50n3fd0" path="res://Assets/Game/Items/FlowersSketch/Something6.png" id="3_btfia"]
 [ext_resource type="FontFile" uid="uid://ceewc0pjugkr0" path="res://Fonts/AMOS_FONT.ttf" id="3_k3qi5"]
 [ext_resource type="FontFile" uid="uid://b8ojtqn56ikrr" path="res://Fonts/HandwritingCR-2.ttf" id="4_gw2kt"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6t2st"]
 
-[node name="JournalPage" type="Control" unique_id=129927676]
+[node name="JournalPage" type="Control" unique_id=129927676 node_paths=PackedStringArray("panel", "image", "title", "description")]
 clip_contents = true
 layout_mode = 3
 anchors_preset = 15
@@ -19,7 +19,11 @@ offset_bottom = -230.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_aerg4")
-_item_data = ExtResource("2_gu8qw")
+panel = NodePath("Panel")
+image = NodePath("Panel/Image")
+title = NodePath("Panel/Title")
+description = NodePath("Panel/Description")
+default_item_data = ExtResource("2_gu8qw")
 
 [node name="Panel" type="Panel" parent="." unique_id=1023570565]
 layout_mode = 0

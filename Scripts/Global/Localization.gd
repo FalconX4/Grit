@@ -22,3 +22,6 @@ func set_language(language: String) -> void:
 	current_language = language
 	TranslationServer.set_locale(current_language)
 	SettingManager.set_setting(SettingManager.SECTION, KEY, current_language)
+
+func translate(key: String) -> String:
+	return tr(key)

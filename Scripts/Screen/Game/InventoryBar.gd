@@ -59,7 +59,7 @@ func _ready() -> void:
 		show_slot()
 
 		if get_tree().current_scene == self:
-			slot.set_item_data(DataManager.items_data.items[randi() % len(DataManager.items_data.items)])
+			slot.set_item_data(RandomManager.get_array(DataManager.items_data.items))
 
 	call_deferred("_after_ready")
 

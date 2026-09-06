@@ -4,7 +4,7 @@ extends EditorPlugin
 const script_path: String = "res://Scripts/Helper/InputMapNames.gd"
 const generated_script_template: String = "class_name InputMapNames
 # Auto generated class by InputMapGeneratorScript
-	
+
 enum InputAction {
 	INVALID = -1,
 %s

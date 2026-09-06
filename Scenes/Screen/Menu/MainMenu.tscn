@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://dibclke34ggap"]
+
+[ext_resource type="FontFile" uid="uid://ceewc0pjugkr0" path="res://Fonts/AMOS_FONT.ttf" id="1_rigcf"]
+[ext_resource type="Script" uid="uid://yoweu1mlxnst" path="res://Scripts/Generic/LocalizedLabel.gd" id="2_kmbwo"]
+[ext_resource type="LabelSettings" uid="uid://ckdydpf6fex6y" path="res://Data/LabelSettings/MainMenuButtons.tres" id="3_j80pn"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6kutn"]
+font = ExtResource("1_rigcf")
+font_size = 200
+font_color = Color(0, 0.49411765, 0, 1)
+shadow_size = 100
+shadow_color = Color(0, 0.6666667, 0, 1)
+
+[sub_resource type="Theme" id="Theme_62at4"]
+default_font = ExtResource("1_rigcf")
+default_font_size = 100
+
+[node name="MainMenu" type="Control" unique_id=1682294781]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="." unique_id=1461230497]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -104.0
+offset_top = 20.0
+offset_right = 104.0
+offset_bottom = 124.0
+grow_horizontal = 2
+text = "TITLE"
+label_settings = SubResource("LabelSettings_6kutn")
+script = ExtResource("2_kmbwo")
+localization_key = "TITLE"
+
+[node name="Button" type="Button" parent="." unique_id=2085311124]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 50.0
+offset_top = 500.0
+offset_right = 300.0
+offset_bottom = 600.0
+theme = SubResource("Theme_62at4")
+text = "PLAY"
+flat = true
+
+[node name="Label" type="Label" parent="Button" unique_id=1306447159]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "MENU_PLAY"
+label_settings = ExtResource("3_j80pn")
+script = ExtResource("2_kmbwo")
+localization_key = "MENU_PLAY"

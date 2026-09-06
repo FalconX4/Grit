@@ -21,8 +21,9 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-DataManager="*res://Scripts/Global/DataManager.gd"
+RandomManager="*uid://nl54pnbe2smt"
 Localization="*uid://g7xbjwq6fu38"
+DataManager="*res://Scripts/Global/DataManager.gd"
 SettingManager="*uid://clgn86ewwx6s7"
 InputManager="*uid://cc7pxnepq8nn0"
 PlayerDataManager="*uid://syufnr86b1eu"

@@ -2,7 +2,6 @@
 
 [ext_resource type="FontFile" uid="uid://ceewc0pjugkr0" path="res://Fonts/AMOS_FONT.ttf" id="1_rigcf"]
 [ext_resource type="Script" uid="uid://yoweu1mlxnst" path="res://Scripts/Generic/LocalizedLabel.gd" id="2_kmbwo"]
-[ext_resource type="LabelSettings" uid="uid://ckdydpf6fex6y" path="res://Data/LabelSettings/MainMenuButtons.tres" id="3_j80pn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_6kutn"]
 font = ExtResource("1_rigcf")
@@ -10,10 +9,6 @@ font_size = 200
 font_color = Color(0, 0.49411765, 0, 1)
 shadow_size = 100
 shadow_color = Color(0, 0.6666667, 0, 1)
-
-[sub_resource type="Theme" id="Theme_62at4"]
-default_font = ExtResource("1_rigcf")
-default_font_size = 100
 
 [node name="MainMenu" type="Control" unique_id=1682294781]
 layout_mode = 3
@@ -45,7 +40,6 @@ offset_left = 50.0
 offset_top = 500.0
 offset_right = 300.0
 offset_bottom = 600.0
-theme = SubResource("Theme_62at4")
 text = "PLAY"
 flat = true
 
@@ -58,6 +52,5 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "MENU_PLAY"
-label_settings = ExtResource("3_j80pn")
 script = ExtResource("2_kmbwo")
 localization_key = "MENU_PLAY"

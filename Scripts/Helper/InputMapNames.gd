@@ -1,6 +1,6 @@
 class_name InputMapNames
 # Auto generated class by InputMapGeneratorScript
-	
+
 enum InputAction {
 	INVALID = -1,
 	UI_ACCEPT,
@@ -92,6 +92,7 @@ enum InputAction {
 	GAME_INVENTORY_BAR_0,
 	GAME_INVENTORY_BAR_LEFT,
 	GAME_INVENTORY_BAR_RIGHT,
+	GAME_MENU,
 
 }
 
@@ -184,6 +185,7 @@ const GAME_INVENTORY_BAR_9: StringName = &"Game_Inventory_Bar_9"
 const GAME_INVENTORY_BAR_0: StringName = &"Game_Inventory_Bar_0"
 const GAME_INVENTORY_BAR_LEFT: StringName = &"Game_Inventory_Bar_Left"
 const GAME_INVENTORY_BAR_RIGHT: StringName = &"Game_Inventory_Bar_Right"
+const GAME_MENU: StringName = &"Game_Menu"
 
 
 # Game specific
@@ -281,6 +283,7 @@ static func get_action_string(action: InputAction) -> StringName:
 		InputAction.GAME_INVENTORY_BAR_0: return GAME_INVENTORY_BAR_0
 		InputAction.GAME_INVENTORY_BAR_LEFT: return GAME_INVENTORY_BAR_LEFT
 		InputAction.GAME_INVENTORY_BAR_RIGHT: return GAME_INVENTORY_BAR_RIGHT
+		InputAction.GAME_MENU: return GAME_MENU
 
 		_:
 			push_error("Unknown InputAction enum value: %d" % action)
@@ -377,6 +380,7 @@ static func get_action_input(action: StringName) -> InputAction:
 		GAME_INVENTORY_BAR_0: return InputAction.GAME_INVENTORY_BAR_0
 		GAME_INVENTORY_BAR_LEFT: return InputAction.GAME_INVENTORY_BAR_LEFT
 		GAME_INVENTORY_BAR_RIGHT: return InputAction.GAME_INVENTORY_BAR_RIGHT
+		GAME_MENU: return InputAction.GAME_MENU
 
 		_:
 			push_error("Unknown Action String value: %s" % action)
@@ -473,5 +477,6 @@ static func get_all_actions() -> Array[StringName]:
 		GAME_INVENTORY_BAR_0,
 		GAME_INVENTORY_BAR_LEFT,
 		GAME_INVENTORY_BAR_RIGHT,
+		GAME_MENU,
 
 	]

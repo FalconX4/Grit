@@ -13,10 +13,7 @@ func set_input_action(new_input_action: InputMapNames.InputAction, new_character
 	input_action = new_input_action
 	character_input = new_character_input
 	_update_input()
-	if new_character_input == null:
-		InputManager.last_input_joypad_changed.disconnect(on_last_input_joypad_changed)
-	else:
-		InputManager.last_input_joypad_changed.connect(on_last_input_joypad_changed)
+	InputManager.last_input_joypad_changed.connect(on_last_input_joypad_changed)
 
 func _update_input() -> void:
 	var action_id = InputMapNames.get_action_string(input_action)

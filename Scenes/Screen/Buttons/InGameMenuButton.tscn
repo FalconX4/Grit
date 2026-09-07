@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://cnrum6g3fyi1x"]
+
+[ext_resource type="Texture2D" uid="uid://ci6awafpwlx5l" path="res://Assets/Screen/Buttons/InGameMenuButton.png" id="1_wt8rs"]
+[ext_resource type="Texture2D" uid="uid://behl672wicaux" path="res://Assets/Screen/Buttons/ButtonFrame.png" id="1_x1y3d"]
+[ext_resource type="PackedScene" uid="uid://bdx8725jh8kyo" path="res://Scenes/Generic/InputLabel.tscn" id="3_e3rf8"]
+
+[node name="InGameMenuButton" type="Button" unique_id=2132888453]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -54.0
+offset_top = -54.0
+offset_right = 54.0
+offset_bottom = 54.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+icon = ExtResource("1_wt8rs")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1004262750]
+layout_mode = 0
+offset_right = 108.0
+offset_bottom = 108.0
+texture = ExtResource("1_x1y3d")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="InputLabel" parent="." unique_id=101772238 instance=ExtResource("3_e3rf8")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -23.0
+offset_top = -25.0
+offset_right = 0.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 0
+input_action = 89

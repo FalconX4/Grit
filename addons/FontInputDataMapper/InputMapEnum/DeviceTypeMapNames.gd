@@ -1,4 +1,5 @@
 class_name DeviceTypeMapNames
+# Auto generated class by FontInputDataMapNamesGeneratorScript
 
 enum DeviceType
 {

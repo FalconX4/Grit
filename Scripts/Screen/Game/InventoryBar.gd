@@ -96,14 +96,14 @@ func show_slot():
 static func get_inventory_index_from_input(last_index: int, character_input: CharacterInput = null) -> int:
 	var left_device_action_id = character_input.get_device_action_id(InputMapNames.GAME_INVENTORY_BAR_LEFT) if character_input != null else str(InputMapNames.GAME_INVENTORY_BAR_LEFT)
 	var right_device_action_id = character_input.get_device_action_id(InputMapNames.GAME_INVENTORY_BAR_RIGHT) if character_input != null else str(InputMapNames.GAME_INVENTORY_BAR_RIGHT)
-	if InputManager.is_action_just_pressed(left_device_action_id):
+	if left_device_action_id != "" and InputManager.is_action_just_pressed(left_device_action_id):
 		return 9 if last_index <= 0 else last_index - 1
-	if InputManager.is_action_just_pressed(right_device_action_id):
+	if right_device_action_id != "" and InputManager.is_action_just_pressed(right_device_action_id):
 		return 0 if last_index >= 9 else last_index + 1
 	for i in 10:
 		var inventory_action_id = InputMapNames.GAME_INVENTORY_BAR_ + str(i)
 		var inventory_device_action_id = character_input.get_device_action_id(inventory_action_id) if character_input != null else inventory_action_id
-		if InputManager.is_action_just_pressed(inventory_device_action_id):
+		if inventory_device_action_id != "" and InputManager.is_action_just_pressed(inventory_device_action_id):
 			return i - 1 if i != 0 else 9
 	return last_index
 

@@ -14,15 +14,15 @@
 [sub_resource type="Gradient" id="Gradient_wkq8h"]
 colors = PackedColorArray(0.745098, 0.584314, 0.419608, 1, 0.843137, 0.690196, 0.505882, 1)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_xy7d7"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_m4c7f"]
 resource_local_to_scene = true
 frequency = 1.0
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_xuo1q"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wmcfc"]
 resource_local_to_scene = true
 width = 1920
 height = 1080
-noise = SubResource("FastNoiseLite_xy7d7")
+noise = SubResource("FastNoiseLite_m4c7f")
 color_ramp = SubResource("Gradient_wkq8h")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2hkg1"]
@@ -407,7 +407,7 @@ layer_0/tile_data = PackedInt32Array(2031623, 655360, 14, 2097159, 655360, 11, 2
 position = Vector2(960, 540)
 
 [node name="Sprite2D" parent="Ground" index="0"]
-texture = SubResource("NoiseTexture2D_xuo1q")
+texture = SubResource("NoiseTexture2D_wmcfc")
 
 [node name="SoilTile" parent="." unique_id=1863998981 instance=ExtResource("7_brbh7")]
 position = Vector2(1704, 564)
@@ -440,6 +440,7 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = SubResource("GradientTexture1D_ldcaw")
 
 [node name="Node" type="Node" parent="." unique_id=1961911896]

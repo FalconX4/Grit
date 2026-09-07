@@ -15,8 +15,8 @@ func _init():
 		add_child(label)
 		return
 
-	var mapNames = load(localization_map_script_path).new()
-	keys = mapNames.LocalizedID.keys()
+	var map_names = load(localization_map_script_path).new()
+	keys = map_names.LocalizedID.keys()
 	for key in keys:
 		property_control.add_item(key)
 

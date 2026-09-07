@@ -3,15 +3,16 @@ class_name InventoryBarSlot
 
 @export var animation_player: AnimationPlayer
 @export var background: NinePatchRect
-@export var button: Button
+@export var button: DraggableButton
 @export var item: TextureRect
+@export var item_dragged: TextureRect
 @export var input_label: InputLabel
 @export var default_item_data: ItemData
 var current_item_data: ItemData
 var slot_index = 0
 var selected = false
 signal inventory_click(slot_index)
-
+signal drag_ended
 
 func setup(slotIndex : int, character_input: CharacterInput = null):
 	slot_index = slotIndex
@@ -32,7 +33,21 @@ func hide_animation():
 	animation_player.play("Hide")
 
 
+func _drag_started():
+	if current_item_data != null:
+		item_dragged.visible = true
+		item_dragged.texture = current_item_data.inventory_image
+
+
+func _drag_ended(_start_mouse_position: Vector2, last_mouse_position: Vector2):
+	item_dragged.visible = false
+	if not get_global_rect().has_point(last_mouse_position):
+		drag_ended.emit(last_mouse_position, slot_index)
+
+
 func _ready() -> void:
+	button.drag_started.connect(_drag_started)
+	button.drag_ended.connect(_drag_ended)
 	if get_tree().current_scene == self:
 		setup(0)
 		set_item_data(default_item_data)

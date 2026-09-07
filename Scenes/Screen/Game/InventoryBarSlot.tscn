@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://wppqqijjprei" path="res://Scripts/Screen/Game/InventoryBarSlot.gd" id="1_0vpx7"]
 [ext_resource type="Resource" uid="uid://by06op57v11fs" path="res://Data/Game/Items/Foods/blue_daucus.tres" id="2_4wrd4"]
 [ext_resource type="Texture2D" uid="uid://cwk6eho5o17ts" path="res://Assets/Screen/Game/InventorySlot.png" id="3_fqvpw"]
+[ext_resource type="Script" uid="uid://cfpihl648qck3" path="res://Scripts/Generic/DraggableButton.gd" id="4_fqvpw"]
 [ext_resource type="PackedScene" uid="uid://bdx8725jh8kyo" path="res://Scenes/Generic/InputLabel.tscn" id="5_fqvpw"]
 
 [sub_resource type="Animation" id="Animation_w7thl"]
@@ -62,7 +63,7 @@ _data = {
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4wrd4"]
 
-[node name="InventoryBarSlot" type="Control" unique_id=717849473 node_paths=PackedStringArray("animation_player", "background", "button", "item", "input_label")]
+[node name="InventoryBarSlot" type="Control" unique_id=717849473 node_paths=PackedStringArray("animation_player", "background", "button", "item", "item_dragged", "input_label")]
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 3
 anchors_preset = 0
@@ -74,6 +75,7 @@ animation_player = NodePath("AnimationPlayer")
 background = NodePath("Panel/Background")
 button = NodePath("Panel/Button")
 item = NodePath("Panel/Item")
+item_dragged = NodePath("Panel/Button/ItemDragged")
 input_label = NodePath("Panel/InputLabel")
 default_item_data = ExtResource("2_4wrd4")
 
@@ -103,7 +105,7 @@ patch_margin_top = 2
 patch_margin_right = 2
 patch_margin_bottom = 2
 
-[node name="Button" type="Button" parent="Panel" unique_id=1195100139]
+[node name="Button" type="Button" parent="Panel" unique_id=1665961236]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -112,6 +114,21 @@ grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_4wrd4")
+script = ExtResource("4_fqvpw")
+return_on_end_drag = true
+metadata/_custom_type_script = "uid://cfpihl648qck3"
+
+[node name="ItemDragged" type="TextureRect" parent="Panel/Button" unique_id=1889472288]
+visible = false
+modulate = Color(1, 1, 1, 0.7529412)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 2
 
 [node name="Item" type="TextureRect" parent="Panel" unique_id=614772523]
 layout_mode = 1

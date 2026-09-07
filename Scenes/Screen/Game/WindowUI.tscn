@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://b3cry4fmm1ofl"]
+
+[ext_resource type="Script" uid="uid://xvrwpt2dy0gv" path="res://Scripts/Screen/Game/WindowUI.gd" id="1_3bc36"]
+[ext_resource type="Script" uid="uid://cfpihl648qck3" path="res://Scripts/Generic/DraggableButton.gd" id="2_7i4wo"]
+
+[node name="WindowUi" type="Control" unique_id=806224266 node_paths=PackedStringArray("button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3bc36")
+button = NodePath("Button")
+
+[node name="Button" type="Button" parent="." unique_id=302808669]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_7i4wo")
+return_on_end_drag = true
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
+[connection signal="drag_ended" from="Button" to="." method="_on_button_drag_ended"]
+[connection signal="drag_moved" from="Button" to="." method="_on_button_drag_moved"]
+[connection signal="drag_started" from="Button" to="." method="_on_button_drag_started"]

@@ -7,13 +7,13 @@ class_name InputLabel
 var character_input: CharacterInput = null
 
 func _ready() -> void:
+	InputManager.last_input_joypad_changed.connect(on_last_input_joypad_changed)
 	set_input_action(input_action)
 
 func set_input_action(new_input_action: InputMapNames.InputAction, new_character_input: CharacterInput = null) -> void:
 	input_action = new_input_action
 	character_input = new_character_input
 	_update_input()
-	InputManager.last_input_joypad_changed.connect(on_last_input_joypad_changed)
 
 func _update_input() -> void:
 	var action_id = InputMapNames.get_action_string(input_action)

@@ -49,11 +49,29 @@ func on_inventory_slot_clicked(_slot_index: int):
 	_last_selected_index = _slot_index
 
 
+func on_inventory_slot_drag_ended(last_mouse_position: Vector2, slot_dragged_index: int):
+	for i in len(slots):
+		if i != slot_dragged_index and slots[i].get_global_rect().has_point(last_mouse_position):
+			_last_selected_index = i
+			var temp_item_data = slots[i].current_item_data
+			slots[i].set_item_data(slots[slot_dragged_index].current_item_data)
+			slots[slot_dragged_index].set_item_data(temp_item_data)
+			slots[slot_dragged_index].selected = false
+			slots[i].selected = true
+			if selected_character != null:
+				var item_data = selected_character.items[slot_dragged_index]
+				if item_data != null:
+					selected_character.items[slot_dragged_index] = selected_character.items[i]
+					selected_character.items[i] = item_data
+			break
+
+
 func _ready() -> void:
 	for i in 10:
 		var slot = inventory_slot.instantiate()
 		slot.setup(i)
 		slot.inventory_click.connect(on_inventory_slot_clicked)
+		slot.drag_ended.connect(on_inventory_slot_drag_ended)
 		slots.append(slot)
 		h_box_container.add_child(slot)
 		show_slot()

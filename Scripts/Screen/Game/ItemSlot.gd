@@ -5,9 +5,10 @@ class_name ItemSlot
 @export var button: DraggableButton
 @export var item: TextureRect
 @export var item_dragged: TextureRect
+@export var count_label: Label
 @export var selected: ItemSlotSelected
 @export var default_item_data: ItemData
-var current_item_data: ItemData
+var current_item_data_count: ItemDataCount
 var _index = 0
 signal click(index: int)
 signal drag_ended(last_mouse_position: Vector2, index: int)
@@ -16,12 +17,15 @@ func setup(index : int):
 	_index = index
 
 
-func set_item_data(item_data: ItemData):
-	current_item_data = item_data
+func set_item(item_data_count: ItemDataCount):
+	current_item_data_count = item_data_count
 
 
-func set_random_item_data():
-	set_item_data(RandomManager.get_array(DataManager.items_data.items))
+func set_random_item():
+	var item_data_count = ItemDataCount.new()
+	item_data_count.item = RandomManager.get_array(DataManager.items_data.items)
+	item_data_count.count = RandomManager.get_i(100)
+	set_item(item_data_count)
 
 
 func _ready() -> void:
@@ -29,11 +33,18 @@ func _ready() -> void:
 	button.drag_ended.connect(_drag_ended)
 	if Helpers.is_main_scene(self):
 		setup(0)
-		set_item_data(default_item_data)
+		if default_item_data == null:
+			set_random_item()
+		else:
+			var item_data_count = ItemDataCount.new()
+			item_data_count.item = default_item_data
+			item_data_count.count = RandomManager.get_i(100)
+			set_item(item_data_count)
 
 
 func _process(_delta: float) -> void:
-	item.texture = current_item_data.inventory_image if current_item_data != null else null
+	item.texture = current_item_data_count.item.inventory_image if current_item_data_count != null else null
+	count_label.text = str(current_item_data_count.count)
 
 
 func _on_button_down() -> void:
@@ -47,9 +58,9 @@ func _input(event: InputEvent) -> void:
 
 
 func _drag_started():
-	if current_item_data != null:
+	if current_item_data_count != null:
 		item_dragged.visible = true
-		item_dragged.texture = current_item_data.inventory_image
+		item_dragged.texture = current_item_data_count.item.inventory_image
 
 
 func _drag_ended(_start_mouse_position: Vector2, last_mouse_position: Vector2):

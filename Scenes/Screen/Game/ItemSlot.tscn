@@ -7,7 +7,7 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n5sgy"]
 
-[node name="ItemSlot" type="Control" unique_id=530795740 node_paths=PackedStringArray("background", "button", "item", "item_dragged", "selected")]
+[node name="ItemSlot" type="Control" unique_id=530795740 node_paths=PackedStringArray("background", "button", "item", "item_dragged", "count_label", "selected")]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 3
 anchors_preset = 0
@@ -18,6 +18,7 @@ background = NodePath("Panel/Background")
 button = NodePath("Panel/Button")
 item = NodePath("Panel/Item")
 item_dragged = NodePath("Panel/Button/ItemDragged")
+count_label = NodePath("Panel/Label")
 selected = NodePath("ItemSlotSelected")
 metadata/_custom_type_script = "uid://biijukdjxhltl"
 
@@ -78,6 +79,21 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 expand_mode = 2
+
+[node name="Label" type="Label" parent="Panel" unique_id=1859512200]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+offset_right = -2.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "8888"
+horizontal_alignment = 2
 
 [node name="ItemSlotSelected" parent="." unique_id=2025283713 instance=ExtResource("5_1oohp")]
 layout_mode = 1

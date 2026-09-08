@@ -16,7 +16,6 @@ func _process(_delta: float) -> void:
 	if selected_character != inventory.selected_character:
 		inventory.set_character(selected_character, true)
 
-
 func _input(event: InputEvent) -> void:
 	if selected_character == null:
 		if event.is_action_pressed(InputMapNames.GAME_INTERACT):

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://msro0wagtnhs"]
+
+[ext_resource type="Script" uid="uid://k888xwep85mb" path="res://Scripts/Screen/Game/ItemSlotGrid.gd" id="1_xldqq"]
+[ext_resource type="PackedScene" uid="uid://uylr57clu0m2" path="res://Scenes/Screen/Game/ItemSlot.tscn" id="2_xldqq"]
+
+[node name="ItemSlotGrid" type="GridContainer" unique_id=1421307787]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+columns = 10
+script = ExtResource("1_xldqq")
+item_slot = ExtResource("2_xldqq")
+metadata/_custom_type_script = "uid://k888xwep85mb"

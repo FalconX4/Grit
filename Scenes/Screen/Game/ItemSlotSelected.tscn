@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://b0t6udpmaeumw"]
+
+[ext_resource type="Script" uid="uid://bau2jg5bcmv41" path="res://Scripts/Screen/Game/ItemSlotSelected.gd" id="1_1j3dp"]
+[ext_resource type="Texture2D" uid="uid://ce2iyny0yf4bi" path="res://Assets/Screen/Game/ItemSlotSelected.png" id="2_i12r2"]
+
+[node name="ItemSlotSelected" type="Control" unique_id=685989714 node_paths=PackedStringArray("frame")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_1j3dp")
+frame = NodePath("NinePatchRect")
+metadata/_custom_type_script = "uid://bau2jg5bcmv41"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=982480532]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_i12r2")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1343922720]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

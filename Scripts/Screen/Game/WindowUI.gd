@@ -3,6 +3,7 @@ class_name WindowUI
 
 @export var button: Button
 @export var moved_control: Control
+@export var resize_to_control: bool
 
 var start_global_position: Vector2
 
@@ -16,7 +17,8 @@ func _after_ready() -> void:
 
 	start_global_position = moved_control.global_position
 	global_position = start_global_position
-	size = moved_control.size
+	if resize_to_control:
+		size = moved_control.size
 
 func _on_button_drag_started() -> void:
 	start_global_position = global_position

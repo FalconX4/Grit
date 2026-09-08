@@ -14,9 +14,9 @@ var selected = false
 signal inventory_click(slot_index)
 signal drag_ended
 
-func setup(slotIndex : int, character_input: CharacterInput = null):
-	slot_index = slotIndex
-	var action = InputMapNames.GAME_INVENTORY_BAR_ + str((slot_index + 1) % 10)
+func setup(index : int, character_input: CharacterInput = null):
+	slot_index = index
+	var action = InputMapNames.GAME_INVENTORY_BAR_ + str((index + 1) % 10)
 	var input_action = InputMapNames.get_action_input(action)
 	input_label.set_input_action(input_action, character_input)
 
@@ -48,7 +48,7 @@ func _drag_ended(_start_mouse_position: Vector2, last_mouse_position: Vector2):
 func _ready() -> void:
 	button.drag_started.connect(_drag_started)
 	button.drag_ended.connect(_drag_ended)
-	if get_tree().current_scene == self:
+	if Helpers.is_main_scene(self):
 		setup(0)
 		set_item_data(default_item_data)
 		show_animation()
@@ -62,9 +62,3 @@ func _process(_delta: float) -> void:
 func _on_button_button_down() -> void:
 	selected = true
 	inventory_click.emit(slot_index)
-
-
-func _input(event: InputEvent) -> void:
-	if get_tree().current_scene == self:
-		if event is InputEventKey:
-			pass

@@ -74,11 +74,11 @@ func _ready() -> void:
 		slot.drag_ended.connect(on_inventory_slot_drag_ended)
 		slots.append(slot)
 		h_box_container.add_child(slot)
-		show_slot()
 
-		if get_tree().current_scene == self:
+		if Helpers.is_main_scene(self):
 			slot.set_item_data(RandomManager.get_array(DataManager.items_data.items))
 
+	show_slot()
 	call_deferred("_after_ready")
 
 

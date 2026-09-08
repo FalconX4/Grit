@@ -4,8 +4,9 @@
 [ext_resource type="Script" uid="uid://ymp5og7bdj4e" path="res://Scripts/Screen/Game/GameUI.gd" id="1_fu8e7"]
 [ext_resource type="PackedScene" uid="uid://b3cry4fmm1ofl" path="res://Scenes/Screen/Game/WindowUI.tscn" id="2_6quvs"]
 [ext_resource type="PackedScene" uid="uid://cnrum6g3fyi1x" path="res://Scenes/Screen/Buttons/InGameMenuButton.tscn" id="3_q2tdx"]
+[ext_resource type="PackedScene" uid="uid://cyocqb4crmior" path="res://Scenes/Screen/Game/Storage.tscn" id="4_ye3js"]
 
-[node name="GameUi" type="Control" unique_id=1312754734]
+[node name="GameUi" type="Control" unique_id=1312754734 node_paths=PackedStringArray("inventory", "storage")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,6 +14,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fu8e7")
+inventory = NodePath("InventoryBar")
+storage = NodePath("Storage")
 
 [node name="InventoryBar" parent="." unique_id=489721073 instance=ExtResource("1_d7bsd")]
 layout_mode = 1
@@ -39,6 +42,19 @@ offset_bottom = 150.0
 grow_horizontal = 0
 grow_vertical = 1
 
+[node name="Storage" parent="." unique_id=1010910486 instance=ExtResource("4_ye3js")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -250.0
+offset_right = 380.0
+offset_bottom = 250.0
+
 [node name="WindowUIs" type="Control" parent="." unique_id=1362479555]
 visible = false
 anchors_preset = 0
@@ -53,7 +69,9 @@ anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
 moved_control = NodePath("../../InventoryBar")
+resize_to_control = true
 
 [node name="InGameMenuButtonWindowUi" parent="WindowUIs" unique_id=351051590 node_paths=PackedStringArray("moved_control") instance=ExtResource("2_6quvs")]
 layout_mode = 1
 moved_control = NodePath("../../InGameMenuButton")
+resize_to_control = true

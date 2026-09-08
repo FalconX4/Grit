@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://uylr57clu0m2"]
+
+[ext_resource type="Script" uid="uid://biijukdjxhltl" path="res://Scripts/Screen/Game/ItemSlot.gd" id="1_kgcqt"]
+[ext_resource type="Texture2D" uid="uid://cwk6eho5o17ts" path="res://Assets/Screen/Game/ItemSlot.png" id="2_3xx6f"]
+[ext_resource type="Script" uid="uid://cfpihl648qck3" path="res://Scripts/Generic/DraggableButton.gd" id="3_dhslp"]
+[ext_resource type="PackedScene" uid="uid://b0t6udpmaeumw" path="res://Scenes/Screen/Game/ItemSlotSelected.tscn" id="5_1oohp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n5sgy"]
+
+[node name="ItemSlot" type="Control" unique_id=530795740 node_paths=PackedStringArray("background", "button", "item", "item_dragged", "selected")]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 80.0
+offset_bottom = 80.0
+script = ExtResource("1_kgcqt")
+background = NodePath("Panel/Background")
+button = NodePath("Panel/Button")
+item = NodePath("Panel/Item")
+item_dragged = NodePath("Panel/Button/ItemDragged")
+selected = NodePath("ItemSlotSelected")
+metadata/_custom_type_script = "uid://biijukdjxhltl"
+
+[node name="Panel" type="Panel" parent="." unique_id=1933616319]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(60, 60)
+
+[node name="Background" type="NinePatchRect" parent="Panel" unique_id=1163772443]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_3xx6f")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="Button" type="Button" parent="Panel" unique_id=340061987]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_n5sgy")
+script = ExtResource("3_dhslp")
+return_on_end_drag = true
+move_on_top = true
+metadata/_custom_type_script = "uid://cfpihl648qck3"
+
+[node name="ItemDragged" type="TextureRect" parent="Panel/Button" unique_id=1943992060]
+visible = false
+modulate = Color(1, 1, 1, 0.7529412)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 2
+
+[node name="Item" type="TextureRect" parent="Panel" unique_id=1088796220]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 2
+
+[node name="ItemSlotSelected" parent="." unique_id=2025283713 instance=ExtResource("5_1oohp")]
+layout_mode = 1
+
+[connection signal="button_down" from="Panel/Button" to="." method="_on_button_down"]

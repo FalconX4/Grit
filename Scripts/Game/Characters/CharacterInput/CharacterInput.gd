@@ -1,13 +1,11 @@
 extends Node
 class_name CharacterInput
 
-@export var is_player : bool
 var was_using_controller : bool
 var using_controller : bool
 
 func get_device_type() -> DeviceTypeMapNames.DeviceType:
 	return DeviceTypeMapNames.DeviceType.INVALID
-
 
 func get_device_action_id(action_id: String) -> String:
 	return action_id

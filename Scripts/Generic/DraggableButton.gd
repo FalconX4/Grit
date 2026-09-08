@@ -3,6 +3,7 @@ class_name DraggableButton
 
 
 @export var return_on_end_drag : bool
+@export var move_on_top: bool
 
 
 signal drag_started
@@ -35,7 +36,8 @@ func _input(event: InputEvent) -> void:
 			drag_moved.emit(starting_mouse_position, last_mouse_position)
 		elif mouse_delta.length_squared() > move_threshold * move_threshold:
 			dragging = true
-			top_level = true
+			if move_on_top:
+				top_level = true
 			drag_started.emit()
 			global_position = starting_global_position + mouse_delta
 			drag_moved.emit(starting_mouse_position, last_mouse_position)
@@ -54,5 +56,6 @@ func _on_button_button_up() -> void:
 		if return_on_end_drag or (not confirm_drag.is_null() and not confirm_drag.call(last_mouse_position)):
 			position = starting_position
 		dragging = false
-		top_level = false
+		if move_on_top:
+			top_level = false
 		drag_ended.emit(starting_mouse_position, last_mouse_position)

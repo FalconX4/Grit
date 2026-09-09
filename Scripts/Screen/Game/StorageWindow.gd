@@ -1,5 +1,5 @@
 extends Control
-class_name Storage
+class_name StorageWindow
 
 @export var grid: ItemSlotGrid
 

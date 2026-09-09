@@ -1,7 +1,7 @@
 extends Control
 
 @export var inventory: InventoryBar
-@export var storage: Storage
+@export var storage: StorageWindow
 var selected_character: Character
 
 func set_character_without_animation(path: NodePath):

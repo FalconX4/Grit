@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://ymp5og7bdj4e" path="res://Scripts/Screen/Game/GameUI.gd" id="1_fu8e7"]
 [ext_resource type="PackedScene" uid="uid://b3cry4fmm1ofl" path="res://Scenes/Screen/Game/WindowUI.tscn" id="2_6quvs"]
 [ext_resource type="PackedScene" uid="uid://cnrum6g3fyi1x" path="res://Scenes/Screen/Buttons/InGameMenuButton.tscn" id="3_q2tdx"]
-[ext_resource type="PackedScene" uid="uid://cyocqb4crmior" path="res://Scenes/Screen/Game/Storage.tscn" id="4_ye3js"]
+[ext_resource type="PackedScene" uid="uid://cyocqb4crmior" path="res://Scenes/Screen/Game/StorageWindow.tscn" id="4_ye3js"]
 
 [node name="GameUi" type="Control" unique_id=1312754734 node_paths=PackedStringArray("inventory", "storage")]
 layout_mode = 3
@@ -15,7 +15,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fu8e7")
 inventory = NodePath("InventoryBar")
-storage = NodePath("Storage")
+storage = NodePath("StorageWindow")
 
 [node name="InventoryBar" parent="." unique_id=489721073 instance=ExtResource("1_d7bsd")]
 layout_mode = 1
@@ -42,7 +42,7 @@ offset_bottom = 150.0
 grow_horizontal = 0
 grow_vertical = 1
 
-[node name="Storage" parent="." unique_id=1010910486 instance=ExtResource("4_ye3js")]
+[node name="StorageWindow" parent="." unique_id=1010910486 instance=ExtResource("4_ye3js")]
 visible = false
 layout_mode = 1
 anchors_preset = 8

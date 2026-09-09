@@ -4,34 +4,30 @@
 [ext_resource type="Texture2D" uid="uid://cwk6eho5o17ts" path="res://Assets/Screen/Game/ItemSlot.png" id="2_3xx6f"]
 [ext_resource type="Script" uid="uid://cfpihl648qck3" path="res://Scripts/Generic/DraggableButton.gd" id="3_dhslp"]
 [ext_resource type="PackedScene" uid="uid://b0t6udpmaeumw" path="res://Scenes/Screen/Game/ItemSlotSelected.tscn" id="5_1oohp"]
+[ext_resource type="Texture2D" uid="uid://cwqd571peb32n" path="res://Assets/Screen/Game/Trash.png" id="5_3xx6f"]
+[ext_resource type="PackedScene" uid="uid://bv3q43orv0hvs" path="res://Scenes/Generic/IconTimer.tscn" id="5_dhslp"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n5sgy"]
 
-[node name="ItemSlot" type="Control" unique_id=530795740 node_paths=PackedStringArray("background", "button", "item", "item_dragged", "count_label", "selected")]
+[node name="ItemSlot" type="Control" unique_id=530795740 node_paths=PackedStringArray("background", "button", "item", "item_slot_selected", "count_label", "control_dragged", "item_dragged", "count_label_dragged", "delete_icon_timer")]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 80.0
 offset_bottom = 80.0
 script = ExtResource("1_kgcqt")
-background = NodePath("Panel/Background")
-button = NodePath("Panel/Button")
-item = NodePath("Panel/Item")
-item_dragged = NodePath("Panel/Button/ItemDragged")
-count_label = NodePath("Panel/Label")
-selected = NodePath("ItemSlotSelected")
+background = NodePath("Background")
+button = NodePath("Button")
+item = NodePath("Item")
+item_slot_selected = NodePath("ItemSlotSelected")
+count_label = NodePath("Label")
+control_dragged = NodePath("Button/ControlDragged")
+item_dragged = NodePath("Button/ControlDragged/ItemDragged")
+count_label_dragged = NodePath("Button/ControlDragged/LabelDragged")
+delete_icon_timer = NodePath("IconTimer")
 metadata/_custom_type_script = "uid://biijukdjxhltl"
 
-[node name="Panel" type="Panel" parent="." unique_id=1933616319]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(60, 60)
-
-[node name="Background" type="NinePatchRect" parent="Panel" unique_id=1163772443]
+[node name="Background" type="NinePatchRect" parent="." unique_id=1163772443]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -44,7 +40,7 @@ patch_margin_top = 2
 patch_margin_right = 2
 patch_margin_bottom = 2
 
-[node name="Button" type="Button" parent="Panel" unique_id=340061987]
+[node name="Button" type="Button" parent="." unique_id=340061987]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -53,12 +49,13 @@ grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_n5sgy")
+button_mask = 3
 script = ExtResource("3_dhslp")
 return_on_end_drag = true
 move_on_top = true
 metadata/_custom_type_script = "uid://cfpihl648qck3"
 
-[node name="ItemDragged" type="TextureRect" parent="Panel/Button" unique_id=1943992060]
+[node name="ControlDragged" type="Control" parent="Button" unique_id=651531602]
 visible = false
 modulate = Color(1, 1, 1, 0.7529412)
 layout_mode = 1
@@ -67,10 +64,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
-expand_mode = 2
 
-[node name="Item" type="TextureRect" parent="Panel" unique_id=1088796220]
+[node name="ItemDragged" type="TextureRect" parent="Button/ControlDragged" unique_id=1943992060]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -80,7 +75,31 @@ grow_vertical = 2
 mouse_filter = 2
 expand_mode = 2
 
-[node name="Label" type="Label" parent="Panel" unique_id=1859512200]
+[node name="LabelDragged" type="Label" parent="Button/ControlDragged" unique_id=1852412055]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+offset_right = -2.0
+grow_horizontal = 0
+grow_vertical = 0
+horizontal_alignment = 2
+
+[node name="Item" type="TextureRect" parent="." unique_id=1088796220]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 2
+
+[node name="Label" type="Label" parent="." unique_id=1859512200]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
@@ -98,4 +117,13 @@ horizontal_alignment = 2
 [node name="ItemSlotSelected" parent="." unique_id=2025283713 instance=ExtResource("5_1oohp")]
 layout_mode = 1
 
-[connection signal="button_down" from="Panel/Button" to="." method="_on_button_down"]
+[node name="IconTimer" parent="." unique_id=101975831 instance=ExtResource("5_dhslp")]
+layout_mode = 1
+input_action = 90
+
+[node name="Icon" parent="IconTimer/Container" parent_id_path=PackedInt32Array(101975831, 2147155079) index="0" unique_id=800291532]
+texture = ExtResource("5_3xx6f")
+
+[connection signal="button_down" from="Button" to="." method="_on_button_down"]
+
+[editable path="IconTimer"]

@@ -93,6 +93,7 @@ enum InputAction {
 	GAME_INVENTORY_BAR_LEFT,
 	GAME_INVENTORY_BAR_RIGHT,
 	GAME_MENU,
+	GAME_DELETE,
 
 }
 
@@ -186,6 +187,7 @@ const GAME_INVENTORY_BAR_0: StringName = &"Game_Inventory_Bar_0"
 const GAME_INVENTORY_BAR_LEFT: StringName = &"Game_Inventory_Bar_Left"
 const GAME_INVENTORY_BAR_RIGHT: StringName = &"Game_Inventory_Bar_Right"
 const GAME_MENU: StringName = &"Game_Menu"
+const GAME_DELETE: StringName = &"Game_Delete"
 
 
 # Game specific
@@ -284,6 +286,7 @@ static func get_action_string(action: InputAction) -> StringName:
 		InputAction.GAME_INVENTORY_BAR_LEFT: return GAME_INVENTORY_BAR_LEFT
 		InputAction.GAME_INVENTORY_BAR_RIGHT: return GAME_INVENTORY_BAR_RIGHT
 		InputAction.GAME_MENU: return GAME_MENU
+		InputAction.GAME_DELETE: return GAME_DELETE
 
 		_:
 			push_error("Unknown InputAction enum value: %d" % action)
@@ -381,6 +384,7 @@ static func get_action_input(action: StringName) -> InputAction:
 		GAME_INVENTORY_BAR_LEFT: return InputAction.GAME_INVENTORY_BAR_LEFT
 		GAME_INVENTORY_BAR_RIGHT: return InputAction.GAME_INVENTORY_BAR_RIGHT
 		GAME_MENU: return InputAction.GAME_MENU
+		GAME_DELETE: return InputAction.GAME_DELETE
 
 		_:
 			push_error("Unknown Action String value: %s" % action)
@@ -478,5 +482,6 @@ static func get_all_actions() -> Array[StringName]:
 		GAME_INVENTORY_BAR_LEFT,
 		GAME_INVENTORY_BAR_RIGHT,
 		GAME_MENU,
+		GAME_DELETE,
 
 	]

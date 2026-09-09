@@ -11,6 +11,9 @@ func add() -> void:
 func remove() -> void:
 	frame.visible = false
 
+func is_shown() -> bool:
+	return frame.visible
+
 func add_character_input(new_input: CharacterInput) -> void:
 	cursors[len(character_inputs)].visible = true
 	character_inputs.append(new_input)

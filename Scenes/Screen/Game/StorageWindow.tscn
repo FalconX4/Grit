@@ -1,21 +1,21 @@
 [gd_scene format=3 uid="uid://cyocqb4crmior"]
 
-[ext_resource type="Script" uid="uid://3u6byjsx3a1k" path="res://Scripts/Screen/Game/Storage.gd" id="1_1kksg"]
-[ext_resource type="Texture2D" uid="uid://cwk6eho5o17ts" path="res://Assets/Screen/Game/ItemSlot.png" id="1_wxkml"]
-[ext_resource type="PackedScene" uid="uid://msro0wagtnhs" path="res://Scenes/Screen/Game/ItemSlotGrid.tscn" id="2_oy6gw"]
-[ext_resource type="PackedScene" uid="uid://b3cry4fmm1ofl" path="res://Scenes/Screen/Game/WindowUI.tscn" id="4_1kksg"]
+[ext_resource type="Script" uid="uid://3u6byjsx3a1k" path="res://Scripts/Screen/Game/StorageWindow.gd" id="1_fkbmb"]
+[ext_resource type="Texture2D" uid="uid://cwk6eho5o17ts" path="res://Assets/Screen/Game/ItemSlot.png" id="2_7kgkm"]
+[ext_resource type="PackedScene" uid="uid://msro0wagtnhs" path="res://Scenes/Screen/Game/ItemSlotGrid.tscn" id="3_23gvq"]
+[ext_resource type="PackedScene" uid="uid://b3cry4fmm1ofl" path="res://Scenes/Screen/Game/WindowUI.tscn" id="4_e85fu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1kksg"]
 font_size = 20
 
-[node name="Storage" type="Control" unique_id=1010910486 node_paths=PackedStringArray("grid")]
+[node name="StorageWindow" type="Control" unique_id=1010910486 node_paths=PackedStringArray("grid")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_1kksg")
+script = ExtResource("1_fkbmb")
 grid = NodePath("Control/ItemSlotGrid")
 
 [node name="Control" type="Control" parent="." unique_id=1566289647]
@@ -34,18 +34,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_wxkml")
+texture = ExtResource("2_7kgkm")
 patch_margin_left = 2
 patch_margin_top = 2
 patch_margin_right = 2
 patch_margin_bottom = 2
 
-[node name="ItemSlotGrid" parent="Control" unique_id=1421307787 instance=ExtResource("2_oy6gw")]
+[node name="ItemSlotGrid" parent="Control" unique_id=1421307787 instance=ExtResource("3_23gvq")]
 layout_mode = 1
 offset_top = 15.0
 offset_bottom = 15.0
 
-[node name="WindowUi" parent="." unique_id=806224266 node_paths=PackedStringArray("moved_control") instance=ExtResource("4_1kksg")]
+[node name="WindowUi" parent="." unique_id=806224266 node_paths=PackedStringArray("moved_control") instance=ExtResource("4_e85fu")]
 layout_mode = 1
 anchors_preset = 10
 anchor_bottom = 0.0

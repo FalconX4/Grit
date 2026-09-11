@@ -10,3 +10,7 @@ func _ready() -> void:
 
 func set_random_items() -> void:
 	grid.set_random_items()
+
+
+func set_enable(enable: bool) -> void:
+	grid.set_enable(enable)

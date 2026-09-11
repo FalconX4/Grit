@@ -319,14 +319,14 @@ tracks/16/path = NodePath("GameUi/InventoryBar")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
-"times": PackedFloat32Array(0, 6, 21),
+"times": PackedFloat32Array(6, 7, 21),
 "transitions": PackedFloat32Array(1, 1, 1),
 "values": [{
 "args": [],
-"method": &"hide_animation"
+"method": &"show_animation"
 }, {
-"args": [0],
-"method": &"show_slot_animation"
+"args": [],
+"method": &"hide_animation"
 }, {
 "args": [],
 "method": &"show_animation"

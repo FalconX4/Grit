@@ -24,15 +24,25 @@ func set_character(character: Character, doAnimations: bool):
 
 
 func show_animation():
+	Helpers.node_enable(self)
 	for slot in item_slot_grid.slots:
 		slot.show_animation()
 func hide_animation():
+	Helpers.node_disable(self)
 	for slot in item_slot_grid.slots:
 		slot.hide_animation()
 func show_slot_animation(index : int):
+	Helpers.node_enable(self)
 	item_slot_grid.slots[index].show_animation()
 func hide_slot_animation(index : int):
 	item_slot_grid.slots[index].hide_animation()
+	var all_hiding_or_hidden = true
+	for slot in item_slot_grid.slots:
+		if not (slot as InventoryBarSlot).is_hiding_or_hidden:
+			all_hiding_or_hidden = false
+			break
+	if all_hiding_or_hidden:
+		Helpers.node_disable(self)
 
 
 func on_inventory_slot_clicked(_slot_index: int):
@@ -48,7 +58,7 @@ func _ready() -> void:
 	for slot in item_slot_grid.slots:
 		slot.click.connect(on_inventory_slot_clicked)
 
-	show_slot()
+	show_animation()
 	call_deferred("_after_ready")
 
 
@@ -79,10 +89,6 @@ func set_random_items() -> void:
 	for slot in item_slot_grid.slots:
 		slot.set_random_item()
 
-
-func show_slot():
-	for slot in item_slot_grid.slots:
-		slot.show_animation()
 
 
 static func get_inventory_bar_index_from_input(last_index: int, character_input: CharacterInput = null) -> int:

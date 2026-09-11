@@ -23,6 +23,8 @@ const _default_joypad_buttons: Array[String] = [
 	InputMapNames.GAME_INVENTORY_BAR_7,
 	InputMapNames.GAME_INVENTORY_BAR_8,
 	InputMapNames.GAME_INVENTORY_BAR_9,
+	InputMapNames.GAME_INVENTORY_BAR_LEFT,
+	InputMapNames.GAME_INVENTORY_BAR_RIGHT,
 ]
 
 const SECTION = "Inputs"

@@ -21,5 +21,4 @@ func _process(_delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if selected_character == null:
 		if event.is_action_pressed(InputMapNames.GAME_INTERACT):
-			storage.visible = !storage.visible
-			storage.set_process_input(storage.visible)
+			storage.set_enable(!storage.visible)

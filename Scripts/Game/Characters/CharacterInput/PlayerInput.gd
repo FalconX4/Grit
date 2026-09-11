@@ -16,7 +16,7 @@ func _input(event: InputEvent) -> void:
 
 
 func get_device_type() -> DeviceTypeMapNames.DeviceType:
-	if joypad != null:
+	if using_controller:
 		return joypad.device_type
 	else:
 		return DeviceTypeMapNames.DeviceType.KEYBOARD

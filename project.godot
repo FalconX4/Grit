@@ -28,6 +28,7 @@ SettingManager="*uid://clgn86ewwx6s7"
 InputManager="*uid://cc7pxnepq8nn0"
 PlayerDataManager="*uid://syufnr86b1eu"
 GameSessionData="*uid://dtjri0mepm0yx"
+Pool="*uid://ib2ssouenwnl"
 ItemSlotGridManager="*uid://dy43kt6doahbr"
 
 [display]

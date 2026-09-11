@@ -92,12 +92,9 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	var is_visible = is_visible_in_tree()
-	set_process_input(is_visible)
-	if is_visible:
-		item_texture_rect.texture = _item_data_count.item.inventory_image if _item_data_count.has_item() else null
-		count_label.text = str(_item_data_count.count) if _item_data_count.has_item() else ""
-		remove_icon_timer.set_process_input(_item_data_count.has_item() and item_slot_selected.is_shown())
+	item_texture_rect.texture = _item_data_count.item.inventory_image if _item_data_count.has_item() else null
+	count_label.text = str(_item_data_count.count) if _item_data_count.has_item() else ""
+	remove_icon_timer.set_process_input(_item_data_count.has_item() and item_slot_selected.is_shown())
 
 
 func _on_button_down() -> void:

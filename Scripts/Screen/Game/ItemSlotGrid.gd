@@ -11,22 +11,18 @@ signal item_slot_drag_ended_sucess(from: ItemSlot, to: ItemSlot)
 var slots : Array[ItemSlot]
 
 func _ready() -> void:
+	Pool.create(item_slot, rows * columns)
 	ItemSlotGridManager.subscribe(self)
 	var is_main_scene = Helpers.is_main_scene(self)
 	for i in rows:
 		for j in columns:
-			var slot = item_slot.instantiate() as ItemSlot
+			var slot = Pool.take(item_slot, self) as ItemSlot
 			slot.setup(i * columns + j)
 			slot.click.connect(on_item_slot_clicked)
 			slot.drag_ended.connect(on_item_slot_drag_ended)
 			slots.append(slot)
-			add_child(slot, true)
 			if is_main_scene:
 				slot.set_random_item()
-
-
-func _process(delta: float) -> void:
-	set_process_input(is_visible_in_tree())
 
 
 func _input(event: InputEvent) -> void:
@@ -35,6 +31,12 @@ func _input(event: InputEvent) -> void:
 			sort()
 		elif event.keycode == KEY_P:
 			stack()
+
+
+func set_enable(enable: bool) -> void:
+	Helpers.node_process(self, enable)
+	for slot in slots:
+		Helpers.node_process(slot, enable)
 
 
 func _exit_tree() -> void:

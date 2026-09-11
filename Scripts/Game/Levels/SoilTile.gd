@@ -8,18 +8,20 @@ var is_empty = true
 var item : ItemSeedData = null
 
 func is_interactable(character: Character) -> bool:
-	return character.selected_item_index >= 0 \
-		and len(character.items) > character.selected_item_index \
-		and character.items[character.selected_item_index] != null \
-		and character.items[character.selected_item_index].type() == ItemData.Type.SEED
+	var selected_index = character.input_handler.inventory_bar_selected_index
+	return selected_index >= 0 \
+		and len(character.inventory_bar) > selected_index \
+		and character.inventory_bar[selected_index].has_item() \
+		and character.inventory_bar[selected_index].item.item_type() == ItemData.ItemType.SEED
 
 
 func interact(character: Character) -> void:
 	super.interact(character)
 	if interacted:
+		var selected_index = character.input_handler.inventory_bar_selected_index
 		plowedNode.visible = true
-		item = character.items[character.selected_item_index] as ItemSeedData
-		character.items.remove_at(character.selected_item_index)
+		item = character.inventory_bar[selected_index].item as ItemSeedData
+		character.inventory_bar[selected_index].empty()
 		animated_sprite_2d.visible = true
 		is_empty = false
 

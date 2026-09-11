@@ -1,10 +1,12 @@
 [gd_scene format=3 uid="uid://b3vxkcpskg46u"]
 
 [ext_resource type="Script" uid="uid://wppqqijjprei" path="res://Scripts/Screen/Game/InventoryBarSlot.gd" id="1_0vpx7"]
-[ext_resource type="Resource" uid="uid://by06op57v11fs" path="res://Data/Game/Items/Foods/blue_daucus.tres" id="2_4wrd4"]
 [ext_resource type="Texture2D" uid="uid://cwk6eho5o17ts" path="res://Assets/Screen/Game/ItemSlot.png" id="3_fqvpw"]
 [ext_resource type="Script" uid="uid://cfpihl648qck3" path="res://Scripts/Generic/DraggableButton.gd" id="4_fqvpw"]
 [ext_resource type="PackedScene" uid="uid://bdx8725jh8kyo" path="res://Scenes/Generic/InputLabel.tscn" id="5_fqvpw"]
+[ext_resource type="PackedScene" uid="uid://b0t6udpmaeumw" path="res://Scenes/Screen/Game/ItemSlotSelected.tscn" id="6_xnatk"]
+[ext_resource type="PackedScene" uid="uid://bv3q43orv0hvs" path="res://Scenes/Generic/IconTimer.tscn" id="7_07bpr"]
+[ext_resource type="Texture2D" uid="uid://cwqd571peb32n" path="res://Assets/Screen/Game/Trash.png" id="8_reado"]
 
 [sub_resource type="Animation" id="Animation_w7thl"]
 resource_name = "Hide"
@@ -61,9 +63,9 @@ _data = {
 &"Show": SubResource("Animation_0m150")
 }
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4wrd4"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fybyx"]
 
-[node name="InventoryBarSlot" type="Control" unique_id=717849473 node_paths=PackedStringArray("animation_player", "background", "button", "item", "item_dragged", "input_label")]
+[node name="InventoryBarSlot" type="Control" unique_id=717849473 node_paths=PackedStringArray("animation_player", "input_label", "background", "draggable_button", "item_texture_rect", "item_slot_selected", "count_label", "control_dragged", "item_dragged", "count_label_dragged", "remove_icon_timer")]
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 3
 anchors_preset = 0
@@ -72,12 +74,16 @@ offset_bottom = 40.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 script = ExtResource("1_0vpx7")
 animation_player = NodePath("AnimationPlayer")
-background = NodePath("Panel/Background")
-button = NodePath("Panel/Button")
-item = NodePath("Panel/Item")
-item_dragged = NodePath("Panel/Button/ItemDragged")
 input_label = NodePath("Panel/InputLabel")
-default_item_data = ExtResource("2_4wrd4")
+background = NodePath("Panel/Background")
+draggable_button = NodePath("Panel/ButtonDragged")
+item_texture_rect = NodePath("Panel/Item")
+item_slot_selected = NodePath("Panel/ItemSlotSelected")
+count_label = NodePath("Panel/Label")
+control_dragged = NodePath("Panel/ButtonDragged/ControlDragged")
+item_dragged = NodePath("Panel/ButtonDragged/ControlDragged/ItemDragged")
+count_label_dragged = NodePath("Panel/ButtonDragged/ControlDragged/LabelDragged")
+remove_icon_timer = NodePath("Panel/IconTimer")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2129283998]
 libraries/ = SubResource("AnimationLibrary_j518x")
@@ -92,7 +98,7 @@ grow_vertical = 2
 scale = Vector2(1e-05, 1e-05)
 pivot_offset = Vector2(60, 60)
 
-[node name="Background" type="NinePatchRect" parent="Panel" unique_id=439682381]
+[node name="Background" type="NinePatchRect" parent="Panel" unique_id=2126173880]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -105,7 +111,7 @@ patch_margin_top = 2
 patch_margin_right = 2
 patch_margin_bottom = 2
 
-[node name="Button" type="Button" parent="Panel" unique_id=1665961236]
+[node name="ButtonDragged" type="Button" parent="Panel" unique_id=683627622]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -113,12 +119,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 0
-theme_override_styles/normal = SubResource("StyleBoxEmpty_4wrd4")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_fybyx")
+button_mask = 3
 script = ExtResource("4_fqvpw")
 return_on_end_drag = true
+move_on_top = true
 metadata/_custom_type_script = "uid://cfpihl648qck3"
 
-[node name="ItemDragged" type="TextureRect" parent="Panel/Button" unique_id=1889472288]
+[node name="ControlDragged" type="Control" parent="Panel/ButtonDragged" unique_id=1006091084]
 visible = false
 modulate = Color(1, 1, 1, 0.7529412)
 layout_mode = 1
@@ -127,10 +135,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
-expand_mode = 2
 
-[node name="Item" type="TextureRect" parent="Panel" unique_id=614772523]
+[node name="ItemDragged" type="TextureRect" parent="Panel/ButtonDragged/ControlDragged" unique_id=1885494647]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -140,18 +146,69 @@ grow_vertical = 2
 mouse_filter = 2
 expand_mode = 2
 
+[node name="LabelDragged" type="Label" parent="Panel/ButtonDragged/ControlDragged" unique_id=1118249804]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+offset_right = -2.0
+grow_horizontal = 0
+grow_vertical = 0
+horizontal_alignment = 2
+
+[node name="Item" type="TextureRect" parent="Panel" unique_id=1577434981]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 2
+
+[node name="Label" type="Label" parent="Panel" unique_id=595813197]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+offset_right = -2.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "8888"
+horizontal_alignment = 2
+
 [node name="InputLabel" parent="Panel" unique_id=101772238 instance=ExtResource("5_fqvpw")]
 layout_mode = 1
-anchors_preset = 1
+anchors_preset = -1
 anchor_left = 1.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 0.0
-offset_left = -28.0
-offset_top = 1.0
-offset_right = -11.0
-offset_bottom = 43.0
+offset_left = -35.0
+offset_top = 2.0
+offset_right = -12.0
+offset_bottom = 57.0
 grow_horizontal = 0
 grow_vertical = 1
 
-[connection signal="button_down" from="Panel/Button" to="." method="_on_button_button_down"]
+[node name="ItemSlotSelected" parent="Panel" unique_id=685989714 instance=ExtResource("6_xnatk")]
+layout_mode = 1
+
+[node name="IconTimer" parent="Panel" unique_id=101975831 instance=ExtResource("7_07bpr")]
+layout_mode = 1
+input_action = 90
+
+[node name="Icon" parent="Panel/IconTimer/Container" parent_id_path=PackedInt32Array(101975831, 2147155079) index="0" unique_id=800291532]
+texture = ExtResource("8_reado")
+
+[connection signal="button_down" from="Panel/ButtonDragged" to="." method="_on_button_down"]
+
+[editable path="Panel/IconTimer"]

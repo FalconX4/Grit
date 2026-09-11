@@ -1,4 +1,4 @@
 extends ItemData
 class_name ItemToolData
 
-func type() -> Type: return Type.TOOL
+func item_type() -> ItemType: return ItemType.TOOL

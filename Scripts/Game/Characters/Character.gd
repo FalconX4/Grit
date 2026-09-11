@@ -12,12 +12,10 @@ class_name Character
 @export var speed = 300.0
 
 var input_handler: CharacterInputHandler = CharacterInputHandler.new()
-var items : Array[ItemData]
-var selected_item_index = -1
+var inventory : Array[ItemDataCount]
+var inventory_bar : Array[ItemDataCount]
 var last_moved_direction : Vector2
 
-func add_item(item: ItemData): items.append(item)
-func remove_item(index: int): items.remove_at(index)
 func show_interact_button(show_it: bool): input_label.visible = show_it
 
 
@@ -28,7 +26,7 @@ func update_input_button(label: InputLabel, input_action: InputMapNames.InputAct
 
 func _ready() -> void:
 	input_handler.input = character_input
-	add_item(DataManager.items_data.items[len(DataManager.items_data.items) - 1])
+	inventory_bar.append(ItemDataCount.new(DataManager.items_data.items[len(DataManager.items_data.items) - 1], 1))
 	update_input_buttons()
 
 
@@ -36,8 +34,6 @@ func _process(_delta: float) -> void:
 	input_handler._process(_delta)
 	if character_input.was_using_controller != character_input.using_controller:
 		update_input_buttons()
-	if input_handler.inventory >= 0:
-		selected_item_index = input_handler.inventory
 
 	if interact_trigger.is_colliding():
 		for i in interact_trigger.get_collision_count():

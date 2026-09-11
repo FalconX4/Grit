@@ -1,25 +1,25 @@
-[gd_scene load_steps=6 format=3 uid="uid://vfhp66n38qaf"]
+[gd_scene format=3 uid="uid://vfhp66n38qaf"]
 
 [ext_resource type="PackedScene" uid="uid://befhoix5ssrvy" path="res://Scenes/Game/Levels/InteractionTile.tscn" id="1_ci1nt"]
-[ext_resource type="Script" path="res://Scripts/Game/Levels/SoilTile.gd" id="2_1l71y"]
+[ext_resource type="Script" uid="uid://qt6sibnyyn8n" path="res://Scripts/Game/Levels/SoilTile.gd" id="2_1l71y"]
 [ext_resource type="PackedScene" uid="uid://bssp7ogpwvyqt" path="res://Scenes/Game/Levels/Grass.tscn" id="4_8wbse"]
 [ext_resource type="PackedScene" uid="uid://b5bo5ty2cq6o4" path="res://Scenes/Game/Levels/PlowedGround.tscn" id="4_jw55p"]
 [ext_resource type="SpriteFrames" uid="uid://2pq31l58h40h" path="res://Data/Game/Items/SeedsSpriteFrames/TestSeed.tres" id="5_psjya"]
 
-[node name="SoilTile" type="Node2D"]
+[node name="SoilTile" type="Node2D" unique_id=1389702730]
 
-[node name="InteractionTile" parent="." node_paths=PackedStringArray("animated_sprite_2d", "plowedNode") instance=ExtResource("1_ci1nt")]
+[node name="InteractionTile" parent="." unique_id=878830858 node_paths=PackedStringArray("animated_sprite_2d", "plowedNode") instance=ExtResource("1_ci1nt")]
 script = ExtResource("2_1l71y")
 animated_sprite_2d = NodePath("../AnimatedSprite2D")
 plowedNode = NodePath("../PlowedGround")
 age = 0
 
-[node name="Grass" parent="." instance=ExtResource("4_8wbse")]
+[node name="Grass" parent="." unique_id=675080589 instance=ExtResource("4_8wbse")]
 starting_age = 10.0
 
-[node name="PlowedGround" parent="." instance=ExtResource("4_jw55p")]
+[node name="PlowedGround" parent="." unique_id=54146352 instance=ExtResource("4_jw55p")]
 visible = false
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=952320399]
 visible = false
 sprite_frames = ExtResource("5_psjya")

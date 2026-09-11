@@ -1,7 +1,7 @@
 extends ItemData
 class_name ItemSeedData
 
-func type() -> Type: return Type.SEED
+func item_type() -> ItemType: return ItemType.SEED
 @export var frames_each_step : Array[SpriteFrames]
 @export var pivot_each_step : Array[Vector2]
 @export var age_each_step : Array[int]

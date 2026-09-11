@@ -1,9 +1,9 @@
 extends Resource
 class_name ItemData
 
-enum Type { NONE, SEED, TOOL, FOOD }
+enum ItemType { NONE, SEED, TOOL, FOOD }
 
-func type() -> Type: return Type.NONE
+func item_type() -> ItemType: return ItemType.NONE
 @export var name : String
 @export var description : String
 @export var inventory_image : Texture2D

@@ -9,7 +9,7 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n5sgy"]
 
-[node name="ItemSlot" type="Control" unique_id=530795740 node_paths=PackedStringArray("background", "button", "item", "item_slot_selected", "count_label", "control_dragged", "item_dragged", "count_label_dragged", "delete_icon_timer")]
+[node name="ItemSlot" type="Control" unique_id=530795740 node_paths=PackedStringArray("background", "draggable_button", "item_texture_rect", "item_slot_selected", "count_label", "control_dragged", "item_dragged", "count_label_dragged", "remove_icon_timer")]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 3
 anchors_preset = 0
@@ -17,14 +17,14 @@ offset_right = 80.0
 offset_bottom = 80.0
 script = ExtResource("1_kgcqt")
 background = NodePath("Background")
-button = NodePath("Button")
-item = NodePath("Item")
+draggable_button = NodePath("ButtonDragged")
+item_texture_rect = NodePath("Item")
 item_slot_selected = NodePath("ItemSlotSelected")
 count_label = NodePath("Label")
-control_dragged = NodePath("Button/ControlDragged")
-item_dragged = NodePath("Button/ControlDragged/ItemDragged")
-count_label_dragged = NodePath("Button/ControlDragged/LabelDragged")
-delete_icon_timer = NodePath("IconTimer")
+control_dragged = NodePath("ButtonDragged/ControlDragged")
+item_dragged = NodePath("ButtonDragged/ControlDragged/ItemDragged")
+count_label_dragged = NodePath("ButtonDragged/ControlDragged/LabelDragged")
+remove_icon_timer = NodePath("IconTimer")
 metadata/_custom_type_script = "uid://biijukdjxhltl"
 
 [node name="Background" type="NinePatchRect" parent="." unique_id=1163772443]
@@ -40,7 +40,7 @@ patch_margin_top = 2
 patch_margin_right = 2
 patch_margin_bottom = 2
 
-[node name="Button" type="Button" parent="." unique_id=340061987]
+[node name="ButtonDragged" type="Button" parent="." unique_id=340061987]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -55,7 +55,7 @@ return_on_end_drag = true
 move_on_top = true
 metadata/_custom_type_script = "uid://cfpihl648qck3"
 
-[node name="ControlDragged" type="Control" parent="Button" unique_id=651531602]
+[node name="ControlDragged" type="Control" parent="ButtonDragged" unique_id=651531602]
 visible = false
 modulate = Color(1, 1, 1, 0.7529412)
 layout_mode = 1
@@ -65,7 +65,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ItemDragged" type="TextureRect" parent="Button/ControlDragged" unique_id=1943992060]
+[node name="ItemDragged" type="TextureRect" parent="ButtonDragged/ControlDragged" unique_id=1943992060]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -75,7 +75,7 @@ grow_vertical = 2
 mouse_filter = 2
 expand_mode = 2
 
-[node name="LabelDragged" type="Label" parent="Button/ControlDragged" unique_id=1852412055]
+[node name="LabelDragged" type="Label" parent="ButtonDragged/ControlDragged" unique_id=1852412055]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
@@ -124,6 +124,6 @@ input_action = 90
 [node name="Icon" parent="IconTimer/Container" parent_id_path=PackedInt32Array(101975831, 2147155079) index="0" unique_id=800291532]
 texture = ExtResource("5_3xx6f")
 
-[connection signal="button_down" from="Button" to="." method="_on_button_down"]
+[connection signal="button_down" from="ButtonDragged" to="." method="_on_button_down"]
 
 [editable path="IconTimer"]

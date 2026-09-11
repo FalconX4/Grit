@@ -1,4 +1,4 @@
 extends ItemData
 class_name ItemFoodData
 
-func type() -> Type: return Type.FOOD
+func item_type() -> ItemType: return ItemType.FOOD

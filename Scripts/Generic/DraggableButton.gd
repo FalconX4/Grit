@@ -13,7 +13,7 @@ signal drag_ended(starting_mouse_position, last_mouse_position)
 
 const move_threshold = 10
 
-
+var can_drag: Callable
 var confirm_drag: Callable
 var wants_drag = false
 var dragging = false
@@ -45,6 +45,8 @@ func _input(event: InputEvent) -> void:
 
 
 func _on_button_down() -> void:
+	if not can_drag.is_null() and not can_drag.call():
+		return
 	wants_drag = true
 	is_mouse_right_drag = Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT)
 	starting_mouse_position = get_global_mouse_position()

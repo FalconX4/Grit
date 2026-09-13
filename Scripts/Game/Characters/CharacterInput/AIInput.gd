@@ -29,9 +29,9 @@ func get_device_action_id(action_id: String) -> String:
 		return InputManager.keyboard_buttons[action_id] if InputManager.keyboard_buttons.has(action_id) else ""
 
 
-func is_action_just_pressed(action_id: String) -> bool:
+func is_action_just_pressed(_action_id: String, event: InputEvent = null) -> bool:
 	return false
 
 
-func get_vector(left: String, right: String, up: String, down: String) -> Vector2:
+func get_vector(_left: String, _right: String, _up: String, _down: String) -> Vector2:
 	return Vector2.ZERO

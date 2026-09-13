@@ -13,6 +13,7 @@ const _default_joypad_buttons: Array[String] = [
 	InputMapNames.GAME_MOVE_LEFT,
 	InputMapNames.GAME_MOVE_RIGHT,
 	InputMapNames.GAME_INTERACT,
+	InputMapNames.GAME_INVENTORY,
 	InputMapNames.GAME_INVENTORY_BAR_0,
 	InputMapNames.GAME_INVENTORY_BAR_1,
 	InputMapNames.GAME_INVENTORY_BAR_2,
@@ -25,6 +26,7 @@ const _default_joypad_buttons: Array[String] = [
 	InputMapNames.GAME_INVENTORY_BAR_9,
 	InputMapNames.GAME_INVENTORY_BAR_LEFT,
 	InputMapNames.GAME_INVENTORY_BAR_RIGHT,
+	InputMapNames.GAME_ITEM_DELETE,
 ]
 
 const SECTION = "Inputs"
@@ -40,12 +42,16 @@ var _joypads: Array[JoypadData] = []
 var _last_input_joypad: bool = false
 var _last_device_type: DeviceTypeMapNames.DeviceType
 var _last_device_id: int = -1
+var _has_mouse: bool = false
+var _last_input_event: InputEvent
 
 func _input(event: InputEvent) -> void:
 	var old_input_joypad = _last_input_joypad
 	if event is InputEventMouseMotion:
+		_has_mouse = true
 		return
 
+	_last_input_event = event
 	_last_device_id = event.device
 	_last_input_joypad = event is InputEventJoypadButton or event is InputEventJoypadMotion
 	
@@ -54,17 +60,18 @@ func _input(event: InputEvent) -> void:
 		for joypad in _joypads:
 			if joypad.device_id == event.device:
 				_last_device_type = joypad.device_type
-	else:
-		_last_device_type = DeviceTypeMapNames.DeviceType.KEYBOARD if event is InputEventKey else DeviceTypeMapNames.DeviceType.MOUSE
+	elif event is InputEventKey:
+		_last_device_type = DeviceTypeMapNames.DeviceType.KEYBOARD
+	elif event is InputEventMouseButton:
+		_last_device_type = DeviceTypeMapNames.DeviceType.MOUSE
+		_has_mouse = true
 
 	if old_input_joypad != _last_input_joypad:
 		last_input_joypad_changed.emit(_last_input_joypad)
 
+
 func _init() -> void:
 	Input.joy_connection_changed.connect(_on_joy_connection_changed)
-
-
-func _ready() -> void:
 	keyboard_buttons = SettingManager.get_setting(SECTION, KEYBOARD_KEY, keyboard_buttons)
 	set_keyboard()
 
@@ -115,6 +122,7 @@ func add_new_joy(device: int) -> void:
 						first = false
 						InputMap.add_action(action_name)
 					InputMap.action_add_event(action_name, event)
+					InputMap.action_set_deadzone(action_name, InputMap.action_get_deadzone(button))
 					joypad.buttons[button] = action_name
 
 
@@ -126,6 +134,7 @@ func set_keyboard() -> void:
 		for event in events:
 			if event is not InputEventJoypadButton and event is not InputEventJoypadMotion:
 				InputMap.action_add_event(action_name, event)
+				InputMap.action_set_deadzone(action_name, InputMap.action_get_deadzone(button))
 				keyboard_buttons[button] = action_name
 
 

@@ -1,7 +1,6 @@
 extends CharacterBody2D
 class_name Character
 
-@onready var character_input: CharacterInput = $CharacterInput
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var input_label: InputLabel = $InputLabel
@@ -11,7 +10,7 @@ class_name Character
 @export var age = 0.0
 @export var speed = 300.0
 
-var input_handler: CharacterInputHandler = CharacterInputHandler.new()
+var input_handler: CharacterInputHandler
 var inventory : Array[ItemDataCount]
 var inventory_bar : Array[ItemDataCount]
 var last_moved_direction : Vector2
@@ -21,18 +20,19 @@ func show_interact_button(show_it: bool): input_label.visible = show_it
 
 func update_input_buttons(): update_input_button(input_label, InputMapNames.InputAction.GAME_INTERACT)
 func update_input_button(label: InputLabel, input_action: InputMapNames.InputAction):
-	label.set_input_action(input_action, character_input)
+	label.set_input_action(input_action, input_handler.character_input)
 
 
 func _ready() -> void:
-	input_handler.input = character_input
+	if Helpers.is_main_scene(self):
+		input_handler = CharacterInputManager.player_input_handlers[0]
 	inventory_bar.append(ItemDataCount.new(DataManager.items_data.items[len(DataManager.items_data.items) - 1], 1))
 	update_input_buttons()
 
 
 func _process(_delta: float) -> void:
 	input_handler._process(_delta)
-	if character_input.was_using_controller != character_input.using_controller:
+	if input_handler.character_input.was_using_controller != input_handler.character_input.using_controller:
 		update_input_buttons()
 
 	if interact_trigger.is_colliding():

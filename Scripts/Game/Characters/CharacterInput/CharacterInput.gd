@@ -1,4 +1,3 @@
-extends Node
 class_name CharacterInput
 
 var was_using_controller : bool
@@ -10,7 +9,7 @@ func get_device_type() -> DeviceTypeMapNames.DeviceType:
 func get_device_action_id(action_id: String) -> String:
 	return action_id
 
-func is_action_just_pressed(_action_id: String) -> bool:
+func is_action_just_pressed(_action_id: String, _event: InputEvent = null) -> bool:
 	return false
 
 func get_vector(_left: String, _right: String, _up: String, _down: String) -> Vector2:

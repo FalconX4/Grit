@@ -80,6 +80,8 @@ enum InputAction {
 	GAME_MOVE_LEFT,
 	GAME_MOVE_RIGHT,
 	GAME_INTERACT,
+	GAME_MENU,
+	GAME_INVENTORY,
 	GAME_INVENTORY_BAR_1,
 	GAME_INVENTORY_BAR_2,
 	GAME_INVENTORY_BAR_3,
@@ -92,8 +94,7 @@ enum InputAction {
 	GAME_INVENTORY_BAR_0,
 	GAME_INVENTORY_BAR_LEFT,
 	GAME_INVENTORY_BAR_RIGHT,
-	GAME_MENU,
-	GAME_DELETE,
+	GAME_ITEM_DELETE,
 
 }
 
@@ -174,6 +175,8 @@ const GAME_MOVE_DOWN: StringName = &"Game_Move_Down"
 const GAME_MOVE_LEFT: StringName = &"Game_Move_Left"
 const GAME_MOVE_RIGHT: StringName = &"Game_Move_Right"
 const GAME_INTERACT: StringName = &"Game_Interact"
+const GAME_MENU: StringName = &"Game_Menu"
+const GAME_INVENTORY: StringName = &"Game_Inventory"
 const GAME_INVENTORY_BAR_1: StringName = &"Game_Inventory_Bar_1"
 const GAME_INVENTORY_BAR_2: StringName = &"Game_Inventory_Bar_2"
 const GAME_INVENTORY_BAR_3: StringName = &"Game_Inventory_Bar_3"
@@ -186,8 +189,7 @@ const GAME_INVENTORY_BAR_9: StringName = &"Game_Inventory_Bar_9"
 const GAME_INVENTORY_BAR_0: StringName = &"Game_Inventory_Bar_0"
 const GAME_INVENTORY_BAR_LEFT: StringName = &"Game_Inventory_Bar_Left"
 const GAME_INVENTORY_BAR_RIGHT: StringName = &"Game_Inventory_Bar_Right"
-const GAME_MENU: StringName = &"Game_Menu"
-const GAME_DELETE: StringName = &"Game_Delete"
+const GAME_ITEM_DELETE: StringName = &"Game_Item_Delete"
 
 
 # Game specific
@@ -273,6 +275,8 @@ static func get_action_string(action: InputAction) -> StringName:
 		InputAction.GAME_MOVE_LEFT: return GAME_MOVE_LEFT
 		InputAction.GAME_MOVE_RIGHT: return GAME_MOVE_RIGHT
 		InputAction.GAME_INTERACT: return GAME_INTERACT
+		InputAction.GAME_MENU: return GAME_MENU
+		InputAction.GAME_INVENTORY: return GAME_INVENTORY
 		InputAction.GAME_INVENTORY_BAR_1: return GAME_INVENTORY_BAR_1
 		InputAction.GAME_INVENTORY_BAR_2: return GAME_INVENTORY_BAR_2
 		InputAction.GAME_INVENTORY_BAR_3: return GAME_INVENTORY_BAR_3
@@ -285,8 +289,7 @@ static func get_action_string(action: InputAction) -> StringName:
 		InputAction.GAME_INVENTORY_BAR_0: return GAME_INVENTORY_BAR_0
 		InputAction.GAME_INVENTORY_BAR_LEFT: return GAME_INVENTORY_BAR_LEFT
 		InputAction.GAME_INVENTORY_BAR_RIGHT: return GAME_INVENTORY_BAR_RIGHT
-		InputAction.GAME_MENU: return GAME_MENU
-		InputAction.GAME_DELETE: return GAME_DELETE
+		InputAction.GAME_ITEM_DELETE: return GAME_ITEM_DELETE
 
 		_:
 			push_error("Unknown InputAction enum value: %d" % action)
@@ -371,6 +374,8 @@ static func get_action_input(action: StringName) -> InputAction:
 		GAME_MOVE_LEFT: return InputAction.GAME_MOVE_LEFT
 		GAME_MOVE_RIGHT: return InputAction.GAME_MOVE_RIGHT
 		GAME_INTERACT: return InputAction.GAME_INTERACT
+		GAME_MENU: return InputAction.GAME_MENU
+		GAME_INVENTORY: return InputAction.GAME_INVENTORY
 		GAME_INVENTORY_BAR_1: return InputAction.GAME_INVENTORY_BAR_1
 		GAME_INVENTORY_BAR_2: return InputAction.GAME_INVENTORY_BAR_2
 		GAME_INVENTORY_BAR_3: return InputAction.GAME_INVENTORY_BAR_3
@@ -383,8 +388,7 @@ static func get_action_input(action: StringName) -> InputAction:
 		GAME_INVENTORY_BAR_0: return InputAction.GAME_INVENTORY_BAR_0
 		GAME_INVENTORY_BAR_LEFT: return InputAction.GAME_INVENTORY_BAR_LEFT
 		GAME_INVENTORY_BAR_RIGHT: return InputAction.GAME_INVENTORY_BAR_RIGHT
-		GAME_MENU: return InputAction.GAME_MENU
-		GAME_DELETE: return InputAction.GAME_DELETE
+		GAME_ITEM_DELETE: return InputAction.GAME_ITEM_DELETE
 
 		_:
 			push_error("Unknown Action String value: %s" % action)
@@ -469,6 +473,8 @@ static func get_all_actions() -> Array[StringName]:
 		GAME_MOVE_LEFT,
 		GAME_MOVE_RIGHT,
 		GAME_INTERACT,
+		GAME_MENU,
+		GAME_INVENTORY,
 		GAME_INVENTORY_BAR_1,
 		GAME_INVENTORY_BAR_2,
 		GAME_INVENTORY_BAR_3,
@@ -481,7 +487,6 @@ static func get_all_actions() -> Array[StringName]:
 		GAME_INVENTORY_BAR_0,
 		GAME_INVENTORY_BAR_LEFT,
 		GAME_INVENTORY_BAR_RIGHT,
-		GAME_MENU,
-		GAME_DELETE,
+		GAME_ITEM_DELETE,
 
 	]

@@ -204,7 +204,7 @@ layout_mode = 1
 
 [node name="IconTimer" parent="Panel" unique_id=101975831 instance=ExtResource("7_07bpr")]
 layout_mode = 1
-input_action = 90
+input_action = 91
 
 [node name="Icon" parent="Panel/IconTimer/Container" parent_id_path=PackedInt32Array(101975831, 2147155079) index="0" unique_id=800291532]
 texture = ExtResource("8_reado")

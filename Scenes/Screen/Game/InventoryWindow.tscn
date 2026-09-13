@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://cyqe3smtadjpw"]
+
+[ext_resource type="Texture2D" uid="uid://cwk6eho5o17ts" path="res://Assets/Screen/Game/ItemSlot.png" id="1_60bf2"]
+[ext_resource type="Script" uid="uid://hnjskkakct3e" path="res://Scripts/Screen/Game/InventoryWindow.gd" id="1_xeyvr"]
+[ext_resource type="PackedScene" uid="uid://msro0wagtnhs" path="res://Scenes/Screen/Game/ItemSlotGrid.tscn" id="2_xeyvr"]
+[ext_resource type="PackedScene" uid="uid://b3cry4fmm1ofl" path="res://Scenes/Screen/Game/WindowUI.tscn" id="3_j1uk1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_073cr"]
+font_size = 20
+
+[node name="InventoryWindow" type="Control" unique_id=298057412 node_paths=PackedStringArray("grid")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xeyvr")
+grid = NodePath("Control/ItemSlotGrid")
+
+[node name="Control" type="Control" parent="." unique_id=2089433493]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Control" unique_id=1526418908]
+modulate = Color(1, 1, 1, 0.7529412)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_60bf2")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="ItemSlotGrid" parent="Control" unique_id=1421307787 instance=ExtResource("2_xeyvr")]
+layout_mode = 1
+anchors_preset = -1
+offset_top = 15.0
+offset_bottom = 15.0
+
+[node name="WindowUi" parent="." unique_id=806224266 node_paths=PackedStringArray("moved_control") instance=ExtResource("3_j1uk1")]
+layout_mode = 1
+anchors_preset = 10
+anchor_bottom = 0.0
+offset_bottom = 30.0
+grow_vertical = 1
+moved_control = NodePath("../Control")
+
+[node name="Label" type="Label" parent="WindowUi" unique_id=1576780924]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Inventory"
+label_settings = SubResource("LabelSettings_073cr")
+horizontal_alignment = 1
+vertical_alignment = 1

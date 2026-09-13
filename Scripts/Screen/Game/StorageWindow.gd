@@ -13,4 +13,5 @@ func set_random_items() -> void:
 
 
 func set_enable(enable: bool) -> void:
+	Helpers.node_process(self, enable)
 	grid.set_enable(enable)

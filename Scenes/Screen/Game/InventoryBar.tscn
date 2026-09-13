@@ -3,9 +3,10 @@
 [ext_resource type="Script" uid="uid://45550mo7t762" path="res://Scripts/Screen/Game/InventoryBar.gd" id="1_1750b"]
 [ext_resource type="PackedScene" uid="uid://b3vxkcpskg46u" path="res://Scenes/Screen/Game/InventoryBarSlot.tscn" id="2_wvlx8"]
 [ext_resource type="PackedScene" uid="uid://msro0wagtnhs" path="res://Scenes/Screen/Game/ItemSlotGrid.tscn" id="3_mm4n7"]
+[ext_resource type="Script" uid="uid://mx08ewv6sgj4" path="res://Scripts/Screen/Game/InventoryBarSlotGrid.gd" id="3_somoj"]
 [ext_resource type="PackedScene" uid="uid://bdx8725jh8kyo" path="res://Scenes/Generic/InputLabel.tscn" id="3_wvlx8"]
 
-[node name="InventoryBar" type="Control" unique_id=635438718 node_paths=PackedStringArray("item_slot_grid")]
+[node name="InventoryBar" type="Control" unique_id=635438718 node_paths=PackedStringArray("grid")]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -18,9 +19,9 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 script = ExtResource("1_1750b")
-item_slot_grid = NodePath("ItemSlotGrid")
+grid = NodePath("InventorySlotGrid")
 
-[node name="ItemSlotGrid" parent="." unique_id=1421307787 instance=ExtResource("3_mm4n7")]
+[node name="InventorySlotGrid" parent="." unique_id=1421307787 instance=ExtResource("3_mm4n7")]
 layout_mode = 0
 anchors_preset = 0
 anchor_left = 0.0
@@ -29,6 +30,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
+script = ExtResource("3_somoj")
 item_slot = ExtResource("2_wvlx8")
 rows = 1
 
@@ -40,7 +42,7 @@ anchor_right = 0.0
 offset_left = -20.0
 offset_right = -37.0
 text = "L"
-input_action = 87
+input_action = 89
 
 [node name="KeyboardInputLabelRight" parent="." unique_id=1661678840 instance=ExtResource("3_wvlx8")]
 layout_mode = 1
@@ -50,4 +52,4 @@ anchor_right = 1.0
 offset_left = 20.0
 offset_right = 37.0
 text = "R"
-input_action = 88
+input_action = 90

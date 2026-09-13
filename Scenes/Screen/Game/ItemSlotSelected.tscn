@@ -2,8 +2,9 @@
 
 [ext_resource type="Script" uid="uid://bau2jg5bcmv41" path="res://Scripts/Screen/Game/ItemSlotSelected.gd" id="1_1j3dp"]
 [ext_resource type="Texture2D" uid="uid://ce2iyny0yf4bi" path="res://Assets/Screen/Game/ItemSlotSelected.png" id="2_i12r2"]
+[ext_resource type="PackedScene" uid="uid://c3dh0ffl8t1fl" path="res://Scenes/Screen/Game/ItemSlotSelectedIcon.tscn" id="3_ts1t6"]
 
-[node name="ItemSlotSelected" type="Control" unique_id=685989714 node_paths=PackedStringArray("frame")]
+[node name="ItemSlotSelected" type="Control" unique_id=685989714 node_paths=PackedStringArray("frame", "cursor_container")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,7 +13,9 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_1j3dp")
+cursor_scene = ExtResource("3_ts1t6")
 frame = NodePath("NinePatchRect")
+cursor_container = NodePath("HBoxContainer")
 metadata/_custom_type_script = "uid://bau2jg5bcmv41"
 
 [node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=982480532]
@@ -33,5 +36,5 @@ patch_margin_bottom = 3
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1343922720]
 visible = false
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 25.0
+offset_bottom = 25.0

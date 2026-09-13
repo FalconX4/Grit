@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c3dh0ffl8t1fl"]
+
+[ext_resource type="Texture2D" uid="uid://b8s0ckb6kp2un" path="res://Assets/Screen/Game/SmallPlayerIcon.png" id="1_w6xi2"]
+
+[node name="ItemSlotSelectedIcon" type="TextureRect" unique_id=1509819377]
+texture = ExtResource("1_w6xi2")

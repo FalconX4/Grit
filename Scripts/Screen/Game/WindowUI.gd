@@ -20,7 +20,7 @@ func _after_ready() -> void:
 	if resize_to_control:
 		size = moved_control.size
 
-func _on_button_drag_started() -> void:
+func _on_button_drag_started(_is_right_mouse_drag: bool) -> void:
 	start_global_position = global_position
 
 func _on_button_drag_moved(start_mouse_position: Vector2, last_mouse_position: Vector2) -> void:

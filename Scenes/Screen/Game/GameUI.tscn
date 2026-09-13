@@ -4,9 +4,10 @@
 [ext_resource type="Script" uid="uid://ymp5og7bdj4e" path="res://Scripts/Screen/Game/GameUI.gd" id="1_fu8e7"]
 [ext_resource type="PackedScene" uid="uid://b3cry4fmm1ofl" path="res://Scenes/Screen/Game/WindowUI.tscn" id="2_6quvs"]
 [ext_resource type="PackedScene" uid="uid://cnrum6g3fyi1x" path="res://Scenes/Screen/Buttons/InGameMenuButton.tscn" id="3_q2tdx"]
+[ext_resource type="PackedScene" uid="uid://cyqe3smtadjpw" path="res://Scenes/Screen/Game/InventoryWindow.tscn" id="4_5mek4"]
 [ext_resource type="PackedScene" uid="uid://cyocqb4crmior" path="res://Scenes/Screen/Game/StorageWindow.tscn" id="4_ye3js"]
 
-[node name="GameUi" type="Control" unique_id=1312754734 node_paths=PackedStringArray("inventory_bar", "storage")]
+[node name="GameUi" type="Control" unique_id=1312754734 node_paths=PackedStringArray("inventory_bar", "inventory", "storage")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,18 +16,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fu8e7")
 inventory_bar = NodePath("InventoryBar")
+inventory = NodePath("InventoryWindow")
 storage = NodePath("StorageWindow")
-
-[node name="InventoryBar" parent="." unique_id=489721073 instance=ExtResource("1_d7bsd")]
-layout_mode = 1
-anchors_preset = 7
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 0.0
-offset_top = -80.0
-offset_right = 0.0
-offset_bottom = -80.0
-grow_vertical = 0
 
 [node name="InGameMenuButton" parent="." unique_id=2045433349 instance=ExtResource("3_q2tdx")]
 layout_mode = 1
@@ -41,6 +32,30 @@ offset_right = -50.0
 offset_bottom = 150.0
 grow_horizontal = 0
 grow_vertical = 1
+
+[node name="InventoryBar" parent="." unique_id=489721073 instance=ExtResource("1_d7bsd")]
+layout_mode = 1
+anchors_preset = 7
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = -80.0
+offset_right = 0.0
+offset_bottom = -80.0
+grow_vertical = 0
+
+[node name="InventoryWindow" parent="." unique_id=298057412 instance=ExtResource("4_5mek4")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -440.0
+offset_top = -250.0
+offset_right = 440.0
+offset_bottom = 250.0
 
 [node name="StorageWindow" parent="." unique_id=1010910486 instance=ExtResource("4_ye3js")]
 visible = false

@@ -66,8 +66,8 @@ func move_half_item_to(to: ItemSlot) -> bool:
 		to.set_item_data_count(_item_data_count.item, 0)
 	if to._item_data_count.item.name == _item_data_count.item.name:
 		transfer_count_to(to, floori(_item_data_count.count * 0.5))
-		item_slot_selected.remove()
-		to.item_slot_selected.add()
+		item_slot_selected.remove_character_input(CharacterInputManager._last_input_handler)
+		to.item_slot_selected.add_character_input(CharacterInputManager._last_input_handler)
 		return true
 	return false
 
@@ -77,8 +77,8 @@ func move_all_item_to(to: ItemSlot) -> void:
 		transfer_count_to(to)
 	else:
 		swap_item(to)
-	item_slot_selected.remove()
-	to.item_slot_selected.add()
+	item_slot_selected.remove_character_input(CharacterInputManager._last_input_handler)
+	to.item_slot_selected.add_character_input(CharacterInputManager._last_input_handler)
 
 
 func _ready() -> void:
@@ -98,13 +98,14 @@ func _process(_delta: float) -> void:
 
 
 func _on_button_down() -> void:
-	item_slot_selected.add()
+	item_slot_selected.add_character_input(CharacterInputManager._last_input_handler)
 	click.emit(self)
 
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.is_pressed() and not get_global_rect().has_point(event.position):
-		item_slot_selected.remove()
+	if item_slot_selected.is_shown():
+		if event is InputEventMouseButton and event.is_pressed() and not get_global_rect().has_point(event.position):
+			item_slot_selected.remove_character_input(CharacterInputManager._last_input_handler)
 
 
 func _drag_started(is_mouse_right_drag: bool) -> void:

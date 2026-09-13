@@ -6,14 +6,26 @@ class_name ItemSlotGrid
 
 signal item_slot_clicked(slot_index)
 signal item_slot_drag_ended_failed(sender: ItemSlotGrid, last_mouse_position: Vector2, slot_dragged: ItemSlot, is_mouse_right_drag: bool)
-signal item_slot_drag_ended_sucess(from: ItemSlot, to: ItemSlot)
+signal item_slot_drag_ended_success(from: ItemSlot, to: ItemSlot)
 
 var slots : Array[ItemSlot]
+var character_input_handler_selected_index: Dictionary[CharacterInputHandler, int]
 
 func _ready() -> void:
 	Pool.create(item_slot, rows * columns)
 	ItemSlotGridManager.subscribe(self)
-	var is_main_scene = Helpers.is_main_scene(self)
+	_on_open()
+	if GameSessionData.player_count_on_this_computer == 1:
+		var input_handler = CharacterInputManager.player_input_handlers[0]
+		character_input_handler_selected_index[input_handler] = -1
+		if input_handler.input.using_controller:
+			slots[0].item_slot_selected.add_character_input(input_handler)
+	if Helpers.is_main_scene(self):
+		for slot in slots:
+			slot.set_random_item()
+
+
+func _on_open() -> void:
 	for i in rows:
 		for j in columns:
 			var slot = Pool.take(item_slot, self) as ItemSlot
@@ -21,31 +33,63 @@ func _ready() -> void:
 			slot.click.connect(on_item_slot_clicked)
 			slot.drag_ended.connect(on_item_slot_drag_ended)
 			slots.append(slot)
-			if is_main_scene:
-				slot.set_random_item()
 
 
-func _input(event: InputEvent) -> void:
-	if event is InputEventKey and event.is_released():
-		if event.keycode == KEY_S:
-			sort()
-		elif event.keycode == KEY_P:
-			stack()
-
-
-func set_enable(enable: bool) -> void:
-	Helpers.node_process(self, enable)
+func _on_close() -> void:
 	for slot in slots:
-		Helpers.node_process(slot, enable)
+		slot.click.disconnect(on_item_slot_clicked)
+		slot.drag_ended.disconnect(on_item_slot_drag_ended)
+		Pool.release(slot)
+	slots.clear()
 
 
 func _exit_tree() -> void:
 	ItemSlotGridManager.unsubscribe(self)
-	for slot in slots:
-		slot.queue_free()
+	_on_close()
+
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseMotion:
+		return
+	for character in character_input_handler_selected_index.keys():
+		if character.is_my_event(event):
+			var old_index = character_input_handler_selected_index[character]
+			var new_index = get_new_index_from_input(old_index, event, character.input)
+			if new_index != old_index:
+				if old_index == -1:
+					character_input_handler_selected_index[character] = 0
+					slots[0].item_slot_selected.add_character_input(character)
+				else:
+					slots[old_index].item_slot_selected.remove_character_input(character)
+					slots[new_index].item_slot_selected.add_character_input(character)
+					character_input_handler_selected_index[character] = new_index
+
+
+func get_new_index_from_input(last_index: int, event: InputEvent, character_input: CharacterInput = null) -> int:
+	if character_input.is_action_just_pressed(InputMapNames.GAME_MOVE_LEFT, event):
+		return last_index + columns - 1 if last_index == 0 or (last_index - 1) % columns == columns - 1 else last_index - 1
+	if character_input.is_action_just_pressed(InputMapNames.GAME_MOVE_RIGHT, event):
+		return last_index - columns + 1 if (last_index + 1) % columns == 0 else last_index + 1
+	if character_input.is_action_just_pressed(InputMapNames.GAME_MOVE_UP, event):
+		@warning_ignore("integer_division")
+		return last_index + (rows - 1) * columns if (last_index / columns) == 0 else last_index - columns
+	if character_input.is_action_just_pressed(InputMapNames.GAME_MOVE_DOWN, event):
+		@warning_ignore("integer_division")
+		return last_index - (rows - 1) * columns if last_index / columns >= rows - 1 else last_index + columns
+	return last_index
+
+
+func set_enable(enable: bool) -> void:
+	Helpers.node_process(self, enable)
+	if enable:
+		if slots.is_empty():
+			_on_open()
+	else:
+		_on_close()
 
 
 func on_item_slot_clicked(_item_slot: ItemSlot) -> void:
+	character_input_handler_selected_index[CharacterInputManager._last_input_handler] = _item_slot._index
 	item_slot_clicked.emit(_item_slot)
 
 
@@ -54,7 +98,8 @@ func on_item_slot_drag_ended(last_mouse_position: Vector2, slot_dragged: ItemSlo
 	if slot_dragged_into == null:
 		item_slot_drag_ended_failed.emit(self, last_mouse_position, slot_dragged, is_mouse_right_drag)
 	else:
-		item_slot_drag_ended_sucess.emit(slot_dragged, slot_dragged_into)
+		character_input_handler_selected_index[CharacterInputManager._last_input_handler] = slot_dragged_into._index
+		item_slot_drag_ended_success.emit(slot_dragged, slot_dragged_into)
 
 
 func on_item_slot_dragged(last_mouse_position: Vector2, slot_dragged: ItemSlot, is_mouse_right_drag: bool) -> ItemSlot:

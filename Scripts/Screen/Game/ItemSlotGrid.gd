@@ -54,8 +54,13 @@ func _input(event: InputEvent) -> void:
 	for character in character_input_handler_selected_index.keys():
 		if character.is_my_event(event):
 			var old_index = character_input_handler_selected_index[character]
-			var new_index = get_new_index_from_input(old_index, event, character.input)
-			if new_index != old_index:
+			var check_index = old_index
+			if old_index > -1 and slots[old_index]._item_slot_dragged_to != null:
+				check_index = slots[old_index]._item_slot_dragged_to._index
+			var new_index = get_new_index_from_input(check_index, event, character.input)
+			if slots[old_index]._item_slot_dragged_to != null:
+				slots[old_index].move_input_drag(slots[new_index])
+			elif new_index != old_index:
 				if old_index == -1:
 					character_input_handler_selected_index[character] = 0
 					slots[0].item_slot_selected.add_character_input(character)
@@ -94,7 +99,7 @@ func on_item_slot_clicked(_item_slot: ItemSlot) -> void:
 
 
 func on_item_slot_drag_ended(last_mouse_position: Vector2, slot_dragged: ItemSlot, is_mouse_right_drag: bool) -> void:
-	var slot_dragged_into = on_item_slot_dragged(last_mouse_position, slot_dragged, is_mouse_right_drag)
+	var slot_dragged_into = on_item_slot_dragged(last_mouse_position, slot_dragged)
 	if slot_dragged_into == null:
 		item_slot_drag_ended_failed.emit(self, last_mouse_position, slot_dragged, is_mouse_right_drag)
 	else:
@@ -102,16 +107,10 @@ func on_item_slot_drag_ended(last_mouse_position: Vector2, slot_dragged: ItemSlo
 		item_slot_drag_ended_success.emit(slot_dragged, slot_dragged_into)
 
 
-func on_item_slot_dragged(last_mouse_position: Vector2, slot_dragged: ItemSlot, is_mouse_right_drag: bool) -> ItemSlot:
+func on_item_slot_dragged(last_mouse_position: Vector2, slot_dragged: ItemSlot) -> ItemSlot:
 	for i in len(slots):
 		if slots[i] != slot_dragged and slots[i].get_global_rect().has_point(last_mouse_position):
-			var has_moved = !is_mouse_right_drag
-			if is_mouse_right_drag:
-				has_moved = slot_dragged.move_half_item_to(slots[i])
-			else:
-				slot_dragged.move_all_item_to(slots[i])
-
-			if has_moved:
+			if slot_dragged.move_item_to(slots[i]):
 				return slots[i]
 			break
 	return null

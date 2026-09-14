@@ -8,6 +8,8 @@ class JoypadData:
 	var buttons: Dictionary[String, String]
 
 const _default_joypad_buttons: Array[String] = [
+	InputMapNames.UI_ACCEPT,
+	InputMapNames.UI_CANCEL,
 	InputMapNames.GAME_MOVE_UP,
 	InputMapNames.GAME_MOVE_DOWN,
 	InputMapNames.GAME_MOVE_LEFT,
@@ -27,6 +29,7 @@ const _default_joypad_buttons: Array[String] = [
 	InputMapNames.GAME_INVENTORY_BAR_LEFT,
 	InputMapNames.GAME_INVENTORY_BAR_RIGHT,
 	InputMapNames.GAME_ITEM_DELETE,
+	InputMapNames.GAME_ITEM_HALF,
 ]
 
 const SECTION = "Inputs"

@@ -21,10 +21,13 @@ func add_character_input(new_input_handler: CharacterInputHandler) -> void:
 			character_input_handlers[new_input_handler].texture = new_input_handler.small_icon_texture
 		character_input_handlers[new_input_handler].visible = true
 		cursor_container.visible = true
+	else:
+		character_input_handlers[new_input_handler] = null
 
 func remove_character_input(new_input_handler: CharacterInputHandler) -> void:
 	if GameSessionData.player_count_on_this_computer == 1:
 		frame.visible = false
+		character_input_handlers.erase(new_input_handler)
 	else:
 		for handle in character_input_handlers:
 			if handle == new_input_handler:

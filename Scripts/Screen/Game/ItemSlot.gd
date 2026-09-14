@@ -3,6 +3,7 @@ class_name ItemSlot
 
 @export var background: NinePatchRect
 @export var draggable_button: DraggableButton
+@export var right_click_menu_button: ItemSlotRightClickMenu
 @export var item_texture_rect: TextureRect
 @export var item_slot_selected: ItemSlotSelected
 @export var count_label: Label
@@ -10,11 +11,15 @@ class_name ItemSlot
 @export var control_dragged: Control
 @export var item_dragged: TextureRect
 @export var count_label_dragged: Label
+@export var input_dragged_offset: Vector2 = Vector2(10, 10)
 
 @export var remove_icon_timer: IconTimer
 
 var _item_data_count = ItemDataCount.new(null, 0)
 var _index = 0
+var _item_slot_dragged_to: ItemSlot
+var _item_count_dragged: int
+
 signal click(item_slot: ItemSlot)
 signal drag_ended(last_mouse_position: Vector2, item_slot: ItemSlot, is_mouse_right_drag: bool)
 
@@ -61,29 +66,73 @@ func empty_item() -> void:
 	_item_data_count.empty()
 
 
-func move_half_item_to(to: ItemSlot) -> bool:
+func move_item_to(to: ItemSlot) -> bool:
 	if not to.has_item():
 		to.set_item_data_count(_item_data_count.item, 0)
-	if to._item_data_count.item.name == _item_data_count.item.name:
-		transfer_count_to(to, floori(_item_data_count.count * 0.5))
+	var moved = _item_data_count.count == _item_count_dragged or is_same_item(to)
+	if is_same_item(to):
+		transfer_count_to(to, _item_count_dragged)
+	elif _item_data_count.count == _item_count_dragged:
+		swap_item(to)
+	if moved:
 		item_slot_selected.remove_character_input(CharacterInputManager._last_input_handler)
 		to.item_slot_selected.add_character_input(CharacterInputManager._last_input_handler)
-		return true
 	return false
 
 
-func move_all_item_to(to: ItemSlot) -> void:
-	if to.has_item() and is_same_item(to):
-		transfer_count_to(to)
+func start_input_drag(is_mouse_right_click: bool) -> void:
+	draggable_button.prepare_dragging(false)
+	draggable_button.start_dragging(global_position + input_dragged_offset, is_mouse_right_click)
+	draggable_button.toggle_mode = true
+	draggable_button.button_pressed = true
+	_item_slot_dragged_to = self
+
+
+func move_input_drag(item_slot: ItemSlot) -> void:
+	_item_slot_dragged_to = item_slot
+	draggable_button.global_position = item_slot.global_position + input_dragged_offset
+
+
+func accept_input_drag() -> void:
+	stop_input_drag(_item_slot_dragged_to.global_position)
+
+
+func cancel_input_drag() -> void:
+	stop_input_drag(global_position)
+
+
+func stop_input_drag(_new_global_position: Vector2) -> void:
+	draggable_button.stop_dragging(global_position, _new_global_position)
+	reset_draggable_button()
+
+
+func reset_draggable_button() -> void:
+	draggable_button.toggle_mode = false
+	draggable_button.button_pressed = false
+	_item_slot_dragged_to = null
+
+
+func want_stop_drag() -> bool:
+	return not draggable_button.dragging or (InputManager._last_input_event as InputEventMouseButton).button_index == MouseButton.MOUSE_BUTTON_LEFT
+
+
+func half_dragged_count() -> void:
+	_item_count_dragged = int(_item_count_dragged * 0.5) if _item_count_dragged > 1 else 1
+	count_label_dragged.text = str(_item_count_dragged)
+
+
+func _take_half() -> void:
+	if InputManager._last_input_event is InputEventMouse:
+		draggable_button.prepare_dragging(true)
+		draggable_button.start_dragging(global_position + get_global_mouse_position() - draggable_button.starting_mouse_position, true)
 	else:
-		swap_item(to)
-	item_slot_selected.remove_character_input(CharacterInputManager._last_input_handler)
-	to.item_slot_selected.add_character_input(CharacterInputManager._last_input_handler)
+		start_input_drag(true)
 
 
 func _ready() -> void:
 	remove_icon_timer.timeout.connect(empty_item)
 	draggable_button.can_drag = has_item
+	draggable_button.can_stop_drag = want_stop_drag
 	draggable_button.drag_started.connect(_drag_started)
 	draggable_button.drag_ended.connect(_drag_ended)
 	if Helpers.is_main_scene(self):
@@ -94,7 +143,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	item_texture_rect.texture = _item_data_count.item.inventory_image if _item_data_count.has_item() else null
 	count_label.text = str(_item_data_count.count) if _item_data_count.has_item() else ""
-	remove_icon_timer.set_process_input(_item_data_count.has_item() and item_slot_selected.is_shown())
+	Helpers.node_process(remove_icon_timer, not draggable_button.dragging and _item_data_count.has_item() and item_slot_selected.is_shown())
 
 
 func _on_button_down() -> void:
@@ -103,22 +152,54 @@ func _on_button_down() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if item_slot_selected.is_shown():
-		if event is InputEventMouseButton and event.is_pressed() and not get_global_rect().has_point(event.position):
+	if not item_slot_selected.is_shown():
+		return
+	for input_handler in item_slot_selected.character_input_handlers:
+		if not input_handler.is_my_event(event):
+			continue
+		var wants_drag = input_handler.input.is_action_just_pressed(InputMapNames.UI_ACCEPT, event)
+		if wants_drag or input_handler.input.is_action_just_pressed(InputMapNames.GAME_ITEM_HALF, event):
+			if draggable_button.dragging:
+				if _item_slot_dragged_to != null:
+					if not wants_drag:
+						half_dragged_count()
+					else:
+						accept_input_drag()
+						accept_event()
+			else:
+				start_input_drag(not wants_drag)
+		elif input_handler.input.is_action_just_pressed(InputMapNames.UI_CANCEL, event):
+			if _item_slot_dragged_to != null:
+				cancel_input_drag()
+		elif input_handler.input.is_action_just_pressed(InputMapNames.GAME_INVENTORY):
+			right_click_menu_button.show_popup()
+	if event is InputEventMouseButton and event.is_pressed():
+		if not draggable_button.get_global_rect().has_point(event.position):
+			if draggable_button.dragging:
+				cancel_input_drag()
 			item_slot_selected.remove_character_input(CharacterInputManager._last_input_handler)
+		elif draggable_button.dragging:
+			if _item_slot_dragged_to != null:
+				reset_draggable_button()
+				draggable_button.wants_drag = true
+				draggable_button.starting_mouse_position = (event as InputEventMouseButton).position - input_dragged_offset
+			if event.button_index == MouseButton.MOUSE_BUTTON_RIGHT:
+				half_dragged_count()
 
 
 func _drag_started(is_mouse_right_drag: bool) -> void:
 	if _item_data_count.has_item():
+		_item_count_dragged = _item_data_count.count
+		if is_mouse_right_drag and _item_count_dragged > 1:
+			_item_count_dragged = int(_item_data_count.count * 0.5)
+		right_click_menu_button.disabled = true
 		control_dragged.visible = true
 		item_dragged.texture = _item_data_count.item.inventory_image
-		if is_mouse_right_drag:
-			count_label_dragged.text = str(floori(_item_data_count.count * 0.5))
-		else:
-			count_label_dragged.text = str(_item_data_count.count)
+		count_label_dragged.text = str(_item_count_dragged)
 
 
 func _drag_ended(_start_mouse_position: Vector2, last_mouse_position: Vector2) -> void:
+	right_click_menu_button.disabled = false
 	control_dragged.visible = false
 	if not get_global_rect().has_point(last_mouse_position):
 		drag_ended.emit(last_mouse_position, self, draggable_button.is_mouse_right_drag)

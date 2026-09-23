@@ -15,6 +15,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_fkbmb")
 grid = NodePath("Control/ItemSlotGrid")
 
@@ -44,7 +45,32 @@ patch_margin_bottom = 2
 layout_mode = 1
 offset_top = 15.0
 offset_bottom = 15.0
-rows = null
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control" unique_id=731602750]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Sort" type="Button" parent="Control/HBoxContainer" unique_id=841960382]
+layout_mode = 2
+text = "Sort"
+
+[node name="Stack" type="Button" parent="Control/HBoxContainer" unique_id=1919640667]
+layout_mode = 2
+text = "Stack"
+
+[node name="Take All" type="Button" parent="Control/HBoxContainer" unique_id=1829910094]
+layout_mode = 2
+text = "Take All"
 
 [node name="WindowUi" parent="." unique_id=806224266 node_paths=PackedStringArray("moved_control") instance=ExtResource("4_e85fu")]
 layout_mode = 1
@@ -65,3 +91,7 @@ text = "Storage"
 label_settings = SubResource("LabelSettings_1kksg")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="pressed" from="Control/HBoxContainer/Sort" to="Control/ItemSlotGrid" method="sort"]
+[connection signal="pressed" from="Control/HBoxContainer/Stack" to="Control/ItemSlotGrid" method="stack"]
+[connection signal="pressed" from="Control/HBoxContainer/Take All" to="." method="_take_all"]

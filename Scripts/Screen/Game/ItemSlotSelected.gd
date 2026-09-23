@@ -4,37 +4,37 @@ class_name ItemSlotSelected
 @export var cursor_scene: PackedScene
 @export var frame: NinePatchRect
 @export var cursor_container: HBoxContainer
-var character_input_handlers: Dictionary[CharacterInputHandler, TextureRect]
+var characters: Dictionary[Character, TextureRect]
 
 func is_shown() -> bool:
 	return frame.visible
 
-func add_character_input(new_input_handler: CharacterInputHandler) -> void:
-	for handle in character_input_handlers:
-		if handle == new_input_handler:
+func add_character(new_character: Character) -> void:
+	for handle in characters:
+		if handle == new_character:
 			return
 	frame.visible = true
 	if GameSessionData.player_count_on_this_computer > 1:
 		var cursor = Pool.take(cursor_scene, cursor_container) as TextureRect
-		character_input_handlers[new_input_handler] = cursor
-		if new_input_handler.small_icon_texture != null:
-			character_input_handlers[new_input_handler].texture = new_input_handler.small_icon_texture
-		character_input_handlers[new_input_handler].visible = true
+		characters[new_character] = cursor
+		if new_character.small_icon_texture != null:
+			characters[new_character].texture = new_character.small_icon_texture
+		characters[new_character].visible = true
 		cursor_container.visible = true
 	else:
-		character_input_handlers[new_input_handler] = null
+		characters[new_character] = null
 
-func remove_character_input(new_input_handler: CharacterInputHandler) -> void:
+func remove_character(new_character: Character) -> void:
 	if GameSessionData.player_count_on_this_computer == 1:
 		frame.visible = false
-		character_input_handlers.erase(new_input_handler)
+		characters.erase(new_character)
 	else:
-		for handle in character_input_handlers:
-			if handle == new_input_handler:
-				Pool.release(character_input_handlers[new_input_handler])
-				character_input_handlers[new_input_handler].visible = false
-				character_input_handlers.erase(new_input_handler)
-				if len(character_input_handlers) == 0:
+		for handle in characters:
+			if handle == new_character:
+				Pool.release(characters[new_character])
+				characters[new_character].visible = false
+				characters.erase(new_character)
+				if len(characters) == 0:
 					frame.visible = false
 					cursor_container.visible = false
 				break

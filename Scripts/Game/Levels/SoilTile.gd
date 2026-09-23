@@ -7,21 +7,21 @@ class_name SoilTile
 var is_empty = true
 var item : ItemSeedData = null
 
-func is_interactable(character: Character) -> bool:
-	var selected_index = character.input_handler.inventory_bar_selected_index
+func is_interactable(characterBody: CharacterBody) -> bool:
+	var selected_index = characterBody.input_handler.inventory_bar_selected_index
 	return selected_index >= 0 \
-		and len(character.inventory_bar) > selected_index \
-		and character.inventory_bar[selected_index].has_item() \
-		and character.inventory_bar[selected_index].item.item_type() == ItemData.ItemType.SEED
+		and len(characterBody.inventory_bar) > selected_index \
+		and characterBody.inventory_bar[selected_index].has_item() \
+		and characterBody.inventory_bar[selected_index].item.item_type() == ItemData.ItemType.SEED
 
 
-func interact(character: Character) -> void:
-	super.interact(character)
+func interact(characterBody: CharacterBody) -> void:
+	super.interact(characterBody)
 	if interacted:
-		var selected_index = character.input_handler.inventory_bar_selected_index
+		var selected_index = characterBody.input_handler.inventory_bar_selected_index
 		plowedNode.visible = true
-		item = character.inventory_bar[selected_index].item as ItemSeedData
-		character.inventory_bar[selected_index].empty()
+		item = characterBody.inventory_bar[selected_index].item as ItemSeedData
+		characterBody.inventory_bar[selected_index].empty()
 		animated_sprite_2d.visible = true
 		is_empty = false
 

@@ -3,12 +3,12 @@ class_name InteractionTile
 
 var interacted = false
 
-func is_interactable(_character: Character) -> bool:
+func is_interactable(_characterBody: CharacterBody) -> bool:
 	return true
 
 
-func interact(character: Character):
-	if is_interactable(character):
+func interact(_characterBody: CharacterBody):
+	if is_interactable(_characterBody):
 		interacted = true
 
 

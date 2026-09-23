@@ -11,13 +11,13 @@ func set_character(character: Character, doAnimations: bool):
 		if doAnimations:
 			hide_animation()
 	else:
-		var lenItems = len(selected_character.inventory_bar)
+		var lenItems = len(selected_character.data.inventory_bar)
 		for i in len(grid.slots):
-			(grid.slots[i] as InventoryBarSlot).setup(i, selected_character.character_input)
+			(grid.slots[i] as InventoryBarSlot).setup(i, selected_character.input_handler.input)
 			if i >= lenItems:
 				grid.slots[i].empty_item()
 			else:
-				grid.slots[i].set_item(selected_character.inventory_bar[i])
+				grid.slots[i].set_item(selected_character.data.inventory_bar[i])
 
 		if doAnimations:
 			show_animation()

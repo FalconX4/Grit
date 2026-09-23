@@ -1,12 +1,8 @@
-[gd_scene format=3 uid="uid://b3vxkcpskg46u"]
+[gd_scene format=3 uid="uid://d4dkr72lldb0g"]
 
-[ext_resource type="Script" uid="uid://wppqqijjprei" path="res://Scripts/Screen/Game/InventoryBarSlot.gd" id="1_0vpx7"]
-[ext_resource type="Texture2D" uid="uid://cwk6eho5o17ts" path="res://Assets/Screen/Game/ItemSlot.png" id="3_fqvpw"]
-[ext_resource type="Script" uid="uid://cfpihl648qck3" path="res://Scripts/Generic/DraggableButton.gd" id="4_fqvpw"]
-[ext_resource type="PackedScene" uid="uid://bdx8725jh8kyo" path="res://Scenes/Generic/InputLabel.tscn" id="5_fqvpw"]
-[ext_resource type="PackedScene" uid="uid://b0t6udpmaeumw" path="res://Scenes/Screen/Game/ItemSlotSelected.tscn" id="6_xnatk"]
-[ext_resource type="PackedScene" uid="uid://bv3q43orv0hvs" path="res://Scenes/Generic/IconTimer.tscn" id="7_07bpr"]
-[ext_resource type="Texture2D" uid="uid://cwqd571peb32n" path="res://Assets/Screen/Game/Trash.png" id="8_reado"]
+[ext_resource type="PackedScene" uid="uid://uylr57clu0m2" path="res://Scenes/Screen/Game/ItemSlot.tscn" id="1_i45p2"]
+[ext_resource type="Script" uid="uid://wppqqijjprei" path="res://Scripts/Screen/Game/InventoryBarSlot.gd" id="2_57vc8"]
+[ext_resource type="PackedScene" uid="uid://bdx8725jh8kyo" path="res://Scenes/Generic/InputLabel.tscn" id="2_xl1p5"]
 
 [sub_resource type="Animation" id="Animation_w7thl"]
 resource_name = "Hide"
@@ -56,136 +52,32 @@ tracks/0/keys = {
 "values": [Vector2(0, 0), Vector2(1, 1)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_j518x"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_57vc8"]
 _data = {
 &"Hide": SubResource("Animation_w7thl"),
 &"RESET": SubResource("Animation_stg4o"),
 &"Show": SubResource("Animation_0m150")
 }
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fybyx"]
-
-[node name="InventoryBarSlot" type="Control" unique_id=717849473 node_paths=PackedStringArray("animation_player", "input_label", "background", "draggable_button", "item_texture_rect", "item_slot_selected", "count_label", "control_dragged", "item_dragged", "count_label_dragged", "remove_icon_timer")]
+[node name="InventoryBarItemSlot" unique_id=530795740 node_paths=PackedStringArray("animation_player", "input_label") instance=ExtResource("1_i45p2")]
 custom_minimum_size = Vector2(120, 120)
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-pivot_offset_ratio = Vector2(0.5, 0.5)
-script = ExtResource("1_0vpx7")
+script = ExtResource("2_57vc8")
 animation_player = NodePath("AnimationPlayer")
 input_label = NodePath("Panel/InputLabel")
-background = NodePath("Panel/Background")
-draggable_button = NodePath("Panel/ButtonDragged")
-item_texture_rect = NodePath("Panel/Item")
-item_slot_selected = NodePath("Panel/ItemSlotSelected")
-count_label = NodePath("Panel/Label")
-control_dragged = NodePath("Panel/ButtonDragged/ControlDragged")
-item_dragged = NodePath("Panel/ButtonDragged/ControlDragged/ItemDragged")
-count_label_dragged = NodePath("Panel/ButtonDragged/ControlDragged/LabelDragged")
-remove_icon_timer = NodePath("Panel/IconTimer")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2129283998]
-libraries/ = SubResource("AnimationLibrary_j518x")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="0" unique_id=207822203]
+libraries/ = SubResource("AnimationLibrary_57vc8")
 
-[node name="Panel" type="Panel" parent="." unique_id=1999458863]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Panel" parent="." index="1" unique_id=274242447]
 scale = Vector2(1e-05, 1e-05)
-pivot_offset = Vector2(60, 60)
 
-[node name="Background" type="NinePatchRect" parent="Panel" unique_id=2126173880]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_fqvpw")
-patch_margin_left = 2
-patch_margin_top = 2
-patch_margin_right = 2
-patch_margin_bottom = 2
+[node name="ItemSlotRightClickMenu" parent="Panel/ButtonDragged" parent_id_path=PackedInt32Array(340061987) index="1" unique_id=98479222]
+item_count = 2
+popup/item_0/text = "MENU_ITEM_SLOT_SPLIT"
+popup/item_1/text = "MENU_ITEM_SLOT_STACK"
+popup/item_1/id = 1
 
-[node name="ButtonDragged" type="Button" parent="Panel" unique_id=683627622]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-focus_mode = 0
-theme_override_styles/normal = SubResource("StyleBoxEmpty_fybyx")
-button_mask = 3
-script = ExtResource("4_fqvpw")
-return_on_end_drag = true
-move_on_top = true
-metadata/_custom_type_script = "uid://cfpihl648qck3"
-
-[node name="ControlDragged" type="Control" parent="Panel/ButtonDragged" unique_id=1006091084]
-visible = false
-modulate = Color(1, 1, 1, 0.7529412)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ItemDragged" type="TextureRect" parent="Panel/ButtonDragged/ControlDragged" unique_id=1885494647]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-expand_mode = 2
-
-[node name="LabelDragged" type="Label" parent="Panel/ButtonDragged/ControlDragged" unique_id=1118249804]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -40.0
-offset_top = -23.0
-offset_right = -2.0
-grow_horizontal = 0
-grow_vertical = 0
-horizontal_alignment = 2
-
-[node name="Item" type="TextureRect" parent="Panel" unique_id=1577434981]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-expand_mode = 2
-
-[node name="Label" type="Label" parent="Panel" unique_id=595813197]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -40.0
-offset_top = -23.0
-offset_right = -2.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "8888"
-horizontal_alignment = 2
-
-[node name="InputLabel" parent="Panel" unique_id=101772238 instance=ExtResource("5_fqvpw")]
+[node name="InputLabel" parent="Panel" index="4" unique_id=101772238 instance=ExtResource("2_xl1p5")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
@@ -198,17 +90,5 @@ offset_right = -12.0
 offset_bottom = 57.0
 grow_horizontal = 0
 grow_vertical = 1
-
-[node name="ItemSlotSelected" parent="Panel" unique_id=685989714 instance=ExtResource("6_xnatk")]
-layout_mode = 1
-
-[node name="IconTimer" parent="Panel" unique_id=101975831 instance=ExtResource("7_07bpr")]
-layout_mode = 1
-input_action = 91
-
-[node name="Icon" parent="Panel/IconTimer/Container" parent_id_path=PackedInt32Array(101975831, 2147155079) index="0" unique_id=800291532]
-texture = ExtResource("8_reado")
-
-[connection signal="button_down" from="Panel/ButtonDragged" to="." method="_on_button_down"]
 
 [editable path="Panel/IconTimer"]

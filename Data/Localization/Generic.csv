@@ -1,3 +1,5 @@
 key;en;fr;fr-ca
 TITLE;Grit;Tenace;Fort
 MENU_PLAY;Play;Jouer;Go
+MENU_ITEM_SLOT_SPLIT;Split; Divise; Divise
+MENU_ITEM_SLOT_STACK;Stack; Empile; Stack

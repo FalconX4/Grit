@@ -26,7 +26,7 @@ func empty() -> void:
 	count = 0
 
 func is_same_item(item_data_count: ItemDataCount) -> bool:
-	return item.name == item_data_count.item.name
+	return has_item() and item_data_count.has_item() and item.name == item_data_count.item.name
 
 func compare(other_item_data_count: ItemDataCount) -> int:
 	var item_type = item.item_type()

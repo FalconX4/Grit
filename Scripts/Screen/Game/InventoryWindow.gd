@@ -19,9 +19,9 @@ func set_enable(enable: bool) -> void:
 	Helpers.node_process(self, enable)
 	grid.set_enable(enable)
 	if enable and selected_character != null:
-		var lenItems = len(selected_character.inventory)
+		var lenItems = len(selected_character.data.inventory)
 		for i in len(grid.slots):
 			if i >= lenItems:
 				grid.slots[i].empty_item()
 			else:
-				grid.slots[i].set_item(selected_character.inventory[i])
+				grid.slots[i].set_item(selected_character.data.inventory[i])

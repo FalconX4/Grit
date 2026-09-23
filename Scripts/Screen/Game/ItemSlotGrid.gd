@@ -9,17 +9,17 @@ signal item_slot_drag_ended_failed(sender: ItemSlotGrid, last_mouse_position: Ve
 signal item_slot_drag_ended_success(from: ItemSlot, to: ItemSlot)
 
 var slots : Array[ItemSlot]
-var character_input_handler_selected_index: Dictionary[CharacterInputHandler, int]
+var character_selected_index: Dictionary[Character, int]
 
 func _ready() -> void:
 	Pool.create(item_slot, rows * columns)
 	ItemSlotGridManager.subscribe(self)
 	_on_open()
 	if GameSessionData.player_count_on_this_computer == 1:
-		var input_handler = CharacterInputManager.player_input_handlers[0]
-		character_input_handler_selected_index[input_handler] = -1
-		if input_handler.input.using_controller:
-			slots[0].item_slot_selected.add_character_input(input_handler)
+		var player = CharacterManager.players[0]
+		character_selected_index[player] = -1
+		if player.input_handler.input.using_controller:
+			slots[0].item_slot_selected.add_character(player)
 	if Helpers.is_main_scene(self):
 		for slot in slots:
 			slot.set_random_item()
@@ -32,6 +32,7 @@ func _on_open() -> void:
 			slot.setup(i * columns + j)
 			slot.click.connect(on_item_slot_clicked)
 			slot.drag_ended.connect(on_item_slot_drag_ended)
+			slot.stack.connect(stack_slot)
 			slots.append(slot)
 
 
@@ -39,6 +40,7 @@ func _on_close() -> void:
 	for slot in slots:
 		slot.click.disconnect(on_item_slot_clicked)
 		slot.drag_ended.disconnect(on_item_slot_drag_ended)
+		slot.stack.disconnect(stack_slot)
 		Pool.release(slot)
 	slots.clear()
 
@@ -51,23 +53,25 @@ func _exit_tree() -> void:
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		return
-	for character in character_input_handler_selected_index.keys():
-		if character.is_my_event(event):
-			var old_index = character_input_handler_selected_index[character]
+	for character in character_selected_index.keys():
+		if character.input_handler.is_my_event(event):
+			var old_index = character_selected_index[character]
+			if slots[old_index].split.visible:
+				continue
 			var check_index = old_index
 			if old_index > -1 and slots[old_index]._item_slot_dragged_to != null:
 				check_index = slots[old_index]._item_slot_dragged_to._index
-			var new_index = get_new_index_from_input(check_index, event, character.input)
+			var new_index = get_new_index_from_input(check_index, event, character.input_handler.input)
 			if slots[old_index]._item_slot_dragged_to != null:
 				slots[old_index].move_input_drag(slots[new_index])
 			elif new_index != old_index:
 				if old_index == -1:
-					character_input_handler_selected_index[character] = 0
-					slots[0].item_slot_selected.add_character_input(character)
+					character_selected_index[character] = 0
+					slots[0].item_slot_selected.add_character(character)
 				else:
-					slots[old_index].item_slot_selected.remove_character_input(character)
-					slots[new_index].item_slot_selected.add_character_input(character)
-					character_input_handler_selected_index[character] = new_index
+					slots[old_index].item_slot_selected.remove_character(character)
+					slots[new_index].item_slot_selected.add_character(character)
+					character_selected_index[character] = new_index
 
 
 func get_new_index_from_input(last_index: int, event: InputEvent, character_input: CharacterInput = null) -> int:
@@ -94,7 +98,7 @@ func set_enable(enable: bool) -> void:
 
 
 func on_item_slot_clicked(_item_slot: ItemSlot) -> void:
-	character_input_handler_selected_index[CharacterInputManager._last_input_handler] = _item_slot._index
+	character_selected_index[CharacterManager._last_inputted_player] = _item_slot._index
 	item_slot_clicked.emit(_item_slot)
 
 
@@ -103,7 +107,7 @@ func on_item_slot_drag_ended(last_mouse_position: Vector2, slot_dragged: ItemSlo
 	if slot_dragged_into == null:
 		item_slot_drag_ended_failed.emit(self, last_mouse_position, slot_dragged, is_mouse_right_drag)
 	else:
-		character_input_handler_selected_index[CharacterInputManager._last_input_handler] = slot_dragged_into._index
+		character_selected_index[CharacterManager._last_inputted_player] = slot_dragged_into._index
 		item_slot_drag_ended_success.emit(slot_dragged, slot_dragged_into)
 
 
@@ -136,5 +140,41 @@ func stack() -> void:
 	for i in slot_count - 1:
 		if slots[i].has_item():
 			for j in range(i + 1, slot_count):
-				if slots[j].has_item() and slots[i].is_same_item(slots[j]):
+				if slots[i].is_same_item(slots[j]):
 					slots[j].transfer_count_to(slots[i])
+
+
+func stack_slot(slot: ItemSlot) -> void:
+	var slot_count = len(slots)
+	for i in slot_count:
+		if i != slot._index and slots[i].is_same_item(slot):
+			slots[i].transfer_count_to(slot)
+
+
+func transfer_stacks_to(grid: ItemSlotGrid) -> bool: return transfer_all_to(grid, true)
+func transfer_all_to(grid: ItemSlotGrid, only_stack: bool = false) -> bool:	return transfer_all_items_to(grid.slots, only_stack)
+func transfer_all_items_to(items: Array, only_stack: bool = false) -> bool:
+	var other_items_had_empty = true
+	for slot in slots:
+		if not slot.has_item():
+			continue
+		# Stack first
+		var has_stack = false
+		for other_item in items:
+			if other_item.is_same_item(slot._item_data_count):
+				has_stack = true
+				slot.transfer_item_count_to(other_item)
+				if slot._item_data_count.count == 0:
+					break
+		# Add in empty if still has count
+		if other_items_had_empty and (not only_stack or has_stack) and slot._item_data_count.count > 0:
+			for other_item in items:
+				if not other_item.has_item():
+					other_item.set_values(slot._item_data_count.item, 0)
+					slot.transfer_item_count_to(other_item)
+					if slot._item_data_count.count == 0:
+						break
+		# Other item list is full
+		if slot._item_data_count.count > 0:
+			other_items_had_empty = false
+	return other_items_had_empty

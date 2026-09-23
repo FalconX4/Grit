@@ -5,6 +5,8 @@ enum LocalizedID {
 	INVALID = -1,
 	TITLE,
 	MENU_PLAY,
+	MENU_ITEM_SLOT_SPLIT,
+	MENU_ITEM_SLOT_STACK,
 	PINK_TUBERSO_NAME,
 	PINK_TUBERSO_DESCRIPTION,
 	SATIVUS_NAME,
@@ -26,6 +28,8 @@ enum LocalizedID {
 
 const TITLE: StringName = &"TITLE"
 const MENU_PLAY: StringName = &"MENU_PLAY"
+const MENU_ITEM_SLOT_SPLIT: StringName = &"MENU_ITEM_SLOT_SPLIT"
+const MENU_ITEM_SLOT_STACK: StringName = &"MENU_ITEM_SLOT_STACK"
 const PINK_TUBERSO_NAME: StringName = &"PINK_TUBERSO_NAME"
 const PINK_TUBERSO_DESCRIPTION: StringName = &"PINK_TUBERSO_DESCRIPTION"
 const SATIVUS_NAME: StringName = &"SATIVUS_NAME"
@@ -48,6 +52,8 @@ static func enum_to_string(id: int) -> StringName:
 	match id:
 		LocalizedID.TITLE: return TITLE
 		LocalizedID.MENU_PLAY: return MENU_PLAY
+		LocalizedID.MENU_ITEM_SLOT_SPLIT: return MENU_ITEM_SLOT_SPLIT
+		LocalizedID.MENU_ITEM_SLOT_STACK: return MENU_ITEM_SLOT_STACK
 		LocalizedID.PINK_TUBERSO_NAME: return PINK_TUBERSO_NAME
 		LocalizedID.PINK_TUBERSO_DESCRIPTION: return PINK_TUBERSO_DESCRIPTION
 		LocalizedID.SATIVUS_NAME: return SATIVUS_NAME
@@ -72,6 +78,8 @@ static func string_to_enum(id: StringName) -> int:
 	match id:
 		TITLE: return LocalizedID.TITLE
 		MENU_PLAY: return LocalizedID.MENU_PLAY
+		MENU_ITEM_SLOT_SPLIT: return LocalizedID.MENU_ITEM_SLOT_SPLIT
+		MENU_ITEM_SLOT_STACK: return LocalizedID.MENU_ITEM_SLOT_STACK
 		PINK_TUBERSO_NAME: return LocalizedID.PINK_TUBERSO_NAME
 		PINK_TUBERSO_DESCRIPTION: return LocalizedID.PINK_TUBERSO_DESCRIPTION
 		SATIVUS_NAME: return LocalizedID.SATIVUS_NAME
@@ -96,6 +104,8 @@ static func get_all_actions() -> Array[StringName]:
 	return [
 		TITLE,
 		MENU_PLAY,
+		MENU_ITEM_SLOT_SPLIT,
+		MENU_ITEM_SLOT_STACK,
 		PINK_TUBERSO_NAME,
 		PINK_TUBERSO_DESCRIPTION,
 		SATIVUS_NAME,

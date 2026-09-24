@@ -3,21 +3,21 @@ class_name InventoryBar
 
 @export var grid: InventoryBarSlotGrid
 
-var selected_character: Character
+var selected_player: Player
 
-func set_character(character: Character, doAnimations: bool):
-	selected_character = character
-	if selected_character == null:
+func set_player(player: Player, doAnimations: bool):
+	selected_player = player
+	if selected_player == null:
 		if doAnimations:
 			hide_animation()
 	else:
-		var lenItems = len(selected_character.data.inventory_bar)
+		var lenItems = len(selected_player.character.data.inventory_bar)
 		for i in len(grid.slots):
-			(grid.slots[i] as InventoryBarSlot).setup(i, selected_character.input_handler.input)
+			(grid.slots[i] as InventoryBarSlot).setup(i, selected_player.character.input_handler.input)
 			if i >= lenItems:
 				grid.slots[i].empty_item()
 			else:
-				grid.slots[i].set_item(selected_character.data.inventory_bar[i])
+				grid.slots[i].set_item(selected_player.character.data.inventory_bar[i])
 
 		if doAnimations:
 			show_animation()
@@ -46,8 +46,8 @@ func hide_slot_animation(index : int):
 
 
 func on_inventory_slot_clicked(item_slot: ItemSlot):
-	if selected_character != null:
-		selected_character.input_handler.set_item_selected(item_slot._item_data_count)
+	if selected_player != null:
+		selected_player.character.input_handler.set_item_selected(item_slot._item_data_count)
 
 
 func _ready() -> void:

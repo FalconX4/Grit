@@ -6,7 +6,7 @@ class_name Journal
 @export var page_animation: AnimationPlayer
 
 var lastIndex = 0
-var character_input: CharacterInput
+var player: Player
 
 func _ready() -> void:
 	update_page_1()
@@ -14,18 +14,18 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	var previous_action_id = character_input.get_device_action_id(InputMapNames.GAME_MOVE_LEFT) if character_input != null else str(InputMapNames.GAME_MOVE_LEFT)
-	var next_action_id = character_input.get_device_action_id(InputMapNames.GAME_MOVE_RIGHT) if character_input != null else str(InputMapNames.GAME_MOVE_RIGHT)
+	var previous_action_id = player.character.input_handler.get_device_action_id(InputMapNames.GAME_MOVE_LEFT) if player != null else str(InputMapNames.GAME_MOVE_LEFT)
+	var next_action_id = player.character.input_handler.get_device_action_id(InputMapNames.GAME_MOVE_RIGHT) if player != null else str(InputMapNames.GAME_MOVE_RIGHT)
 	if InputManager.is_action_just_pressed(previous_action_id):
 		previous()
 	if InputManager.is_action_just_pressed(next_action_id):
 		next()
 
 
-func open(new_character_input: CharacterInput) -> void:
+func open(new_player: Player) -> void:
 	visible = true
 	process_mode = Node.PROCESS_MODE_INHERIT
-	character_input = new_character_input
+	player = new_player
 
 
 func update_page_1():

@@ -83,8 +83,8 @@ func move_item_to(to: ItemSlot) -> bool:
 	elif _item_data_count.count == _item_count_dragged:
 		swap_item(to)
 	if moved:
-		item_slot_selected.remove_character(CharacterManager._last_inputted_player)
-		to.item_slot_selected.add_character(CharacterManager._last_inputted_player)
+		item_slot_selected.remove_player(CharacterManager._last_inputted_player)
+		to.item_slot_selected.add_player(CharacterManager._last_inputted_player)
 	return moved
 
 
@@ -152,18 +152,18 @@ func _process(_delta: float) -> void:
 
 
 func _on_button_down() -> void:
-	item_slot_selected.add_character(CharacterManager._last_inputted_player)
+	item_slot_selected.add_player(CharacterManager._last_inputted_player)
 	click.emit(self)
 
 
 func _input(event: InputEvent) -> void:
 	if not item_slot_selected.is_shown():
 		return
-	for character in item_slot_selected.characters:
-		if not character.input_handler.is_my_event(event):
+	for player in item_slot_selected.players:
+		if not player.character.input_handler.is_my_event(event):
 			continue
-		var wants_drag = character.input_handler.input.is_action_just_pressed(InputMapNames.UI_ACCEPT, event)
-		if wants_drag or character.input_handler.input.is_action_just_pressed(InputMapNames.GAME_ITEM_HALF, event):
+		var wants_drag = player.character.input_handler.input.is_action_just_pressed(InputMapNames.UI_ACCEPT, event)
+		if wants_drag or player.character.input_handler.input.is_action_just_pressed(InputMapNames.GAME_ITEM_HALF, event):
 			if draggable_button.dragging:
 				if _item_slot_dragged_to != null:
 					if not wants_drag:
@@ -175,17 +175,17 @@ func _input(event: InputEvent) -> void:
 						accept_event()
 			else:
 				start_input_drag(not wants_drag)
-		elif character.input_handler.input.is_action_just_pressed(InputMapNames.UI_CANCEL, event):
+		elif player.character.input_handler.input.is_action_just_pressed(InputMapNames.UI_CANCEL, event):
 			if _item_slot_dragged_to != null:
 				cancel_input_drag()
-		elif character.input_handler.input.is_action_just_pressed(InputMapNames.GAME_INVENTORY):
+		elif player.character.input_handler.input.is_action_just_pressed(InputMapNames.GAME_INVENTORY):
 			right_click_menu_button.show_popup()
 	if event is InputEventMouseButton and event.is_pressed():
 		if not draggable_button.get_global_rect().has_point(event.position):
 			if not split.visible or not split.get_global_rect().has_point(event.position):
 				if draggable_button.dragging:
 					cancel_input_drag()
-				item_slot_selected.remove_character(CharacterManager._last_inputted_player)
+				item_slot_selected.remove_player(CharacterManager._last_inputted_player)
 		elif draggable_button.dragging:
 			if _item_slot_dragged_to != null:
 				reset_draggable_button()

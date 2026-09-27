@@ -1,4 +1,5 @@
 extends Control
+class_name GameUI
 
 @export var inventory_bar: InventoryBar
 @export var inventory: InventoryWindow
@@ -13,8 +14,10 @@ func _ready() -> void:
 	storage.grid.columns = 6
 	storage.set_enable(false)
 	inventory.set_enable(false)
+	PlayerManager.players[0].game_ui = self
+	selected_player = PlayerManager.players[0]
 	if Helpers.is_main_scene(self):
-		selected_player = CharacterManager.players[0]
+		selected_player = PlayerManager.players[0]
 		storage.set_random_items()
 		inventory.set_random_items()
 		inventory_bar.set_random_items()

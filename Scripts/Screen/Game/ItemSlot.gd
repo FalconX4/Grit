@@ -83,8 +83,8 @@ func move_item_to(to: ItemSlot) -> bool:
 	elif _item_data_count.count == _item_count_dragged:
 		swap_item(to)
 	if moved:
-		item_slot_selected.remove_player(CharacterManager._last_inputted_player)
-		to.item_slot_selected.add_player(CharacterManager._last_inputted_player)
+		item_slot_selected.remove_player(PlayerManager._last_inputted_player)
+		to.item_slot_selected.add_player(PlayerManager._last_inputted_player)
 	return moved
 
 
@@ -152,7 +152,7 @@ func _process(_delta: float) -> void:
 
 
 func _on_button_down() -> void:
-	item_slot_selected.add_player(CharacterManager._last_inputted_player)
+	item_slot_selected.add_player(PlayerManager._last_inputted_player)
 	click.emit(self)
 
 
@@ -185,7 +185,7 @@ func _input(event: InputEvent) -> void:
 			if not split.visible or not split.get_global_rect().has_point(event.position):
 				if draggable_button.dragging:
 					cancel_input_drag()
-				item_slot_selected.remove_player(CharacterManager._last_inputted_player)
+				item_slot_selected.remove_player(PlayerManager._last_inputted_player)
 		elif draggable_button.dragging:
 			if _item_slot_dragged_to != null:
 				reset_draggable_button()

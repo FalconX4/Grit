@@ -29,8 +29,9 @@ Localization="*uid://g7xbjwq6fu38"
 InputManager="*uid://cc7pxnepq8nn0"
 PlayerDataManager="*uid://syufnr86b1eu"
 GameSessionData="*uid://dtjri0mepm0yx"
-CharacterManager="*uid://bcj6qg04bkql8"
+PlayerManager="*uid://bcj6qg04bkql8"
 ItemSlotGridManager="*uid://dy43kt6doahbr"
+WorldItemManager="*uid://dsj4xo8n7lrpk"
 
 [display]
 
@@ -191,6 +192,11 @@ Game_Item_Half={
 [internationalization]
 
 locale/translations=PackedStringArray("res://Data/Localization/Generic.en.translation", "res://Data/Localization/Generic.fr.translation", "res://Data/Localization/Items.en.translation", "res://Data/Localization/Items.fr.translation", "res://Data/Localization/Keyboard.en.translation", "res://Data/Localization/Keyboard.fr.translation")
+
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Interactible"
 
 [rendering]
 

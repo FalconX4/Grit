@@ -16,7 +16,7 @@ func _ready() -> void:
 	ItemSlotGridManager.subscribe(self)
 	_on_open()
 	if GameSessionData.player_count_on_this_computer == 1:
-		var player = CharacterManager.players[0]
+		var player = PlayerManager.players[0]
 		player_selected_index[player] = -1
 		if player.character.input_handler.input.using_controller:
 			slots[0].item_slot_selected.add_player(player)
@@ -98,7 +98,7 @@ func set_enable(enable: bool) -> void:
 
 
 func on_item_slot_clicked(_item_slot: ItemSlot) -> void:
-	player_selected_index[CharacterManager._last_inputted_player] = _item_slot._index
+	player_selected_index[PlayerManager._last_inputted_player] = _item_slot._index
 	item_slot_clicked.emit(_item_slot)
 
 
@@ -107,7 +107,7 @@ func on_item_slot_drag_ended(last_mouse_position: Vector2, slot_dragged: ItemSlo
 	if slot_dragged_into == null:
 		item_slot_drag_ended_failed.emit(self, last_mouse_position, slot_dragged, is_mouse_right_drag)
 	else:
-		player_selected_index[CharacterManager._last_inputted_player] = slot_dragged_into._index
+		player_selected_index[PlayerManager._last_inputted_player] = slot_dragged_into._index
 		item_slot_drag_ended_success.emit(slot_dragged, slot_dragged_into)
 
 

@@ -19,13 +19,14 @@ func show_interact_button(show_it: bool): input_label.visible = show_it
 func update_input_buttons(): update_input_button(input_label, InputMapNames.InputAction.GAME_INTERACT)
 func update_input_button(label: InputLabel, input_action: InputMapNames.InputAction):
 	if label != null:
-		label.set_input_action(input_action, input_handler.character_input)
+		label.set_input_action(input_action, input_handler.input)
 
 
 func _ready() -> void:
-	if Helpers.is_main_scene(self):
-		input_handler = CharacterManager.players[0].input_handler
-		data = CharacterManager.players[0].data
+	if input_handler == null:
+		PlayerManager.players[0].character.body = self
+		input_handler = PlayerManager.players[0].character.input_handler
+		data = PlayerManager.players[0].character.data
 	update_input_buttons()
 
 
@@ -34,7 +35,7 @@ func _process(_delta: float) -> void:
 		return
 
 	input_handler._process(_delta)
-	if input_handler.character_input.was_using_controller != input_handler.character_input.using_controller:
+	if input_handler.input.was_using_controller != input_handler.input.using_controller:
 		update_input_buttons()
 
 	if interact_trigger.is_colliding():

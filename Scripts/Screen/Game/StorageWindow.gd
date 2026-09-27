@@ -18,6 +18,6 @@ func set_enable(enable: bool) -> void:
 
 
 func _take_all() -> void:
-	if CharacterManager._last_inputted_player:
-		if not grid.transfer_all_items_to(CharacterManager._last_inputted_player.character.data.inventory_bar, true):
-			grid.transfer_all_items_to(CharacterManager._last_inputted_player.character.data.inventory)
+	if PlayerManager._last_inputted_player:
+		if not grid.transfer_all_items_to(PlayerManager._last_inputted_player.character.data.inventory_bar, true):
+			grid.transfer_all_items_to(PlayerManager._last_inputted_player.character.data.inventory)

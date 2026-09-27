@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cqf6ibbrvhlym"]
+
+[ext_resource type="PackedScene" uid="uid://bog2fwt2cvggb" path="res://Scenes/Game/Characters/Character.tscn" id="1_8bi47"]
+[ext_resource type="PackedScene" uid="uid://bkuw836s4huvh" path="res://Scenes/Game/Items/Storage.tscn" id="2_oexqn"]
+[ext_resource type="PackedScene" uid="uid://b1am65lu3eirj" path="res://Scenes/Screen/Game/GameUI.tscn" id="3_oexqn"]
+
+[node name="StorageTest" type="Node2D" unique_id=801698730]
+
+[node name="Storage" parent="." unique_id=97606022 instance=ExtResource("2_oexqn")]
+position = Vector2(142, 161)
+
+[node name="GameUi" parent="." unique_id=1312754734 instance=ExtResource("3_oexqn")]
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="CharacterBody2D" parent="." unique_id=962902777 instance=ExtResource("1_8bi47")]

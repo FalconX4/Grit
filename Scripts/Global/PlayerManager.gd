@@ -27,3 +27,15 @@ func _input(event: InputEvent) -> void:
 				if event.device == (player.character.input_handler.input as PlayerInput).joypad.device_id:
 					_last_inputted_player = player
 					break
+
+func find_player_from_body(body: CharacterBody) -> Player:
+	for player in players:
+		if player.character.body == body:
+			return player
+	return null
+
+func find_player_from_input(input: CharacterInput) -> Player:
+	for player in players:
+		if player.character.input_handler.input == input:
+			return player
+	return null

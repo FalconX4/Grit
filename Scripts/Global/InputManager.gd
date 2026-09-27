@@ -1,4 +1,4 @@
-extends Node
+extends BaseVersionManager
 
 class JoypadData:
 	var device_id: int
@@ -32,12 +32,11 @@ const _default_joypad_buttons: Array[String] = [
 	InputMapNames.GAME_ITEM_HALF,
 ]
 
-const SECTION = "Inputs"
-const KEYBOARD_KEY = "Keyboard"
-const JOYPAD_KEY = "Joypad"
+const SECTION = "inputs"
+const KEYBOARD_KEY = "keyboard"
+const JOYPAD_KEY = "joypad"
 const VERSION = "0.0.1"
 
-signal input_version_changed
 signal last_input_joypad_changed
 
 var keyboard_buttons: Dictionary[String, String]
@@ -83,10 +82,9 @@ func _init() -> void:
 		for joypad in Input.get_connected_joypads():
 			add_new_joy(joypad)
 	
-	var version = SettingManager.get_setting(SECTION, SettingManager.VERSION_KEY, VERSION)
-	if version != VERSION:
-		input_version_changed.emit(version)
-		SettingManager.set_value(SECTION, SettingManager.VERSION_KEY, VERSION)
+	version = VERSION
+	_old_version = SettingManager.get_setting(SECTION, SettingManager.VERSION_KEY, version)
+	SettingManager.set_setting(SECTION, SettingManager.VERSION_KEY, version)
 
 
 func _on_joy_connection_changed(device: int, connected: bool) -> void:
@@ -144,6 +142,7 @@ func set_keyboard() -> void:
 func save_input() -> void:
 	SettingManager.set_setting(SECTION, KEYBOARD_KEY, keyboard_buttons)
 	SettingManager.set_setting(SECTION, JOYPAD_KEY, _joypads)
+	SettingManager.save()
 
 
 func get_joypad(device: int) -> JoypadData:

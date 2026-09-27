@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bkuw836s4huvh"]
+
+[ext_resource type="Script" uid="uid://dekfpkofvai7t" path="res://Scripts/Game/WorldItems/Storage/StorageBody.gd" id="1_y0op6"]
+[ext_resource type="Texture2D" uid="uid://c4g73vr2eq1ml" path="res://Assets/Game/Items/Tools/Crate.png" id="2_57mqf"]
+[ext_resource type="Script" uid="uid://34svi5f7xwpk" path="res://Scripts/Game/Items/ItemStorage.gd" id="2_ipq64"]
+[ext_resource type="PackedScene" uid="uid://cirhhv22ti8ih" path="res://Scenes/Generic/InteractibleArea.tscn" id="4_57mqf"]
+
+[sub_resource type="Resource" id="Resource_y0op6"]
+script = ExtResource("2_ipq64")
+columns = 5
+rows = 5
+metadata/_custom_type_script = "uid://34svi5f7xwpk"
+
+[node name="Storage" type="Node2D" unique_id=97606022 node_paths=PackedStringArray("sprite", "interactible_area")]
+script = ExtResource("1_y0op6")
+item_data = SubResource("Resource_y0op6")
+sprite = NodePath("Sprite2D")
+interactible_area = NodePath("InteractibleArea")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=206507255]
+texture = ExtResource("2_57mqf")
+
+[node name="InteractibleArea" parent="." unique_id=675221978 instance=ExtResource("4_57mqf")]

@@ -1,7 +1,7 @@
 extends Resource
 class_name ItemData
 
-enum ItemType { NONE, SEED, TOOL, FOOD }
+enum ItemType { NONE, SEED, TOOL, FOOD, WORLD }
 
 func item_type() -> ItemType: return ItemType.NONE
 @export var name : String

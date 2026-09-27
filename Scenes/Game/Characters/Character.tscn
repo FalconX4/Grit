@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://dlp70lvqucg10" path="res://Scripts/Game/Characters/CharacterBody.gd" id="1_ohnkk"]
 [ext_resource type="SpriteFrames" uid="uid://ld0t10aujxwi" path="res://Data/Game/Characters/YoungMan.tres" id="2_mx74b"]
 [ext_resource type="SpriteFrames" uid="uid://c62yw8o6ukqa6" path="res://Data/Game/Characters/OldMan.tres" id="3_mikcp"]
-[ext_resource type="Script" uid="uid://d35g02d5des6y" path="res://Scripts/Game/Characters/CharacterInput/PlayerInput.gd" id="4_vo7bq"]
 [ext_resource type="PackedScene" uid="uid://bdx8725jh8kyo" path="res://Scenes/Generic/InputLabel.tscn" id="5_1vbuj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ghfrl"]
@@ -101,7 +100,7 @@ font_size = 20
 size = Vector2(10, 10)
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=962902777]
-collision_layer = 2
+collision_mask = 0
 script = ExtResource("1_ohnkk")
 age_sprite_frames = {
 0.0: ExtResource("3_mikcp"),
@@ -121,9 +120,6 @@ scale = Vector2(0.5, 0.5)
 sprite_frames = ExtResource("2_mx74b")
 animation = &"WalkUp"
 speed_scale = 2.0
-
-[node name="CharacterInput" type="Node" parent="." unique_id=1749681625]
-script = ExtResource("4_vo7bq")
 
 [node name="InputLabel" parent="." unique_id=101772238 instance=ExtResource("5_1vbuj")]
 visible = false

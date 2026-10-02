@@ -5,6 +5,7 @@ class_name InputLabel
 @export var input_action: InputMapNames.InputAction = InputMapNames.InputAction.INVALID
 
 signal action_pressed(character_input: CharacterInput)
+signal input_updated(is_joypad: bool)
 
 var character_input: CharacterInput = null
 var action_id: String
@@ -12,6 +13,8 @@ var action_id: String
 func _ready() -> void:
 	InputManager.last_input_joypad_changed.connect(on_last_input_joypad_changed)
 	set_input_action(input_action)
+	if not input_updated.has_connections():
+		reset_size()
 
 func set_character_input(new_character_input: CharacterInput) -> void: set_input_action(input_action, new_character_input)
 func set_input_action(new_input_action: InputMapNames.InputAction, new_character_input: CharacterInput = null) -> void:
@@ -33,6 +36,10 @@ func _update_input() -> void:
 		background.visible = false
 	else:
 		background.visible = !InputManager._last_input_joypad
+
+	if input_updated.has_connections():
+		reset_size()
+		input_updated.emit(InputManager._last_input_joypad)
 
 func on_last_input_joypad_changed(_value: bool) -> void:
 	_update_input()

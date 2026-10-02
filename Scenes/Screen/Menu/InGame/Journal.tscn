@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c57t666n0b1m3"]
 
-[ext_resource type="Script" uid="uid://b5xpy8ner1h3j" path="res://Scripts/Screen/Menu/Journal.gd" id="1_4xf27"]
-[ext_resource type="PackedScene" uid="uid://bs35r6gtgyr8n" path="res://Scenes/Screen/Menu/JournalPage.tscn" id="1_45ey5"]
+[ext_resource type="Script" uid="uid://b5xpy8ner1h3j" path="res://Scripts/Screen/Menu/InGame/Journal.gd" id="1_4xf27"]
+[ext_resource type="PackedScene" uid="uid://bs35r6gtgyr8n" path="res://Scenes/Screen/Menu/InGame/JournalPage.tscn" id="1_45ey5"]
 [ext_resource type="Texture2D" uid="uid://bw722igpmnykp" path="res://Assets/Screen/Menu/Journal/Journal 1.png" id="2_44eym"]
 [ext_resource type="Texture2D" uid="uid://c0xboxq3cdtcq" path="res://Assets/Screen/Menu/Journal/Journal 0.png" id="2_a77it"]
 [ext_resource type="Texture2D" uid="uid://8i6jgp6ownm2" path="res://Assets/Screen/Menu/Journal/Journal 2.png" id="4_e2bqb"]

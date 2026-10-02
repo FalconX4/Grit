@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://cgrlkm7jlxk86"]
+
+[ext_resource type="Script" uid="uid://dc5h0kj1iwf7t" path="res://Scripts/Screen/Menu/Main/Credit.gd" id="1_psqlw"]
+[ext_resource type="Resource" uid="uid://k35k3hbhy7fh" path="res://Data/Localization/Credit/Credit.tres" id="2_7h6en"]
+[ext_resource type="Script" uid="uid://cleyxi8wq54y5" path="res://Scripts/Generic/LocalizedButton.gd" id="2_vgbsi"]
+
+[node name="Credit" type="Control" unique_id=892577513 node_paths=PackedStringArray("label")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_psqlw")
+label = NodePath("Label")
+credit_text = ExtResource("2_7h6en")
+
+[node name="Label" type="RichTextLabel" parent="." unique_id=794878746]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="." unique_id=1149691120]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -220.0
+offset_top = -120.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="LocalizedButton" type="Button" parent="Control" unique_id=70427101]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_vgbsi")
+localization_key = "MENU_BACK"
+metadata/_custom_type_script = "uid://cleyxi8wq54y5"

@@ -21,7 +21,9 @@ func set_setting(section: String, key: String, value: Variant) -> void:
 func save() -> void:
 	queue_save = true
 
-func _init() -> void:
+func _init() -> void: _load(data_file_path)
+func _load(path: String) -> void:
+	data_file_path = path
 	if FileAccess.file_exists(data_file_path):
 		_data_loaded = _data.load(data_file_path) == OK
 		if not _data_loaded:

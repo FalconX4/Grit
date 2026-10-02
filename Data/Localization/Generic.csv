@@ -1,5 +1,14 @@
-key;en;fr;fr-ca
+key;en;fr;fro
 TITLE;Grit;Tenace;Fort
 MENU_PLAY;Play;Jouer;Go
+MENU_OPTIONS;Options;Options;Options
+MENU_CREDIT;Credit;Crédit;Crédit
+MENU_CREDIT_PROGRAMMER;Programmer;Programmeur;Codeur
+MENU_CREDIT_ARTIST;Artist;Artiste;Artiste
+MENU_CREDIT_GAME_DESIGNER;Game Designer;Concepteur de Jeu;Concepteur de Jeu
+MENU_CREDIT_QA;Quality Assurance;Assurance Qualité;Assurance Qualité
+MENU_CREDIT_TRANSLATOR;Translator;Traducteur;Traducteur
+MENU_QUIT;Quit;Quitter;Bye
+MENU_BACK;Back;Revenir;Reviens
 MENU_ITEM_SLOT_SPLIT;Split; Divise; Divise
 MENU_ITEM_SLOT_STACK;Stack; Empile; Stack

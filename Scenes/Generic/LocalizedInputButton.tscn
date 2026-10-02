@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://b888g1wirnetu"]
+
+[ext_resource type="Script" uid="uid://8ty6cdosvtgp" path="res://Scripts/Generic/LocalizedInputButton.gd" id="1_3juur"]
+[ext_resource type="PackedScene" uid="uid://bdx8725jh8kyo" path="res://Scenes/Generic/InputLabel.tscn" id="2_dmpwt"]
+
+[node name="LocalizedInputButton" type="Button" unique_id=1970132749 node_paths=PackedStringArray("inputLabel")]
+offset_right = 200.0
+offset_bottom = 100.0
+script = ExtResource("1_3juur")
+inputLabel = NodePath("InputLabel")
+localization_key = "MENU_BACK"
+metadata/_custom_type_script = "uid://8ty6cdosvtgp"
+
+[node name="InputLabel" parent="." unique_id=101772238 instance=ExtResource("2_dmpwt")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 17.0
+offset_bottom = 42.0
+grow_horizontal = 1
+grow_vertical = 1
+input_action = 2

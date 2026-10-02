@@ -4,7 +4,7 @@ extends EditorInspectorPlugin
 var LocalizedKeyEditor = preload("res://addons/LocalizationMapGeneratorScript/LocalizedKeyEditor.gd")
 
 func _can_handle(object: Object) -> bool:
-	return object is LocalizedLabel
+	return object is LocalizedLabel or LocalizedButton
 
 func _parse_property(object: Object, type: int, path: String, hint: int, hint_text: String, usage: int, wide: bool) -> bool:
 	if path == "localization_key":

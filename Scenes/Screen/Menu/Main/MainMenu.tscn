@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://dibclke34ggap"]
+
+[ext_resource type="Script" uid="uid://bxv54w7aejd2h" path="res://Scripts/Screen/Menu/Main/MainMenu.gd" id="1_62at4"]
+[ext_resource type="FontFile" uid="uid://ceewc0pjugkr0" path="res://Fonts/AMOS_FONT.ttf" id="1_rigcf"]
+[ext_resource type="Script" uid="uid://yoweu1mlxnst" path="res://Scripts/Generic/LocalizedLabel.gd" id="2_kmbwo"]
+[ext_resource type="Script" uid="uid://cleyxi8wq54y5" path="res://Scripts/Generic/LocalizedButton.gd" id="3_j80pn"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6kutn"]
+font = ExtResource("1_rigcf")
+font_size = 200
+font_color = Color(0, 0.49411765, 0, 1)
+shadow_size = 100
+shadow_color = Color(0, 0.6666667, 0, 1)
+
+[node name="MainMenu" type="Control" unique_id=1682294781]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_62at4")
+
+[node name="Title" type="Label" parent="." unique_id=1461230497]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -104.0
+offset_top = 20.0
+offset_right = 104.0
+offset_bottom = 124.0
+grow_horizontal = 2
+text = "TITLE"
+label_settings = SubResource("LabelSettings_6kutn")
+script = ExtResource("2_kmbwo")
+localization_key = "TITLE"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=459235778]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -68.0
+offset_right = 35.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayButton" type="Button" parent="VBoxContainer" unique_id=2085311124]
+layout_mode = 2
+text = "Play"
+script = ExtResource("3_j80pn")
+localization_key = "MENU_PLAY"
+
+[node name="OptionsButton" type="Button" parent="VBoxContainer" unique_id=1651439596]
+layout_mode = 2
+text = "Options"
+script = ExtResource("3_j80pn")
+localization_key = "MENU_OPTIONS"
+
+[node name="CreditButton" type="Button" parent="VBoxContainer" unique_id=370179452]
+layout_mode = 2
+text = "Credit"
+script = ExtResource("3_j80pn")
+localization_key = "MENU_CREDIT"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer" unique_id=1292409412]
+layout_mode = 2
+text = "Quit"
+script = ExtResource("3_j80pn")
+localization_key = "MENU_QUIT"
+
+[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="play"]
+[connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="options"]
+[connection signal="pressed" from="VBoxContainer/CreditButton" to="." method="credit"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="quit"]

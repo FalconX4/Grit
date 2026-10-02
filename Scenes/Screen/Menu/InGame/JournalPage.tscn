@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bs35r6gtgyr8n"]
 
-[ext_resource type="Script" uid="uid://c43jrrg56mmb5" path="res://Scripts/Screen/Menu/JournalPage.gd" id="1_aerg4"]
+[ext_resource type="Script" uid="uid://c43jrrg56mmb5" path="res://Scripts/Screen/Menu/InGame/JournalPage.gd" id="1_aerg4"]
 [ext_resource type="Resource" uid="uid://by06op57v11fs" path="res://Data/Game/Items/Foods/blue_daucus.tres" id="2_gu8qw"]
 [ext_resource type="Texture2D" uid="uid://c4ghyk50n3fd0" path="res://Assets/Game/Items/FlowersSketch/Something6.png" id="3_btfia"]
 [ext_resource type="FontFile" uid="uid://ceewc0pjugkr0" path="res://Fonts/AMOS_FONT.ttf" id="3_k3qi5"]

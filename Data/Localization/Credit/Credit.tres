@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="CreditText" format=3 uid="uid://k35k3hbhy7fh"]
+
+[ext_resource type="Script" uid="uid://bfcb7wsg0idj1" path="res://Scripts/Screen/Menu/Main/Credit/CreditTextCategory.gd" id="1_6tayd"]
+[ext_resource type="Script" uid="uid://dk6nl0iinefhx" path="res://Scripts/Screen/Menu/Main/Credit/CreditText.gd" id="2_omy2l"]
+
+[sub_resource type="Resource" id="Resource_7p66t"]
+script = ExtResource("1_6tayd")
+title = "MENU_CREDIT_PROGRAMMER"
+names = PackedStringArray("Dalin Son")
+metadata/_custom_type_script = "uid://bfcb7wsg0idj1"
+
+[sub_resource type="Resource" id="Resource_2njxx"]
+script = ExtResource("1_6tayd")
+title = "MENU_CREDIT_ARTIST"
+names = PackedStringArray("Dalin Son")
+metadata/_custom_type_script = "uid://bfcb7wsg0idj1"
+
+[resource]
+script = ExtResource("2_omy2l")
+category_line_padding = 1
+category_title_prefix = "[font_size=30][b][u][color=green]"
+category_title_suffix = "[/color][/u][/b][/font_size]"
+categories = Array[ExtResource("1_6tayd")]([SubResource("Resource_7p66t"), SubResource("Resource_2njxx")])
+metadata/_custom_type_script = "uid://dk6nl0iinefhx"

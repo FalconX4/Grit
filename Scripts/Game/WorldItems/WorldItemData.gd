@@ -1,5 +1,6 @@
 class_name WorldItemData
 
+var id: int
 var position: Vector2
 var rotation: float
 var item_data: ItemWorldData

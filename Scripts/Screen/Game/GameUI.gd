@@ -31,11 +31,11 @@ func _process(_delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		return
-	
+
 	var is_my_event = true if not selected_player else selected_player.character.input_handler.is_my_event(event)
 	if not is_my_event:
 		return
-		
+
 	if Helpers.is_main_scene(self):
 		var interacKey = selected_player.character.input_handler.input.get_device_action_id(InputMapNames.GAME_INTERACT) if selected_player else str(InputMapNames.GAME_INTERACT)
 		if event.is_action_pressed(interacKey):

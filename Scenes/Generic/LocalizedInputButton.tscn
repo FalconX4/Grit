@@ -6,7 +6,9 @@
 [node name="LocalizedInputButton" type="Button" unique_id=1970132749 node_paths=PackedStringArray("inputLabel")]
 offset_right = 200.0
 offset_bottom = 100.0
+theme_override_font_sizes/font_size = 40
 script = ExtResource("1_3juur")
+show_keyboard_shortcut = true
 inputLabel = NodePath("InputLabel")
 localization_key = "MENU_BACK"
 metadata/_custom_type_script = "uid://8ty6cdosvtgp"

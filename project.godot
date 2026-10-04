@@ -189,6 +189,10 @@ Game_Item_Half={
 ]
 }
 
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
 [internationalization]
 
 locale/translations=PackedStringArray("res://Data/Localization/Generic.en.translation", "res://Data/Localization/Generic.fr.translation", "res://Data/Localization/Generic.fro.translation", "res://Data/Localization/Items.en.translation", "res://Data/Localization/Items.fr.translation", "res://Data/Localization/Items.fro.translation", "res://Data/Localization/Keyboard.en.translation", "res://Data/Localization/Keyboard.fr.translation", "res://Data/Localization/Keyboard.fro.translation")

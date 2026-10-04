@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://dc5h0kj1iwf7t" path="res://Scripts/Screen/Menu/Main/Credit.gd" id="1_psqlw"]
 [ext_resource type="Resource" uid="uid://k35k3hbhy7fh" path="res://Data/Localization/Credit/Credit.tres" id="2_7h6en"]
-[ext_resource type="Script" uid="uid://cleyxi8wq54y5" path="res://Scripts/Generic/LocalizedButton.gd" id="2_vgbsi"]
+[ext_resource type="PackedScene" uid="uid://b888g1wirnetu" path="res://Scenes/Generic/LocalizedInputButton.tscn" id="3_vgbsi"]
 
-[node name="Credit" type="Control" unique_id=892577513 node_paths=PackedStringArray("label")]
+[node name="Credit" type="Control" unique_id=892577513 node_paths=PackedStringArray("label", "scroll_container")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,23 +12,38 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_psqlw")
-label = NodePath("Label")
+label = NodePath("ScrollContainer/VBoxContainer/Label")
 credit_text = ExtResource("2_7h6en")
+scroll_container = NodePath("ScrollContainer")
 
-[node name="Label" type="RichTextLabel" parent="." unique_id=794878746]
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=410256820]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer" unique_id=65844095]
+layout_mode = 2
+
+[node name="Label" type="RichTextLabel" parent="ScrollContainer/VBoxContainer" unique_id=794878746]
+layout_mode = 2
+mouse_filter = 2
 bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control" type="Control" parent="." unique_id=1149691120]
+[node name="Control" type="Control" parent="ScrollContainer/VBoxContainer" unique_id=1704340622]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="LocalizedInputButton" parent="." unique_id=1970132749 instance=ExtResource("3_vgbsi")]
 layout_mode = 1
-anchors_preset = 3
+anchors_preset = -1
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -39,14 +54,3 @@ offset_right = -20.0
 offset_bottom = -20.0
 grow_horizontal = 0
 grow_vertical = 0
-
-[node name="LocalizedButton" type="Button" parent="Control" unique_id=70427101]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("2_vgbsi")
-localization_key = "MENU_BACK"
-metadata/_custom_type_script = "uid://cleyxi8wq54y5"

@@ -4,6 +4,10 @@
 [ext_resource type="FontFile" uid="uid://ceewc0pjugkr0" path="res://Fonts/AMOS_FONT.ttf" id="1_rigcf"]
 [ext_resource type="Script" uid="uid://yoweu1mlxnst" path="res://Scripts/Generic/LocalizedLabel.gd" id="2_kmbwo"]
 [ext_resource type="Script" uid="uid://cleyxi8wq54y5" path="res://Scripts/Generic/LocalizedButton.gd" id="3_j80pn"]
+[ext_resource type="PackedScene" uid="uid://bw8hbgqgmh14i" path="res://Scenes/Screen/Menu/Main/Play/WorldSelection.tscn" id="5_d66r3"]
+[ext_resource type="PackedScene" uid="uid://cgrlkm7jlxk86" path="res://Scenes/Screen/Menu/Main/Credit.tscn" id="5_id2sv"]
+[ext_resource type="PackedScene" uid="uid://cp0vocyabw8d1" path="res://Scenes/Screen/Menu/Main/Options.tscn" id="6_cotpb"]
+[ext_resource type="PackedScene" uid="uid://b888g1wirnetu" path="res://Scenes/Generic/LocalizedInputButton.tscn" id="8_ejmxf"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_6kutn"]
 font = ExtResource("1_rigcf")
@@ -12,7 +16,7 @@ font_color = Color(0, 0.49411765, 0, 1)
 shadow_size = 100
 shadow_color = Color(0, 0.6666667, 0, 1)
 
-[node name="MainMenu" type="Control" unique_id=1682294781]
+[node name="MainMenu" type="Control" unique_id=1682294781 node_paths=PackedStringArray("play_control", "options_control", "credit_control", "back_button", "buttons")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,6 +24,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_62at4")
+play_control = NodePath("Menus/WorldSelection")
+options_control = NodePath("Menus/Options")
+credit_control = NodePath("Menus/Credit")
+back_button = NodePath("Back")
+buttons = NodePath("Buttons")
 
 [node name="Title" type="Label" parent="." unique_id=1461230497]
 layout_mode = 1
@@ -36,7 +45,27 @@ label_settings = SubResource("LabelSettings_6kutn")
 script = ExtResource("2_kmbwo")
 localization_key = "TITLE"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=459235778]
+[node name="Menus" type="Control" parent="." unique_id=2071739120]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WorldSelection" parent="Menus" unique_id=1002606217 instance=ExtResource("5_d66r3")]
+visible = false
+layout_mode = 1
+
+[node name="Options" parent="Menus" unique_id=832849360 instance=ExtResource("6_cotpb")]
+visible = false
+layout_mode = 1
+
+[node name="Credit" parent="Menus" unique_id=892577513 instance=ExtResource("5_id2sv")]
+visible = false
+layout_mode = 1
+
+[node name="Buttons" type="VBoxContainer" parent="." unique_id=459235778]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -50,31 +79,48 @@ offset_bottom = 68.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PlayButton" type="Button" parent="VBoxContainer" unique_id=2085311124]
+[node name="PlayButton" type="Button" parent="Buttons" unique_id=2085311124]
 layout_mode = 2
 text = "Play"
 script = ExtResource("3_j80pn")
 localization_key = "MENU_PLAY"
 
-[node name="OptionsButton" type="Button" parent="VBoxContainer" unique_id=1651439596]
+[node name="OptionsButton" type="Button" parent="Buttons" unique_id=1651439596]
 layout_mode = 2
 text = "Options"
 script = ExtResource("3_j80pn")
 localization_key = "MENU_OPTIONS"
 
-[node name="CreditButton" type="Button" parent="VBoxContainer" unique_id=370179452]
+[node name="CreditButton" type="Button" parent="Buttons" unique_id=370179452]
 layout_mode = 2
 text = "Credit"
 script = ExtResource("3_j80pn")
 localization_key = "MENU_CREDIT"
 
-[node name="QuitButton" type="Button" parent="VBoxContainer" unique_id=1292409412]
+[node name="QuitButton" type="Button" parent="Buttons" unique_id=1292409412]
 layout_mode = 2
 text = "Quit"
 script = ExtResource("3_j80pn")
 localization_key = "MENU_QUIT"
 
-[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="play"]
-[connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="options"]
-[connection signal="pressed" from="VBoxContainer/CreditButton" to="." method="credit"]
-[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="quit"]
+[node name="Back" parent="." unique_id=1970132749 instance=ExtResource("8_ejmxf")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -220.0
+offset_top = -120.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+show_keyboard_shortcut = false
+
+[connection signal="pressed" from="Buttons/PlayButton" to="." method="play"]
+[connection signal="pressed" from="Buttons/OptionsButton" to="." method="options"]
+[connection signal="pressed" from="Buttons/CreditButton" to="." method="credit"]
+[connection signal="pressed" from="Buttons/QuitButton" to="." method="quit"]
+[connection signal="pressed" from="Back" to="." method="back"]

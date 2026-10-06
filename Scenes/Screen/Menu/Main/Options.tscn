@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://cp0vocyabw8d1"]
+
+[ext_resource type="PackedScene" uid="uid://cjjasjwuyapmb" path="res://Scenes/Screen/Menu/Main/Options/Audio.tscn" id="1_kejxw"]
+
+[node name="Options" type="Control" unique_id=832849360]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TabContainer" type="TabContainer" parent="." unique_id=836077621]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tab_alignment = 1
+current_tab = 0
+switch_on_drag_hover = false
+
+[node name="General" type="Control" parent="TabContainer" unique_id=1705067157]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Graphics" type="Control" parent="TabContainer" unique_id=1278035540]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="Audio" parent="TabContainer" unique_id=518034022 instance=ExtResource("1_kejxw")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="Input" type="Control" parent="TabContainer" unique_id=48256097]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3

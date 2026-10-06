@@ -19,19 +19,24 @@ run/main_scene="res://Scenes/Game/Levels/Intro.tscn"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://cwjjx2ihngb6m"
+
 [autoload]
 
-RandomManager="*uid://nl54pnbe2smt"
 DataManager="*res://Scripts/Global/DataManager.gd"
 Pool="*uid://ib2ssouenwnl"
+RandomManager="*uid://nl54pnbe2smt"
 SettingManager="*uid://clgn86ewwx6s7"
+AudioManager="*uid://cxj5dnxs4ic2i"
 Localization="*uid://g7xbjwq6fu38"
 ProfileManager="*uid://syufnr86b1eu"
 WorldManager="*uid://dsj4xo8n7lrpk"
 GameSessionData="*uid://dtjri0mepm0yx"
 InputManager="*uid://cc7pxnepq8nn0"
-PlayerManager="*uid://bcj6qg04bkql8"
 ItemSlotGridManager="*uid://dy43kt6doahbr"
+PlayerManager="*uid://bcj6qg04bkql8"
 
 [display]
 

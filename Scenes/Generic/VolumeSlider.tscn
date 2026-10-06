@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bkefyn1ajy8bw"]
+
+[ext_resource type="PackedScene" uid="uid://csgoifkef6mop" path="res://Scenes/Generic/SliderShownValue.tscn" id="1_rrtad"]
+[ext_resource type="Script" uid="uid://ul0go1eq4q7j" path="res://Scripts/Generic/VolumeSlider.gd" id="2_lojeg"]
+
+[node name="VolumeSlider" unique_id=11532611 instance=ExtResource("1_rrtad")]
+script = ExtResource("2_lojeg")
+_volume_bus = 0

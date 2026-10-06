@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://dc5h0kj1iwf7t" path="res://Scripts/Screen/Menu/Main/Credit.gd" id="1_psqlw"]
 [ext_resource type="Resource" uid="uid://k35k3hbhy7fh" path="res://Data/Localization/Credit/Credit.tres" id="2_7h6en"]
-[ext_resource type="PackedScene" uid="uid://b888g1wirnetu" path="res://Scenes/Generic/LocalizedInputButton.tscn" id="3_vgbsi"]
 
 [node name="Credit" type="Control" unique_id=892577513 node_paths=PackedStringArray("label", "scroll_container")]
 layout_mode = 3
@@ -40,17 +39,3 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 2
 mouse_filter = 2
-
-[node name="LocalizedInputButton" parent="." unique_id=1970132749 instance=ExtResource("3_vgbsi")]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -220.0
-offset_top = -120.0
-offset_right = -20.0
-offset_bottom = -20.0
-grow_horizontal = 0
-grow_vertical = 0

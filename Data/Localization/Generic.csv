@@ -2,6 +2,9 @@ key;en;fr;fro
 TITLE;Grit;Tenace;Fort
 MENU_PLAY;Play;Jouer;Go
 MENU_OPTIONS;Options;Options;Options
+MENU_OPTIONS_AUDIO_MASTER;Master Volume;Volume Maître;Volume Maître
+MENU_OPTIONS_AUDIO_MUSIC;Music Volume;Volume Musique;Volume Toune
+MENU_OPTIONS_AUDIO_SFX;SFX Volume;Volume SFX;Volume SFX
 MENU_CREDIT;Credit;Crédit;Crédit
 MENU_CREDIT_PROGRAMMER;Programmer;Programmeur;Codeur
 MENU_CREDIT_ARTIST;Artist;Artiste;Artiste

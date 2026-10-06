@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://csgoifkef6mop"]
+
+[ext_resource type="Script" uid="uid://byfb0ea5ju176" path="res://Scripts/Generic/HSliderFinal.gd" id="1_ll4d6"]
+[ext_resource type="Script" uid="uid://ba1kab2igqbkx" path="res://Scripts/Generic/SliderShownValue.gd" id="1_mqqnb"]
+
+[node name="SliderShownValue" type="Control" unique_id=11532611 node_paths=PackedStringArray("slider", "spin_box")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mqqnb")
+slider = NodePath("HSliderFinal")
+spin_box = NodePath("SpinBox")
+
+[node name="HSliderFinal" type="HSlider" parent="." unique_id=1792368831]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_right = -120.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ll4d6")
+metadata/_custom_type_script = "uid://byfb0ea5ju176"
+
+[node name="SpinBox" type="SpinBox" parent="." unique_id=451715963]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -107.0
+offset_top = -15.5
+offset_right = -20.0
+offset_bottom = 15.5
+grow_horizontal = 0
+grow_vertical = 2
+
+[connection signal="value_changed" from="SpinBox" to="." method="_on_spin_box_value_changed"]

@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://ckvgblpvdwh1h"]
+
+[ext_resource type="Script" uid="uid://yoweu1mlxnst" path="res://Scripts/Generic/LocalizedLabel.gd" id="1_3aijf"]
+[ext_resource type="Script" uid="uid://brjncp01nv1mj" path="res://Scripts/Screen/Menu/Main/Options/GraphicsScreen.gd" id="1_jx27h"]
+
+[node name="Graphics" type="Control" unique_id=80934804 node_paths=PackedStringArray("screen_id_control", "screen_id_dropdown", "screen_resolution_dropdown", "window_mode_dropdown", "screen_shake_checkbox")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jx27h")
+screen_id_control = NodePath("VBoxContainer/Screen")
+screen_id_dropdown = NodePath("VBoxContainer/Screen/OptionButton")
+screen_resolution_dropdown = NodePath("VBoxContainer/ScreenResolution/OptionButton")
+window_mode_dropdown = NodePath("VBoxContainer/WindowMode/OptionButton")
+screen_shake_checkbox = NodePath("VBoxContainer/ScreenShake/CheckBox")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1559669937]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Screen" type="HBoxContainer" parent="VBoxContainer" unique_id=357488931]
+layout_mode = 2
+
+[node name="LocalizedLabel" type="Label" parent="VBoxContainer/Screen" unique_id=186965442]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "MENU_OPTIONS_GRAPHICS_SCREEN_ID"
+horizontal_alignment = 2
+script = ExtResource("1_3aijf")
+localization_key = "MENU_OPTIONS_GRAPHICS_SCREEN_ID"
+metadata/_custom_type_script = "uid://yoweu1mlxnst"
+
+[node name="OptionButton" type="OptionButton" parent="VBoxContainer/Screen" unique_id=1350759051]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ScreenResolution" type="HBoxContainer" parent="VBoxContainer" unique_id=1467485799]
+layout_mode = 2
+
+[node name="LocalizedLabel" type="Label" parent="VBoxContainer/ScreenResolution" unique_id=1290185518]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "MENU_OPTIONS_GRAPHICS_SCREEN_RESOLUTION"
+horizontal_alignment = 2
+script = ExtResource("1_3aijf")
+localization_key = "MENU_OPTIONS_GRAPHICS_SCREEN_RESOLUTION"
+metadata/_custom_type_script = "uid://yoweu1mlxnst"
+
+[node name="OptionButton" type="OptionButton" parent="VBoxContainer/ScreenResolution" unique_id=1782325433]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="WindowMode" type="HBoxContainer" parent="VBoxContainer" unique_id=1774183434]
+layout_mode = 2
+
+[node name="LocalizedLabel" type="Label" parent="VBoxContainer/WindowMode" unique_id=521586721]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "MENU_OPTIONS_GRAPHICS_WINDOW_MODE"
+horizontal_alignment = 2
+script = ExtResource("1_3aijf")
+localization_key = "MENU_OPTIONS_GRAPHICS_WINDOW_MODE"
+metadata/_custom_type_script = "uid://yoweu1mlxnst"
+
+[node name="OptionButton" type="OptionButton" parent="VBoxContainer/WindowMode" unique_id=914508761]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ScreenShake" type="HBoxContainer" parent="VBoxContainer" unique_id=1520791300]
+layout_mode = 2
+
+[node name="LocalizedLabel" type="Label" parent="VBoxContainer/ScreenShake" unique_id=1567142459]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "MENU_OPTIONS_GRAPHICS_SCREEN_SHAKE"
+horizontal_alignment = 2
+script = ExtResource("1_3aijf")
+localization_key = "MENU_OPTIONS_GRAPHICS_SCREEN_SHAKE"
+metadata/_custom_type_script = "uid://yoweu1mlxnst"
+
+[node name="CheckBox" type="CheckBox" parent="VBoxContainer/ScreenShake" unique_id=171933602]
+layout_mode = 2

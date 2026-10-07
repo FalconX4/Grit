@@ -60,6 +60,11 @@ layout_mode = 1
 [node name="Options" parent="Menus" unique_id=832849360 instance=ExtResource("6_cotpb")]
 visible = false
 layout_mode = 1
+anchors_preset = -1
+offset_left = 100.0
+offset_top = 260.0
+offset_right = -100.0
+offset_bottom = -160.0
 
 [node name="Credit" parent="Menus" unique_id=892577513 instance=ExtResource("5_id2sv")]
 visible = false

@@ -2,9 +2,18 @@ key;en;fr;fro
 TITLE;Grit;Tenace;Fort
 MENU_PLAY;Play;Jouer;Go
 MENU_OPTIONS;Options;Options;Options
+MENU_OPTIONS_GENERIC_LANGUAGE;Language;Langue;Langue
+MENU_OPTIONS_GENERIC_CHANGE_PROFILE;Change profile;Changer de profil;Changer de profil
+MENU_OPTIONS_GENERIC_RESET_PROFILE;Reset profile;Recommencer le profile;Recommencer le profile
+MENU_OPTIONS_GENERIC_DELETE_PROFILE;Delete profile;Effacer le profile;Effacer le profile
+MENU_OPTIONS_GRAPHICS_SCREEN_ID;Screen;Écran;Écran
+MENU_OPTIONS_GRAPHICS_SCREEN_RESOLUTION;Screen Resolution;Resolution d'écran;Resolution d'écran
+MENU_OPTIONS_GRAPHICS_WINDOW_MODE;Window Mode;Mode Fenêtre;Mode Fenêtre
+MENU_OPTIONS_GRAPHICS_SCREEN_SHAKE;Screen Shake;Tremblement d'écran;Tremblement d'écran
 MENU_OPTIONS_AUDIO_MASTER;Master Volume;Volume Maître;Volume Maître
 MENU_OPTIONS_AUDIO_MUSIC;Music Volume;Volume Musique;Volume Toune
 MENU_OPTIONS_AUDIO_SFX;SFX Volume;Volume SFX;Volume SFX
+MENU_OPTIONS_INPUT_CONTROLLER_VIBRATION;SFX Volume;Volume SFX;Volume SFX
 MENU_CREDIT;Credit;Crédit;Crédit
 MENU_CREDIT_PROGRAMMER;Programmer;Programmeur;Codeur
 MENU_CREDIT_ARTIST;Artist;Artiste;Artiste

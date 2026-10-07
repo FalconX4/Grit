@@ -51,7 +51,6 @@ func set_volume(bus: AudioBus, volume: float) -> void:
 		AudioBus.SFX:
 			volume_data.sfx_volume = volume
 			AudioServer.set_bus_volume_db(_volume_bus_indices[AudioBus.SFX], linear_to_db(volume_data.sfx_volume))
-	SettingManager.set_setting(SECTION, VOLUME_KEY, volume_data)
 
 func get_volume(bus: AudioBus) -> float:
 	match bus:
@@ -62,3 +61,7 @@ func get_volume(bus: AudioBus) -> float:
 		AudioBus.SFX:
 			return volume_data.sfx_volume
 	return 0.0
+
+func save() -> void:
+	SettingManager.set_setting(SECTION, VOLUME_KEY, volume_data)
+	SettingManager.save()

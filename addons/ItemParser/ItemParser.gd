@@ -31,10 +31,10 @@ enum SeedData
 }
 
 func _enter_tree() -> void:
-	add_tool_menu_item("Parse Database", _on_button_pressed)
+	add_tool_menu_item("Parse Item Database", _on_button_pressed)
 
 func _exit_tree():
-	remove_tool_menu_item("Parse Database")
+	remove_tool_menu_item("Parse Item Database")
 
 func _on_button_pressed() -> void:
 	print("Beginning")

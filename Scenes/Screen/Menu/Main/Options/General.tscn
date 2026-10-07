@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://bmrfncfawreai"]
+
+[ext_resource type="Script" uid="uid://dvmf8g0h8n47w" path="res://Scripts/Screen/Menu/Main/Options/GeneralScreen.gd" id="1_tcxpt"]
+[ext_resource type="Script" uid="uid://yoweu1mlxnst" path="res://Scripts/Generic/LocalizedLabel.gd" id="2_3nlu3"]
+
+[node name="General" type="Control" unique_id=584459577 node_paths=PackedStringArray("language")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tcxpt")
+language = NodePath("VBoxContainer/Language/OptionButton")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1851487080]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 20.0
+offset_right = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Language" type="HBoxContainer" parent="VBoxContainer" unique_id=2051781924]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="LocalizedLabel" type="Label" parent="VBoxContainer/Language" unique_id=471806542]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "MENU_OPTIONS_GENERIC_LANGUAGE"
+horizontal_alignment = 2
+script = ExtResource("2_3nlu3")
+localization_key = "MENU_OPTIONS_GENERIC_LANGUAGE"
+metadata/_custom_type_script = "uid://yoweu1mlxnst"
+
+[node name="OptionButton" type="OptionButton" parent="VBoxContainer/Language" unique_id=1415259968]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4

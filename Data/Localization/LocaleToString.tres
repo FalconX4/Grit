@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="LocaleToString" format=3 uid="uid://2qf458af7mxi"]
+
+[ext_resource type="Script" uid="uid://dwtd4shu426t2" path="res://Scripts/Global/Data/LocaleToString.gd" id="1_6tj23"]
+
+[resource]
+script = ExtResource("1_6tj23")
+locale_to_string = Dictionary[String, String]({
+"en": "English",
+"fr": "Français",
+"fro": "Québécois"
+})
+metadata/_custom_type_script = "uid://dwtd4shu426t2"

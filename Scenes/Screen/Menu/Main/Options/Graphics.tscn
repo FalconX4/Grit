@@ -23,10 +23,12 @@ anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 20.0
+offset_right = -20.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Screen" type="HBoxContainer" parent="VBoxContainer" unique_id=357488931]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
 [node name="LocalizedLabel" type="Label" parent="VBoxContainer/Screen" unique_id=186965442]
@@ -41,8 +43,10 @@ metadata/_custom_type_script = "uid://yoweu1mlxnst"
 [node name="OptionButton" type="OptionButton" parent="VBoxContainer/Screen" unique_id=1350759051]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 4
 
 [node name="ScreenResolution" type="HBoxContainer" parent="VBoxContainer" unique_id=1467485799]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
 [node name="LocalizedLabel" type="Label" parent="VBoxContainer/ScreenResolution" unique_id=1290185518]
@@ -57,8 +61,10 @@ metadata/_custom_type_script = "uid://yoweu1mlxnst"
 [node name="OptionButton" type="OptionButton" parent="VBoxContainer/ScreenResolution" unique_id=1782325433]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 4
 
 [node name="WindowMode" type="HBoxContainer" parent="VBoxContainer" unique_id=1774183434]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
 [node name="LocalizedLabel" type="Label" parent="VBoxContainer/WindowMode" unique_id=521586721]
@@ -73,8 +79,10 @@ metadata/_custom_type_script = "uid://yoweu1mlxnst"
 [node name="OptionButton" type="OptionButton" parent="VBoxContainer/WindowMode" unique_id=914508761]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 4
 
 [node name="ScreenShake" type="HBoxContainer" parent="VBoxContainer" unique_id=1520791300]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
 [node name="LocalizedLabel" type="Label" parent="VBoxContainer/ScreenShake" unique_id=1567142459]

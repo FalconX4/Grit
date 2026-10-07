@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ckvgblpvdwh1h" path="res://Scenes/Screen/Menu/Main/Options/Graphics.tscn" id="1_jxi3c"]
 [ext_resource type="PackedScene" uid="uid://cjjasjwuyapmb" path="res://Scenes/Screen/Menu/Main/Options/Audio.tscn" id="1_kejxw"]
+[ext_resource type="PackedScene" uid="uid://bmrfncfawreai" path="res://Scenes/Screen/Menu/Main/Options/General.tscn" id="1_rw0g1"]
 
 [node name="Options" type="Control" unique_id=832849360]
 layout_mode = 3
@@ -22,7 +23,7 @@ tab_alignment = 1
 current_tab = 0
 switch_on_drag_hover = false
 
-[node name="General" type="Control" parent="TabContainer" unique_id=1705067157]
+[node name="General" parent="TabContainer" unique_id=584459577 instance=ExtResource("1_rw0g1")]
 layout_mode = 2
 metadata/_tab_index = 0
 

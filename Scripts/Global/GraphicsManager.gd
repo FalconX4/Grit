@@ -77,6 +77,7 @@ func _ready() -> void:
 	window.mode = screen_data.mode
 	window.borderless = screen_data.borderless
 	center_window()
+	super._ready()
 
 func center_window() -> void:
 	var screen_size = DisplayServer.screen_get_size(window.current_screen)

@@ -4,15 +4,23 @@ const KEY = "language"
 
 signal language_changed(old_language: String, new_language: String)
 
+@export var locale_to_string_resource: LocaleToString
+
 var current_language: String
 var loaded_locales: PackedStringArray
+var locale_to_string: Dictionary[String, String]
 
 func _init() -> void:
+	if not locale_to_string_resource:
+		locale_to_string_resource = ResourceLoader.load("res://Data/Localization/LocaleToString.tres")
+
 	loaded_locales = TranslationServer.get_loaded_locales()
 	current_language = SettingManager.get_setting(SettingManager.SECTION, KEY, OS.get_locale_language())
 	if not TranslationServer.has_translation_for_locale(current_language, false):
 		current_language = loaded_locales[0]
 	TranslationServer.set_locale(current_language)
+	for locale in loaded_locales:
+		locale_to_string[locale] = locale_to_string_resource.locale_to_string[locale]
 
 func set_language(language: String) -> void:
 	var old_language = current_language

@@ -1,0 +1,16 @@
+Offline:
+# TODO FEATURE SAVE: Autosave (button "..." in world selection)
+- Couch coop
+# TODO FEATURE WORLD: Create world
+# TODO FEATURE PLAY: Go into game
+- Disallow to play a original character except character creator or swap the player using their og char to use their own og char (and if someone was using their, swap that player too)
+- check coop already used character if 2 select the same use og for both
+- Better rename error handling
+- Once in game set PlayerData.player_id, CharacterData.character_id, and Profile.last_player_id
+
+- Stats for world eaten and character eaten
+
+Online:
+- Everything
+- Profile id clash
+# TODO FEATURE SAVE: Save oher people saves

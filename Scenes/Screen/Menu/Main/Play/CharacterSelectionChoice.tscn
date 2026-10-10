@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://cmcoiise3672f"]
+
+[ext_resource type="Script" uid="uid://cytnf3i8u0bwr" path="res://Scripts/Screen/Menu/Main/Play/CharacterSelectionChoice.gd" id="1_3kol4"]
+[ext_resource type="SpriteFrames" uid="uid://ld0t10aujxwi" path="res://Data/Game/Characters/YoungMan.tres" id="1_c1g3b"]
+[ext_resource type="Texture2D" uid="uid://cwk6eho5o17ts" path="res://Assets/Screen/Game/ItemSlot.png" id="2_m84dk"]
+[ext_resource type="Texture2D" uid="uid://ce2iyny0yf4bi" path="res://Assets/Screen/Game/ItemSlotSelected.png" id="3_d5w85"]
+[ext_resource type="Script" uid="uid://yoweu1mlxnst" path="res://Scripts/Generic/LocalizedLabel.gd" id="4_d5w85"]
+[ext_resource type="Texture2D" uid="uid://boyxtv07h0qay" path="res://Assets/Screen/Buttons/DeleteButton.png" id="6_48gmq"]
+[ext_resource type="Script" uid="uid://6c40sl08d8wq" path="res://Scripts/Generic/LocalizedConfirmationDialog.gd" id="6_q64tl"]
+
+[node name="CharacterSelectionChoice" type="Button" unique_id=1443644506 node_paths=PackedStringArray("name_label", "warning_label", "character_sprite", "selection_frame", "confirm_delete_dialog")]
+custom_minimum_size = Vector2(400, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+script = ExtResource("1_3kol4")
+name_label = NodePath("Label")
+warning_label = NodePath("AlreadyUsed")
+character_sprite = NodePath("AnimatedSprite2D")
+selection_frame = NodePath("SelectedFrame")
+confirm_delete_dialog = NodePath("LocalizedConfirmationDialog")
+
+[node name="NotSelectedFrame" type="NinePatchRect" parent="." unique_id=1258029019]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_m84dk")
+draw_center = false
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="SelectedFrame" type="NinePatchRect" parent="." unique_id=255311006]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_d5w85")
+draw_center = false
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="Label" type="Label" parent="." unique_id=1917892308]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 100.0
+grow_horizontal = 2
+text = "NAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AlreadyUsed" type="Label" parent="." unique_id=1793519911]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_top = 100.0
+offset_bottom = 200.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+text = "MENU_CHARACTER_SELECTION_ALREADY_IN_USE"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("4_d5w85")
+localization_key = "MENU_CHARACTER_SELECTION_ALREADY_IN_USE"
+metadata/_custom_type_script = "uid://yoweu1mlxnst"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1914078460]
+position = Vector2(960, 540)
+sprite_frames = ExtResource("1_c1g3b")
+animation = &"WalkDown"
+
+[node name="Delete" type="Button" parent="." unique_id=1919863759]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -88.0
+offset_bottom = 88.0
+grow_horizontal = 0
+icon = ExtResource("6_48gmq")
+
+[node name="LocalizedConfirmationDialog" type="ConfirmationDialog" parent="." unique_id=2065014046]
+title = "MENU_CHARACTER_DELETE_TITLE"
+ok_button_text = "GENERIC_EATER_OK"
+dialog_text = "MENU_CHARACTER_DELETE_DESCRIPTION"
+cancel_button_text = "GENERIC_EATER_CANCEL"
+script = ExtResource("6_q64tl")
+localization_key_title = "MENU_CHARACTER_DELETE_TITLE"
+localization_key_text = "MENU_CHARACTER_DELETE_DESCRIPTION"
+localization_key_ok = "GENERIC_EATER_OK"
+localization_key_cancel = "GENERIC_EATER_CANCEL"
+localization_key_text_params = Array[String](["GENERIC_EATER_DESCRIPTION", "", "MENU_CHARACTER_DELETE_TITLE"])
+metadata/_custom_type_script = "uid://6c40sl08d8wq"
+
+[connection signal="pressed" from="." to="." method="_on_selected"]
+[connection signal="pressed" from="Delete" to="." method="_on_try_delete"]

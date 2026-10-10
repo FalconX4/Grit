@@ -1,5 +1,5 @@
 extends Control
-class_name Credit
+class_name CreditScreen
 
 @export var label: RichTextLabel
 @export var credit_text: CreditText

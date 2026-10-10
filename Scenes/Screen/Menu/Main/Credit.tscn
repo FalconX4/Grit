@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cgrlkm7jlxk86"]
 
-[ext_resource type="Script" uid="uid://dc5h0kj1iwf7t" path="res://Scripts/Screen/Menu/Main/Credit.gd" id="1_psqlw"]
+[ext_resource type="Script" uid="uid://dc5h0kj1iwf7t" path="res://Scripts/Screen/Menu/Main/Credit/CreditScreen.gd" id="1_psqlw"]
 [ext_resource type="Resource" uid="uid://k35k3hbhy7fh" path="res://Data/Localization/Credit/Credit.tres" id="2_7h6en"]
 
 [node name="Credit" type="Control" unique_id=892577513 node_paths=PackedStringArray("label", "scroll_container")]

@@ -1,9 +1,89 @@
 [gd_scene format=3 uid="uid://q5jmesmjv0pg"]
 
-[node name="CharacterSelection" type="Control" unique_id=515428330]
+[ext_resource type="Script" uid="uid://d11b2h8cniwa3" path="res://Scripts/Screen/Menu/Main/Play/CharacterSelectionScreen.gd" id="1_h58m7"]
+[ext_resource type="Script" uid="uid://cleyxi8wq54y5" path="res://Scripts/Generic/LocalizedButton.gd" id="1_ri5el"]
+[ext_resource type="PackedScene" uid="uid://cmcoiise3672f" path="res://Scenes/Screen/Menu/Main/Play/CharacterSelectionChoice.tscn" id="2_i4h4c"]
+[ext_resource type="Script" uid="uid://yoweu1mlxnst" path="res://Scripts/Generic/LocalizedLabel.gd" id="3_jrd5a"]
+[ext_resource type="PackedScene" uid="uid://wkwb7xqgu4g1" path="res://Scenes/Screen/Menu/Main/Play/CharacterCreationScreen.tscn" id="3_wkmq8"]
+
+[node name="CharacterSelection" type="Control" unique_id=515428330 node_paths=PackedStringArray("character_creation", "selection_choice_parent", "container")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_h58m7")
+character_creation = NodePath("CharacterCreationScreen")
+selection_choice_scene = ExtResource("2_i4h4c")
+selection_choice_parent = NodePath("Control/HBoxContainer")
+container = NodePath("Control")
+
+[node name="Control" type="Control" parent="." unique_id=1401612528]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LocalizedLabel" type="Label" parent="Control" unique_id=1415962751]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_bottom = 63.0
+grow_horizontal = 2
+text = "MENU_CHARACTER_SELECTION_TITLE"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_jrd5a")
+localization_key = "MENU_CHARACTER_SELECTION_TITLE"
+metadata/_custom_type_script = "uid://yoweu1mlxnst"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control" unique_id=1294021845]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 63.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Create" type="Button" parent="Control" unique_id=282232152]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -51.0
+offset_right = 28.0
+offset_bottom = -20.0
+grow_vertical = 0
+text = "GENERIC_CREATE"
+script = ExtResource("1_ri5el")
+localization_key = "GENERIC_CREATE"
+metadata/_custom_type_script = "uid://cleyxi8wq54y5"
+
+[node name="Play" type="Button" parent="Control" unique_id=2034270935]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -51.0
+offset_top = -51.0
+offset_right = 51.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "MENU_PLAY"
+script = ExtResource("1_ri5el")
+localization_key = "MENU_PLAY"
+metadata/_custom_type_script = "uid://cleyxi8wq54y5"
+
+[node name="CharacterCreationScreen" parent="." unique_id=1920993665 instance=ExtResource("3_wkmq8")]
+visible = false
+layout_mode = 1

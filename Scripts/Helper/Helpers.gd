@@ -5,6 +5,7 @@ static func is_main_scene(node: Node) -> bool:
 
 static func node_enable(node: Node) -> void: node_process(node, true)
 static func node_disable(node: Node) -> void: node_process(node, false)
+static func node_process_each_frame(node: Node, enable: bool) -> void: if enable != node.is_processing(): node_process(node, enable)
 static func node_process(node: Node, enable: bool) -> void:
 	node.set_process(enable)
 	node.set_physics_process(enable)

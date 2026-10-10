@@ -1,6 +1,23 @@
 key;en;fr;fro
 TITLE;Grit;Tenace;Fort
-MENU_PLAY;Play;Jouer;Go
+GENERIC_CREATE;Create;Créer;Faire
+GENERIC_NEXT;Next;Suivant;Suivant
+GENERIC_OK;Ok;Ok;Enweille
+GENERIC_CANCEL;Cancel;Annuler;Laisse faire
+GENERIC_NAME;Name;Nom;Nom
+GENERIC_EATER_DESCRIPTION;Are you sure you want to feed %s to the %s?\r\nIt will be gone forever!;Êtes-vous sûr de vouloir nourrir %s au %s?\r\nIl sera parti pour toujours!;T'es tu sûr de vouloir nourrir %s au %s toé?\r\nY va être parti pour toujours!
+GENERIC_EATER_OK;Om nom nom;Miam;Mange moé ça
+GENERIC_EATER_CANCEL;NOPE;Non;Té tu fou?!
+MENU_PLAY;Play;Jouer;Jouer
+MENU_WORLD_SELECTION_TITLE;World;Monde;Monde
+MENU_WORLD_NAME_ALREADY_EXIST;Another world with the same name already exist;Un autre monde du même nom existe déjà;Ya un déjà un aut'e monde avec ce nom
+MENU_WORLD_DELETE_TITLE;World Eater;Mangeur de Monde;Mangeur de Monde
+MENU_WORLD_CREATION_TITLE;World Creator;Créateur de Monde;Créateur de Monde
+MENU_CHARACTER_SELECTION_TITLE;Character;Personnage;Personnage
+MENU_CHARACTER_DELETE_TITLE;Character Eater;Mengeur de Personnage;Mangeur de Personnage
+MENU_CHARACTER_DELETE_DESCRIPTION;%s\r\nOnly the originally created character will be gone;Seulement le personnage originalement créé sera partir;Seulement le personnage originalement créé sera partir
+MENU_CHARACTER_CREATION_TITLE;Character Creator;Créateur de Personnage;Créateur de Personnage
+MENU_CHARACTER_SELECTION_ALREADY_IN_USE;Your last selected character is already being played by another player\r\nCreated character will be used instead;Ton dernier personnage utilisé est présentement utilisé par un autre joueur\r\nLe personnage créé va être utilisé à la place;Ton perso est déjà utilisé par quelqu'un...\r\nCelui que ta créé va être utilisé à place
 MENU_OPTIONS;Options;Options;Options
 MENU_OPTIONS_GENERIC_LANGUAGE;Language;Langue;Langue
 MENU_OPTIONS_GENERIC_CHANGE_PROFILE;Change profile;Changer de profil;Changer de profil
@@ -22,5 +39,5 @@ MENU_CREDIT_QA;Quality Assurance;Assurance Qualité;Assurance Qualité
 MENU_CREDIT_TRANSLATOR;Translator;Traducteur;Traducteur
 MENU_QUIT;Quit;Quitter;Bye
 MENU_BACK;Back;Revenir;Reviens
-MENU_ITEM_SLOT_SPLIT;Split; Divise; Divise
-MENU_ITEM_SLOT_STACK;Stack; Empile; Stack
+MENU_ITEM_SLOT_SPLIT;Split;Divise;Divise
+MENU_ITEM_SLOT_STACK;Stack;Empile;Empile

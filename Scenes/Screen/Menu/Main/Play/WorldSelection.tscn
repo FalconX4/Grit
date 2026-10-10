@@ -1,9 +1,97 @@
 [gd_scene format=3 uid="uid://bw8hbgqgmh14i"]
 
-[node name="WorldSelection" type="Control" unique_id=1002606217]
+[ext_resource type="Script" uid="uid://cxp7o7fal3mxd" path="res://Scripts/Screen/Menu/Main/Play/WorldSelectionScreen.gd" id="1_5u4fn"]
+[ext_resource type="PackedScene" uid="uid://q5jmesmjv0pg" path="res://Scenes/Screen/Menu/Main/Play/CharacterSelection.tscn" id="2_lrnb3"]
+[ext_resource type="PackedScene" uid="uid://xe81v0jaa0wm" path="res://Scenes/Screen/Menu/Main/Play/WorldSelectionChoice.tscn" id="2_mv5yl"]
+[ext_resource type="PackedScene" uid="uid://bflygf4s1vgdk" path="res://Scenes/Screen/Menu/Main/Play/WorldCreationScreen.tscn" id="3_lrnb3"]
+[ext_resource type="Script" uid="uid://cleyxi8wq54y5" path="res://Scripts/Generic/LocalizedButton.gd" id="4_mv5yl"]
+[ext_resource type="Script" uid="uid://yoweu1mlxnst" path="res://Scripts/Generic/LocalizedLabel.gd" id="5_d72xk"]
+
+[node name="WorldSelection" type="Control" unique_id=1002606217 node_paths=PackedStringArray("character_selection", "world_creation", "selection_choice_parent", "container")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_5u4fn")
+character_selection = NodePath("CharacterSelection")
+world_creation = NodePath("WorldCreationScreen")
+selection_choice_scene = ExtResource("2_mv5yl")
+selection_choice_parent = NodePath("Control/VBoxContainer")
+container = NodePath("Control")
+
+[node name="CharacterSelection" parent="." unique_id=515428330 instance=ExtResource("2_lrnb3")]
+visible = false
+layout_mode = 1
+
+[node name="WorldCreationScreen" parent="." unique_id=192398121 instance=ExtResource("3_lrnb3")]
+visible = false
+layout_mode = 1
+
+[node name="Control" type="Control" parent="." unique_id=528771199]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LocalizedLabel" type="Label" parent="Control" unique_id=987302042]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_bottom = 63.0
+grow_horizontal = 2
+text = "MENU_WORLD_SELECTION_TITLE"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("5_d72xk")
+localization_key = "MENU_WORLD_SELECTION_TITLE"
+metadata/_custom_type_script = "uid://yoweu1mlxnst"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control" unique_id=2070401106]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 63.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Create" type="Button" parent="Control" unique_id=1318727457]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -28.0
+offset_right = 28.0
+offset_bottom = -20.0
+grow_vertical = 0
+text = "GENERIC_CREATE"
+script = ExtResource("4_mv5yl")
+localization_key = "GENERIC_CREATE"
+metadata/_custom_type_script = "uid://cleyxi8wq54y5"
+
+[node name="Next" type="Button" parent="Control" unique_id=1568425234]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -28.0
+offset_right = 4.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "GENERIC_NEXT"
+script = ExtResource("4_mv5yl")
+localization_key = "GENERIC_NEXT"
+metadata/_custom_type_script = "uid://cleyxi8wq54y5"
+
+[connection signal="pressed" from="Control/Create" to="." method="_on_create"]
+[connection signal="pressed" from="Control/Next" to="." method="_on_next"]

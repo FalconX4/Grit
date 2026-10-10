@@ -10,6 +10,7 @@ const script_path: String = folder_path + "LocalizationMapNames.gd"
 const generated_script_template: String = "class_name LocalizationMapNames
 # Auto generated class made by LocalizationMapGeneratorScript
 
+# DO NOT USE SAVE ENUM VALUES!!! They will change all the time.
 enum LocalizedID {
 	INVALID = -1,
 %s
@@ -29,7 +30,7 @@ static func string_to_enum(id: StringName) -> int:
 		_:
 			return LocalizedID.INVALID
 
-static func get_all_actions() -> Array[StringName]:
+static func get_all_localizations() -> Array[StringName]:
 	return [
 %s
 ]

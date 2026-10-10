@@ -47,4 +47,7 @@ func _process(_delta: float) -> void:
 func _try_save() -> void:
 	if queue_save and _data_loaded:
 		queue_save = false
-		_data.save(data_file_path)
+		do_save()
+
+func do_save() -> void:
+	_data.save(data_file_path)

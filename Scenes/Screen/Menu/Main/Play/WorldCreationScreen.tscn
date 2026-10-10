@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://bflygf4s1vgdk"]
+
+[ext_resource type="Script" uid="uid://bv2p4ubkumi05" path="res://Scripts/Screen/Menu/Main/Play/WorldCreationScreen.gd" id="1_dx7xu"]
+[ext_resource type="Script" uid="uid://yoweu1mlxnst" path="res://Scripts/Generic/LocalizedLabel.gd" id="2_ee2jv"]
+[ext_resource type="Script" uid="uid://bj3ywai3hg0ap" path="res://Scripts/Generic/LocalizedLineEdit.gd" id="2_od545"]
+[ext_resource type="Script" uid="uid://cleyxi8wq54y5" path="res://Scripts/Generic/LocalizedButton.gd" id="3_iktaq"]
+
+[node name="WorldCreationScreen" type="Control" unique_id=192398121]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dx7xu")
+
+[node name="LocalizedLabel" type="Label" parent="." unique_id=654917795]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_bottom = 63.0
+grow_horizontal = 2
+text = "MENU_WORLD_CREATION_TITLE"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_ee2jv")
+localization_key = "MENU_WORLD_CREATION_TITLE"
+metadata/_custom_type_script = "uid://yoweu1mlxnst"
+
+[node name="LocalizedLineEdit" type="LineEdit" parent="." unique_id=682132301]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_top = 60.0
+offset_right = 100.0
+offset_bottom = 91.0
+grow_horizontal = 2
+placeholder_text = "GENERIC_NAME"
+script = ExtResource("2_od545")
+localization_key = "GENERIC_NAME"
+metadata/_custom_type_script = "uid://bj3ywai3hg0ap"
+
+[node name="LocalizedButton" type="Button" parent="." unique_id=1170028380]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -28.0
+offset_right = 4.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "GENERIC_CREATE"
+script = ExtResource("3_iktaq")
+localization_key = "GENERIC_CREATE"
+metadata/_custom_type_script = "uid://cleyxi8wq54y5"

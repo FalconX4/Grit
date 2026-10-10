@@ -2,12 +2,18 @@
 extends EditorPlugin
 
 func _enter_tree() -> void:
-	add_tool_menu_item("Delete User Data", _on_button_pressed)
+	add_tool_menu_item("Open User Data", _on_open_pressed)
+	add_tool_menu_item("Delete User Data", _on_delete_pressed)
 
 func _exit_tree():
+	remove_tool_menu_item("Open User Data")
 	remove_tool_menu_item("Delete User Data")
 
-func _on_button_pressed() -> void:
+func _on_open_pressed() -> void:
+	if DirAccess.dir_exists_absolute("user://"):
+		OS.shell_open(ProjectSettings.globalize_path("user://"))
+
+func _on_delete_pressed() -> void:
 	if DirAccess.dir_exists_absolute("user://"):
 		delete_recursive("user://")
 

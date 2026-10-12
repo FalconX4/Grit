@@ -45,7 +45,7 @@ func _on_button_pressed() -> void:
 	else:
 		itemsData = ItemsListData.new()
 
-	var localization_names = LocalizationMapNames.get_all_localizations()()
+	var localization_names = LocalizationMapNames.get_all_localizations()
 	load_foods(itemsData, localization_names)
 	load_seeds(itemsData, localization_names)
 	ResourceSaver.save(itemsData, items_res_path)

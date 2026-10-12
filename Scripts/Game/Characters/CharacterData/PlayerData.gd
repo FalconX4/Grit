@@ -11,7 +11,7 @@ var achievement_done: Array[int]
 var journal_unlocked: Array[int]
 
 func _init(_id: int = 0, _profile_id: int = 0, _character_id: int = 0) -> void:
-    id = 0
-    profile_id = _profile_id
-    original_character_id = _character_id
-    last_character_id = _character_id
+	id = 0
+	profile_id = _profile_id
+	original_character_id = _character_id
+	last_character_id = _character_id

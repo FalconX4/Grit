@@ -56,4 +56,3 @@ func switch_profile(_name: String) -> ProfileData:
 				save()
 			return profile
 	return null
-

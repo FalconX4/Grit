@@ -6,8 +6,8 @@ class_name GameUI
 @export var storage: StorageWindow
 var selected_player: Player
 
-func set_character_without_animation(path: NodePath):
-	#selected_player = get_node(path) as Character
+func set_character_without_animation(_path: NodePath):
+	#selected_player = get_node(_path) as Character
 	inventory_bar.set_player(selected_player, false)
 
 func _ready() -> void:

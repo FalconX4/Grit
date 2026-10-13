@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://bj3ywai3hg0ap" path="res://Scripts/Generic/LocalizedLineEdit.gd" id="2_od545"]
 [ext_resource type="Script" uid="uid://cleyxi8wq54y5" path="res://Scripts/Generic/LocalizedButton.gd" id="3_iktaq"]
 
-[node name="WorldCreationScreen" type="Control" unique_id=192398121]
+[node name="WorldCreationScreen" type="Control" unique_id=192398121 node_paths=PackedStringArray("name_edit", "warning_text")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,6 +13,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_dx7xu")
+name_edit = NodePath("LocalizedLineEdit")
+warning_text = NodePath("AlreadyExist")
 
 [node name="LocalizedLabel" type="Label" parent="." unique_id=654917795]
 layout_mode = 1
@@ -27,17 +29,33 @@ script = ExtResource("2_ee2jv")
 localization_key = "MENU_WORLD_CREATION_TITLE"
 metadata/_custom_type_script = "uid://yoweu1mlxnst"
 
+[node name="AlreadyExist" type="Label" parent="." unique_id=1065945019]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_top = 80.0
+offset_bottom = 143.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+text = "MENU_WORLD_NAME_ALREADY_EXIST"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_ee2jv")
+localization_key = "MENU_WORLD_NAME_ALREADY_EXIST"
+metadata/_custom_type_script = "uid://yoweu1mlxnst"
+
 [node name="LocalizedLineEdit" type="LineEdit" parent="." unique_id=682132301]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -100.0
-offset_top = 60.0
+offset_top = 140.0
 offset_right = 100.0
-offset_bottom = 91.0
+offset_bottom = 171.0
 grow_horizontal = 2
 placeholder_text = "GENERIC_NAME"
+alignment = 1
 script = ExtResource("2_od545")
 localization_key = "GENERIC_NAME"
 metadata/_custom_type_script = "uid://bj3ywai3hg0ap"
@@ -59,3 +77,5 @@ text = "GENERIC_CREATE"
 script = ExtResource("3_iktaq")
 localization_key = "GENERIC_CREATE"
 metadata/_custom_type_script = "uid://cleyxi8wq54y5"
+
+[connection signal="pressed" from="LocalizedButton" to="." method="_on_create"]

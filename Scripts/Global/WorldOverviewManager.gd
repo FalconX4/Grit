@@ -39,12 +39,17 @@ func do_save() -> void:
 	super.do_save()
 
 func rename(data: WorldOverviewData, new_name: String) -> bool:
-	for world in worlds_overview:
-		if world != data and world.name == new_name:
-			return false
+	if check_name_already_exist(new_name, data):
+		return false
 	if FileAccess.file_exists(data.path):
 		DirAccess.rename_absolute(data.path, WORLD_DATA_FILE_PATH % new_name)
 	WorldManager.world = null
 	data.name = new_name
 	save()
 	return true
+
+func check_name_already_exist(_name: String, except_data: WorldOverviewData = null) -> bool:
+	for world in worlds_overview:
+		if world != except_data and world.name == _name:
+			return true
+	return false

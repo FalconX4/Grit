@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://yoweu1mlxnst" path="res://Scripts/Generic/LocalizedLabel.gd" id="3_jrd5a"]
 [ext_resource type="PackedScene" uid="uid://wkwb7xqgu4g1" path="res://Scenes/Screen/Menu/Main/Play/CharacterCreationScreen.tscn" id="3_wkmq8"]
 
-[node name="CharacterSelection" type="Control" unique_id=515428330 node_paths=PackedStringArray("character_creation", "selection_choice_parent", "container")]
+[node name="CharacterSelection" type="Control" unique_id=515428330 node_paths=PackedStringArray("character_creation", "selection_choice_parent", "container", "control_to_close_on_stack_open")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,6 +18,7 @@ character_creation = NodePath("CharacterCreationScreen")
 selection_choice_scene = ExtResource("2_i4h4c")
 selection_choice_parent = NodePath("Control/HBoxContainer")
 container = NodePath("Control")
+control_to_close_on_stack_open = NodePath("Control")
 
 [node name="Control" type="Control" parent="." unique_id=1401612528]
 layout_mode = 1
@@ -87,3 +88,5 @@ metadata/_custom_type_script = "uid://cleyxi8wq54y5"
 [node name="CharacterCreationScreen" parent="." unique_id=1920993665 instance=ExtResource("3_wkmq8")]
 visible = false
 layout_mode = 1
+
+[connection signal="pressed" from="Control/Create" to="." method="_on_create"]

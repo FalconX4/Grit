@@ -16,7 +16,7 @@ font_color = Color(0, 0.49411765, 0, 1)
 shadow_size = 100
 shadow_color = Color(0, 0.6666667, 0, 1)
 
-[node name="MainMenu" type="Control" unique_id=1682294781 node_paths=PackedStringArray("play_control", "options_control", "credit_control", "back_button", "buttons")]
+[node name="MainMenu" type="Control" unique_id=1682294781 node_paths=PackedStringArray("play_control", "options_control", "credit_control", "back_button", "buttons", "control_to_open_on_stack_open", "control_to_close_on_stack_open")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -29,6 +29,8 @@ options_control = NodePath("Menus/Options")
 credit_control = NodePath("Menus/Credit")
 back_button = NodePath("Back")
 buttons = NodePath("Buttons")
+control_to_open_on_stack_open = NodePath("Back")
+control_to_close_on_stack_open = NodePath("Buttons")
 
 [node name="Title" type="Label" parent="." unique_id=1461230497]
 layout_mode = 1

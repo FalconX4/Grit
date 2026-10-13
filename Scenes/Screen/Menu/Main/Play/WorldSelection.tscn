@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://cleyxi8wq54y5" path="res://Scripts/Generic/LocalizedButton.gd" id="4_mv5yl"]
 [ext_resource type="Script" uid="uid://yoweu1mlxnst" path="res://Scripts/Generic/LocalizedLabel.gd" id="5_d72xk"]
 
-[node name="WorldSelection" type="Control" unique_id=1002606217 node_paths=PackedStringArray("character_selection", "world_creation", "selection_choice_parent", "container")]
+[node name="WorldSelection" type="Control" unique_id=1002606217 node_paths=PackedStringArray("character_selection", "world_creation", "selection_choice_parent", "container", "control_to_close_on_stack_open")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,6 +20,7 @@ world_creation = NodePath("WorldCreationScreen")
 selection_choice_scene = ExtResource("2_mv5yl")
 selection_choice_parent = NodePath("Control/VBoxContainer")
 container = NodePath("Control")
+control_to_close_on_stack_open = NodePath("Control")
 
 [node name="CharacterSelection" parent="." unique_id=515428330 instance=ExtResource("2_lrnb3")]
 visible = false
@@ -70,6 +71,7 @@ offset_top = -28.0
 offset_right = 28.0
 offset_bottom = -20.0
 grow_vertical = 0
+focus_neighbor_right = NodePath("../Next")
 text = "GENERIC_CREATE"
 script = ExtResource("4_mv5yl")
 localization_key = "GENERIC_CREATE"
@@ -88,6 +90,7 @@ offset_right = 4.0
 offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 0
+focus_neighbor_left = NodePath("../Create")
 text = "GENERIC_NEXT"
 script = ExtResource("4_mv5yl")
 localization_key = "GENERIC_NEXT"

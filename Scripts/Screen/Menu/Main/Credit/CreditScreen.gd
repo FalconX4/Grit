@@ -1,4 +1,4 @@
-extends Control
+extends BaseMenu
 class_name CreditScreen
 
 @export var label: RichTextLabel
@@ -11,10 +11,12 @@ var scroll_timer: float = 0.0
 var can_scroll: bool = true
 
 func _init() -> void:
+	type = MenuManager.MenuType.Credit
 	Localization.language_changed.connect(_language_changed)
 
 func _ready() -> void:
 	update_credit()
+	super._ready()
 
 func _process(delta: float) -> void:
 	if can_scroll:

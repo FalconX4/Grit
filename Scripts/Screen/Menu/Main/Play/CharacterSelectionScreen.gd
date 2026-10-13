@@ -1,4 +1,4 @@
-extends Control
+extends BaseMenu
 class_name CharacterSelectionScreen
 
 @export var character_creation: CharacterCreationScreen
@@ -9,6 +9,9 @@ class_name CharacterSelectionScreen
 var choices: Array[CharacterSelectionChoice]
 var world_overview_data: WorldOverviewData
 var world_data: WorldData
+
+func _init() -> void:
+	type = MenuManager.MenuType.CharacterSelection
 
 func _ready() -> void:
 	character_creation.on_create.connect(_on_created)
@@ -24,12 +27,11 @@ func _ready() -> void:
 		var player_data = PlayerData.new(0, ProfileManager.current_profile.id, 0)
 		world_data.players.append(player_data)
 		world_data.characters.append(original_character_data)
-		open(WorldOverviewManager.worlds_overview[0])
+		set_world(WorldOverviewManager.worlds_overview[0])
+	super._ready()
 
-func open(world_overview: WorldOverviewData) -> void:
-	Helpers.node_enable(self)
+func open() -> void:
 	var found = false
-	world_overview_data = world_overview
 	clear()
 	if world_overview_data.profiles.find(ProfileManager.current_profile.id):
 		world_data = WorldManager._load_from_overview(world_overview_data)
@@ -43,11 +45,17 @@ func open(world_overview: WorldOverviewData) -> void:
 				found = true
 		if not choices.is_empty():
 			choices[0].grab_click_focus()
+	super.open()
 	if not found:
 		_on_create()
 
+func set_world(world_overview: WorldOverviewData) -> void:
+	world_overview_data = world_overview
+
 func clear() -> void:
 	for choice in choices:
+		choice.on_selected.disconnect(_on_selected)
+		choice.on_deleted.disconnect(_on_deleted)
 		Pool.release(choice)
 	choices.clear()
 
@@ -56,11 +64,10 @@ func scene_creation(data: PlayerData) -> void:
 	choice.setup(data, world_data)
 	choice.on_selected.connect(_on_selected)
 	choice.on_deleted.connect(_on_deleted)
-	choice.setup(data, world_data)
+	choices.append(choice)
 
 func _on_create() -> void:
-	Helpers.node_enable(character_creation)
-	Helpers.node_disable(container)
+	stack_open(MenuManager.MenuType.CharacterCreation)
 
 func _on_created(data: CharacterData) -> void:
 	var player_data = PlayerData.new(0, ProfileManager.current_profile.id, data.id)
@@ -84,6 +91,6 @@ func _on_play() -> void:
 		if choice.is_selected:
 			play(choice.data)
 
-func play(data: PlayerData) -> void:
+func play(_data: PlayerData) -> void:
 	# TODO FEATURE PLAY: Go into game
 	pass

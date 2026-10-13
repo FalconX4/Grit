@@ -26,6 +26,7 @@ buses/default_bus_layout="uid://cwjjx2ihngb6m"
 [autoload]
 
 DataManager="*res://Scripts/Global/DataManager.gd"
+MenuManager="*uid://daemnd1vnlrx1"
 Pool="*uid://ib2ssouenwnl"
 RandomManager="*uid://nl54pnbe2smt"
 SettingManager="*uid://clgn86ewwx6s7"

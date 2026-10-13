@@ -1,4 +1,5 @@
-extends Control
+extends BaseMenu
+class_name MainMenuScreen
 
 @export var play_control: Control
 @export var options_control: Control
@@ -6,29 +7,33 @@ extends Control
 @export var back_button: Control
 @export var buttons: Control
 
+var last_focus: int = 0
+
+func _init() -> void:
+	type = MenuManager.MenuType.Main
+
 func _ready() -> void:
-	back()
-
-func play() -> void:
-	open_window(play_control)
-
-func options() -> void:
-	open_window(options_control)
-
-func credit() -> void:
-	open_window(credit_control)
-
-func quit() -> void:
-	get_tree().quit()
-
-func back() -> void:
 	Helpers.node_disable(play_control)
 	Helpers.node_disable(options_control)
 	Helpers.node_disable(credit_control)
-	Helpers.node_disable(back_button)
-	Helpers.node_enable(buttons)
+	super._ready()
+	find_next_valid_focus().grab_focus()
 
-func open_window(control: Control) -> void:
-	Helpers.node_enable(control)
-	Helpers.node_enable(back_button)
-	Helpers.node_disable(buttons)
+func returned() -> void:
+	super.returned()
+	find_next_valid_focus().grab_focus()
+
+func stack_open(menu_type: MenuManager.MenuType) -> void:
+	super.stack_open(menu_type)
+
+func play() -> void:
+	stack_open(MenuManager.MenuType.WorldSelection)
+
+func options() -> void:
+	stack_open(MenuManager.MenuType.Options)
+
+func credit() -> void:
+	stack_open(MenuManager.MenuType.Credit)
+
+func quit() -> void:
+	get_tree().quit()

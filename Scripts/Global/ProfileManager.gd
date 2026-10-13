@@ -26,6 +26,7 @@ func _init() -> void:
 
 func create(_name: String) -> ProfileData:
 	var profile = ProfileData.new(id, _name)
+	current_profile_index = id
 	id += 1
 	profiles.append(profile)
 	save()

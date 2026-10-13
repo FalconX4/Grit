@@ -1,4 +1,4 @@
-extends Control
+extends BaseMenu
 class_name WorldSelectionScreen
 
 @export var character_selection: CharacterSelectionScreen
@@ -9,25 +9,32 @@ class_name WorldSelectionScreen
 
 var choices: Array[WorldSelectionChoice]
 
-func _ready() -> void:
-	Helpers.node_disable(character_selection)
-	Helpers.node_disable(world_creation)
-	Pool.create(selection_choice_scene, len(WorldOverviewManager.worlds_overview))
-	world_creation.on_created.connect(next)
+func _init() -> void:
+	type = MenuManager.MenuType.WorldSelection
+
+func _enter_tree() -> void:
 	if Helpers.is_main_scene(self):
 		if len(WorldOverviewManager.worlds_overview) == 0:
 			WorldOverviewManager.create("Starting World")
 			WorldOverviewManager.create("Fake world")
 		if ProfileManager.current_profile.last_world_id == WorldOverviewManager.INVALID_WORLD:
 			ProfileManager.current_profile.last_world_id = WorldOverviewManager.worlds_overview[0].id
-		open()
+	super._enter_tree()
+
+func _ready() -> void:
+	Helpers.node_disable(character_selection)
+	Helpers.node_disable(world_creation)
+	Pool.create(selection_choice_scene, len(WorldOverviewManager.worlds_overview))
+	world_creation.on_created.connect(next)
+	super._ready()
 
 func open() -> void:
-	Helpers.node_enable(self)
 	clear()
 	if ProfileManager.current_profile.last_world_id == WorldOverviewManager.INVALID_WORLD:
 		var world = WorldOverviewManager.create("Starting World")
 		ProfileManager.current_profile.last_world_id = world.id
+		ProfileManager.save()
+		super.open()
 		next(world)
 	else:
 		for data in WorldOverviewManager.worlds_overview:
@@ -39,11 +46,15 @@ func open() -> void:
 		for data in WorldOverviewManager.worlds_overview:
 			if data.id != ProfileManager.current_profile.last_world_id and not data.profiles.find(ProfileManager.current_profile.id):
 				scene_creation(data)
+		super.open()
 		if not choices.is_empty():
-			choices[0].grab_click_focus()
+			choices[0].is_selected = true
+			choices[0].grab_focus()
 
 func clear() -> void:
 	for choice in choices:
+		choice.on_selected.disconnect(_on_selected)
+		choice.on_deleted.disconnect(_on_deleted)
 		Pool.release(choice)
 	choices.clear()
 
@@ -55,8 +66,7 @@ func scene_creation(data: WorldOverviewData) -> void:
 	choices.append(choice)
 
 func _on_create() -> void:
-	Helpers.node_enable(world_creation)
-	Helpers.node_disable(container)
+	stack_open(MenuManager.MenuType.WorldCreation)
 
 func _on_selected(selected_choice: WorldSelectionChoice) -> void:
 	for choice in choices:
@@ -75,5 +85,5 @@ func _on_next() -> void:
 			next(choice.data)
 
 func next(world: WorldOverviewData) -> void:
-	character_selection.open(world)
-	Helpers.node_disable(container)
+	character_selection.set_world(world)
+	stack_open(MenuManager.MenuType.CharacterSelection)

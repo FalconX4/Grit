@@ -8,7 +8,7 @@ const VERSION: String = "0.0.1"
 var player_id = 1
 var character_id = 1
 var world_overview: WorldOverviewData
-var world: WorldData
+var world: WorldData = WorldData.new()
 var loaded_from_overview: bool
 
 func _init() -> void:

@@ -41,7 +41,7 @@ func _on_selected() -> void:
 	on_selected.emit(self)
 
 func _on_try_delete() -> void:
-	confirm_delete_dialog.localization_key_text_params[1] = original_character_data.name
+	confirm_delete_dialog.update_text_value_at(original_character_data.name, 0, 0)
 	confirm_delete_dialog.popup_centered()
 
 func _on_delete() -> void:

@@ -4,10 +4,41 @@
 [ext_resource type="Texture2D" uid="uid://behl672wicaux" path="res://Assets/Screen/Buttons/ButtonFrame.png" id="2_hnmmm"]
 [ext_resource type="Texture2D" uid="uid://boyxtv07h0qay" path="res://Assets/Screen/Buttons/DeleteButton.png" id="2_oxlho"]
 [ext_resource type="Texture2D" uid="uid://d0hjohqeykwh4" path="res://Assets/Screen/Buttons/RenameButton.png" id="3_hnmmm"]
-[ext_resource type="Script" uid="uid://yoweu1mlxnst" path="res://Scripts/Generic/LocalizedLabel.gd" id="3_ksjv6"]
 [ext_resource type="Texture2D" uid="uid://ce2iyny0yf4bi" path="res://Assets/Screen/Game/ItemSlotSelected.png" id="3_rjo0k"]
 [ext_resource type="Script" uid="uid://bj3ywai3hg0ap" path="res://Scripts/Generic/LocalizedLineEdit.gd" id="4_m4iux"]
 [ext_resource type="Script" uid="uid://6c40sl08d8wq" path="res://Scripts/Generic/LocalizedConfirmationDialog.gd" id="5_1judk"]
+[ext_resource type="Script" uid="uid://khyn4ad5ggrv" path="res://Scripts/Generic/LocalizedKey.gd" id="9_jymib"]
+
+[sub_resource type="Resource" id="Resource_107qx"]
+script = ExtResource("9_jymib")
+raw_key = "GENERIC_NAME"
+metadata/_custom_type_script = "uid://khyn4ad5ggrv"
+
+[sub_resource type="Resource" id="Resource_hnmmm"]
+script = ExtResource("9_jymib")
+raw_key = "MENU_WORLD_DELETE_TITLE"
+metadata/_custom_type_script = "uid://khyn4ad5ggrv"
+
+[sub_resource type="Resource" id="Resource_ik7ui"]
+script = ExtResource("9_jymib")
+raw_key = "MENU_WORLD_DELETE_TITLE"
+metadata/_custom_type_script = "uid://khyn4ad5ggrv"
+
+[sub_resource type="Resource" id="Resource_rjo0k"]
+script = ExtResource("9_jymib")
+raw_key = "GENERIC_EATER_DESCRIPTION"
+params = Array[ExtResource("9_jymib")]([null, SubResource("Resource_ik7ui")])
+metadata/_custom_type_script = "uid://khyn4ad5ggrv"
+
+[sub_resource type="Resource" id="Resource_efe1q"]
+script = ExtResource("9_jymib")
+raw_key = "GENERIC_EATER_OK"
+metadata/_custom_type_script = "uid://khyn4ad5ggrv"
+
+[sub_resource type="Resource" id="Resource_yuogt"]
+script = ExtResource("9_jymib")
+raw_key = "GENERIC_EATER_CANCEL"
+metadata/_custom_type_script = "uid://khyn4ad5ggrv"
 
 [node name="WorldSelectionChoice" type="Button" unique_id=2097473754 node_paths=PackedStringArray("selected_visuals", "name_label", "rename_edit", "already_used_name_input", "confirm_delete_dialog")]
 custom_minimum_size = Vector2(0, 200)
@@ -22,7 +53,7 @@ script = ExtResource("1_j1o33")
 selected_visuals = NodePath("SelectedFrame")
 name_label = NodePath("Name")
 rename_edit = NodePath("RenameEdit")
-already_used_name_input = NodePath("AlreadyUsed")
+already_used_name_input = NodePath("Warning")
 confirm_delete_dialog = NodePath("LocalizedConfirmationDialog")
 
 [node name="NotSelectedFrame" type="NinePatchRect" parent="." unique_id=1565339972]
@@ -81,22 +112,12 @@ offset_bottom = 11.5
 grow_vertical = 2
 text = "World name"
 
-[node name="AlreadyUsed" type="Label" parent="." unique_id=1296421548]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.5
-anchor_bottom = 0.5
+[node name="Warning" type="Label" parent="." unique_id=241003099]
+layout_mode = 0
 offset_left = 20.0
-offset_top = -40.0
+offset_top = 528.5
 offset_right = 60.0
-offset_bottom = -20.0
-grow_vertical = 2
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-text = "MENU_WORLD_NAME_ALREADY_EXIST"
-script = ExtResource("3_ksjv6")
-localization_key = "MENU_WORLD_NAME_ALREADY_EXIST"
-metadata/_custom_type_script = "uid://yoweu1mlxnst"
+offset_bottom = 551.5
 
 [node name="RenameEdit" type="LineEdit" parent="." unique_id=116187701]
 layout_mode = 1
@@ -110,20 +131,17 @@ offset_bottom = 15.5
 grow_vertical = 2
 placeholder_text = "GENERIC_NAME"
 script = ExtResource("4_m4iux")
-localization_key = "GENERIC_NAME"
+localization_key = SubResource("Resource_107qx")
 metadata/_custom_type_script = "uid://bj3ywai3hg0ap"
 
 [node name="LocalizedConfirmationDialog" type="ConfirmationDialog" parent="." unique_id=121889979]
 title = "MENU_WORLD_DELETE_TITLE"
-ok_button_text = "GENERIC_EATER_OK"
 dialog_text = "GENERIC_EATER_DESCRIPTION"
-cancel_button_text = "GENERIC_EATER_CANCEL"
 script = ExtResource("5_1judk")
-localization_key_title = "MENU_WORLD_DELETE_TITLE"
-localization_key_text = "GENERIC_EATER_DESCRIPTION"
-localization_key_ok = "GENERIC_EATER_OK"
-localization_key_cancel = "GENERIC_EATER_CANCEL"
-localization_key_text_params = Array[String](["", "MENU_WORLD_DELETE_TITLE"])
+localization_key_title = SubResource("Resource_hnmmm")
+localization_key_text = SubResource("Resource_rjo0k")
+localization_key_ok = SubResource("Resource_efe1q")
+localization_key_cancel = SubResource("Resource_yuogt")
 metadata/_custom_type_script = "uid://6c40sl08d8wq"
 
 [connection signal="pressed" from="." to="." method="_on_selected"]

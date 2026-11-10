@@ -32,12 +32,12 @@ func set_language(language: String) -> void:
 func translate(key: String) -> String:
 	return tr(key)
 
-func _input(event: InputEvent) -> void:
-	if event is InputEventKey and event.is_released():
-		var eventKey = event as InputEventKey
-		if eventKey.keycode == KEY_L:
+func _unhandled_key_input(event: InputEvent) -> void:
+	if event.is_released():
+		if event.keycode == KEY_F2:
 			var locales_len = len(loaded_locales)
 			for i in range(len(loaded_locales)):
 				if loaded_locales[i] == current_language:
 					set_language(loaded_locales[(i+1) % locales_len])
+					get_viewport().set_input_as_handled()
 					break

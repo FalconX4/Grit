@@ -5,6 +5,22 @@
 [ext_resource type="SpriteFrames" uid="uid://ld0t10aujxwi" path="res://Data/Game/Characters/YoungMan.tres" id="1_ml2ms"]
 [ext_resource type="Script" uid="uid://yoweu1mlxnst" path="res://Scripts/Generic/LocalizedLabel.gd" id="2_7pyao"]
 [ext_resource type="Script" uid="uid://cleyxi8wq54y5" path="res://Scripts/Generic/LocalizedButton.gd" id="3_2thc1"]
+[ext_resource type="Script" uid="uid://khyn4ad5ggrv" path="res://Scripts/Generic/LocalizedKey.gd" id="3_7u45f"]
+
+[sub_resource type="Resource" id="Resource_mcpux"]
+script = ExtResource("3_7u45f")
+raw_key = "MENU_WORLD_CREATION_TITLE"
+metadata/_custom_type_script = "uid://khyn4ad5ggrv"
+
+[sub_resource type="Resource" id="Resource_y7t3x"]
+script = ExtResource("3_7u45f")
+raw_key = "GENERIC_NAME"
+metadata/_custom_type_script = "uid://khyn4ad5ggrv"
+
+[sub_resource type="Resource" id="Resource_3s221"]
+script = ExtResource("3_7u45f")
+raw_key = "MENU_PLAY"
+metadata/_custom_type_script = "uid://khyn4ad5ggrv"
 
 [node name="CharacterCreationScreen" type="Control" unique_id=1920993665 node_paths=PackedStringArray("name_edit", "character")]
 layout_mode = 3
@@ -27,7 +43,7 @@ text = "MENU_CHARACTER_CREATION_TITLE"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("2_7pyao")
-localization_key = "MENU_CHARACTER_CREATION_TITLE"
+localization_key = SubResource("Resource_mcpux")
 metadata/_custom_type_script = "uid://yoweu1mlxnst"
 
 [node name="LineEdit" type="LineEdit" parent="." unique_id=715797124]
@@ -43,7 +59,7 @@ grow_horizontal = 2
 placeholder_text = "GENERIC_NAME"
 alignment = 1
 script = ExtResource("1_7wb51")
-localization_key = "GENERIC_NAME"
+localization_key = SubResource("Resource_y7t3x")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1948593853]
 position = Vector2(960, 540)
@@ -63,7 +79,7 @@ offset_right = 4.0
 offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "CREATE"
+text = "MENU_PLAY"
 script = ExtResource("3_2thc1")
-localization_key = "MENU_PLAY"
+localization_key = SubResource("Resource_3s221")
 metadata/_custom_type_script = "uid://cleyxi8wq54y5"

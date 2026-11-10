@@ -2,6 +2,12 @@
 
 [ext_resource type="Script" uid="uid://dvmf8g0h8n47w" path="res://Scripts/Screen/Menu/Main/Options/GeneralScreen.gd" id="1_tcxpt"]
 [ext_resource type="Script" uid="uid://yoweu1mlxnst" path="res://Scripts/Generic/LocalizedLabel.gd" id="2_3nlu3"]
+[ext_resource type="Script" uid="uid://khyn4ad5ggrv" path="res://Scripts/Generic/LocalizedKey.gd" id="3_3nlu3"]
+
+[sub_resource type="Resource" id="Resource_giand"]
+script = ExtResource("3_3nlu3")
+raw_key = "MENU_OPTIONS_GENERIC_LANGUAGE"
+metadata/_custom_type_script = "uid://khyn4ad5ggrv"
 
 [node name="General" type="Control" unique_id=584459577 node_paths=PackedStringArray("language")]
 layout_mode = 3
@@ -33,7 +39,7 @@ layout_mode = 2
 text = "MENU_OPTIONS_GENERIC_LANGUAGE"
 horizontal_alignment = 2
 script = ExtResource("2_3nlu3")
-localization_key = "MENU_OPTIONS_GENERIC_LANGUAGE"
+localization_key = SubResource("Resource_giand")
 metadata/_custom_type_script = "uid://yoweu1mlxnst"
 
 [node name="OptionButton" type="OptionButton" parent="VBoxContainer/Language" unique_id=1415259968]

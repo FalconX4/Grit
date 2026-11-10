@@ -34,6 +34,7 @@ AudioManager="*uid://cxj5dnxs4ic2i"
 GraphicsManager="*uid://nkfiixsvl5gx"
 Localization="*uid://g7xbjwq6fu38"
 ProfileManager="*uid://syufnr86b1eu"
+TextToSpeechManager="*uid://vodmndjn0it8"
 WorldOverviewManager="*uid://bqcllerwbh7bn"
 WorldManager="*uid://dsj4xo8n7lrpk"
 GameSessionData="*uid://dtjri0mepm0yx"
@@ -54,7 +55,7 @@ project/assembly_name="Grit"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/Builder/plugin.cfg", "res://addons/FontInputDataMapper/plugin.cfg", "res://addons/InputMapGeneratorScript/plugin.cfg", "res://addons/ItemParser/plugin.cfg", "res://addons/LocalizationMapGeneratorScript/plugin.cfg", "res://addons/UserDataRemover/plugin.cfg")
+enabled=PackedStringArray("res://addons/Builder/plugin.cfg", "res://addons/FontInputDataMapper/plugin.cfg", "res://addons/InputMapGeneratorScript/plugin.cfg", "res://addons/ItemParser/plugin.cfg", "res://addons/LocalizationMapGeneratorScript/plugin.cfg", "res://addons/UserDataHandler/plugin.cfg")
 
 [gui]
 

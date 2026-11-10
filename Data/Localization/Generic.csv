@@ -21,6 +21,7 @@ MENU_CHARACTER_CREATION_TITLE;Character Creator;Créateur de Personnage;Créateu
 MENU_CHARACTER_SELECTION_ALREADY_IN_USE;Your last selected character is already being played by another player\r\nCreated character will be used instead;Ton dernier personnage utilisé est présentement utilisé par un autre joueur\r\nLe personnage créé va être utilisé à la place;Ton perso est déjà utilisé par quelqu'un...\r\nCelui que ta créé va être utilisé à place
 MENU_OPTIONS;Options;Options;Options
 MENU_OPTIONS_GENERIC_LANGUAGE;Language;Langue;Langue
+MENU_OPTIONS_GENERIC_TEXT_TO_SPEECH_VOICE_TEST;This is an english voice test;Ceci est une test vocal en français;Tin un test vocal en québecois
 MENU_OPTIONS_GENERIC_CHANGE_PROFILE;Change profile;Changer de profil;Changer de profil
 MENU_OPTIONS_GENERIC_RESET_PROFILE;Reset profile;Recommencer le profile;Recommencer le profile
 MENU_OPTIONS_GENERIC_DELETE_PROFILE;Delete profile;Effacer le profile;Effacer le profile
@@ -28,6 +29,8 @@ MENU_OPTIONS_GRAPHICS_SCREEN_ID;Screen;Écran;Écran
 MENU_OPTIONS_GRAPHICS_SCREEN_RESOLUTION;Screen Resolution;Resolution d'écran;Resolution d'écran
 MENU_OPTIONS_GRAPHICS_WINDOW_MODE;Window Mode;Mode Fenêtre;Mode Fenêtre
 MENU_OPTIONS_GRAPHICS_SCREEN_SHAKE;Screen Shake;Tremblement d'écran;Tremblement d'écran
+MENU_OPTIONS_ACCESSIBILITY_TEXT_TO_SPEECH;Text To Speech;Synthèse Vocale;Synthèse Vocale
+MENU_OPTIONS_ACCESSIBILITY_TEXT_TO_SPEECH_VOICE;Voice;Voix;Voix
 MENU_OPTIONS_AUDIO_MASTER;Master Volume;Volume Maître;Volume Maître
 MENU_OPTIONS_AUDIO_MUSIC;Music Volume;Volume Musique;Volume Toune
 MENU_OPTIONS_AUDIO_SFX;SFX Volume;Volume SFX;Volume SFX

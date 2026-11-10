@@ -2,6 +2,10 @@ extends Node
 class_name GeneralScreen
 
 @export var language: OptionButton
+@export var caption: CheckBox # both subtitles and sfx caption
+@export var high_contrast: CheckBox # Black background, white text, 0.2f button
+@export var font_size: SliderShownValue
+@export var ui_scale: SliderShownValue
 
 func _ready() -> void:
 	language.clear()

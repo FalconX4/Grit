@@ -1,44 +1,34 @@
 extends ConfirmationDialog
 class_name LocalizedConfirmationDialog
 
-@export var localization_key_title: String
-@export var localization_key_text: String
-@export var localization_key_ok: String = LocalizationMapNames.GENERIC_OK
-@export var localization_key_cancel: String = LocalizationMapNames.GENERIC_CANCEL
-@export var localization_key_text_params: Array[String]
-
-var localized_params: Array[String]
+@export var localization_key_title: LocalizedKey = LocalizedKey.new()
+@export var localization_key_text: LocalizedKey = LocalizedKey.new()
+@export var localization_key_ok: LocalizedKey = LocalizedKey.new(LocalizationMapNames.GENERIC_OK)
+@export var localization_key_cancel: LocalizedKey = LocalizedKey.new(LocalizationMapNames.GENERIC_CANCEL)
 
 func _ready() -> void:
-	check_keys(localization_key_title)
-	check_keys(localization_key_text)
-	check_keys(localization_key_ok)
-	check_keys(localization_key_cancel)
-	title = localization_key_title
-	dialog_text = localization_key_text
-	ok_button_text = localization_key_ok
-	cancel_button_text = localization_key_cancel
+	check_keys(localization_key_title.raw_key)
+	check_keys(localization_key_text.raw_key)
+	check_keys(localization_key_ok.raw_key)
+	check_keys(localization_key_cancel.raw_key)
+	_update_localization()
 	visibility_changed.connect(_on_visible_changed)
 
 func _on_visible_changed() -> void:
 	if visible:
 		get_cancel_button().grab_focus()
-		if localization_key_text_params.is_empty():
-			return
-		localized_params.clear()
-		for i in range(localization_key_text_params.size() - 1, -1, -1):
-			var tr_param = tr(localization_key_text_params[i])
-			if tr_param.contains("%s"):
-				if localized_params.is_empty():
-					Debugger.log_error("Find %s in a param with no params after to add to it...")
-					break
-				localized_params.reverse()
-				tr_param = tr_param % localized_params
-				localized_params.clear()
-			localized_params.append(tr_param)
-		localized_params.reverse()
-		dialog_text = tr(localization_key_text) % localized_params
+		_update_localization()
 
 func check_keys(key: String) -> void:
 	if key == tr(key):
 		Debugger.log_error("No translation found for key: " + key)
+
+func _update_localization() -> void:
+	title = localization_key_title.update_key()
+	dialog_text = localization_key_text.update_key()
+	ok_button_text = localization_key_ok.update_key()
+	cancel_button_text = localization_key_cancel.update_key()
+
+func update_text_value_at(_value: String, ..._indexes) -> void: dialog_text = localization_key_text.update_value_at(_value, _indexes)
+func update_text_localized_value_at(_localized_value: String, ..._indexes) -> void: dialog_text = localization_key_text.update_localized_value_at(_localized_value, _indexes)
+func update_text_localized_key_at(_localized_key: LocalizedKey, ..._indexes) -> void: dialog_text = localization_key_text.update_localized_key_at(_localized_key, _indexes)

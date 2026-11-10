@@ -2,7 +2,7 @@ extends BaseMenu
 class_name WorldCreationScreen
 
 @export var name_edit: LineEdit
-@export var warning_text: LocalizedLabel
+@export var warning_text: Label
 
 signal on_created(data: WorldOverviewData)
 

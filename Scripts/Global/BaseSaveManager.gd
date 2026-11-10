@@ -18,6 +18,11 @@ func set_setting(section: String, key: String, value: Variant) -> void:
 	if _data_loaded:
 		_data.set_value(section, key, value)
 
+func has_setting(section: String, key: String) -> bool:
+	if _data_loaded:
+		return _data.has_section_key(section, key)
+	return false
+
 func save() -> void:
 	queue_save = true
 

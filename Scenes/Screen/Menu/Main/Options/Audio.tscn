@@ -1,7 +1,23 @@
 [gd_scene format=3 uid="uid://cjjasjwuyapmb"]
 
 [ext_resource type="Script" uid="uid://yoweu1mlxnst" path="res://Scripts/Generic/LocalizedLabel.gd" id="1_0ung2"]
+[ext_resource type="Script" uid="uid://khyn4ad5ggrv" path="res://Scripts/Generic/LocalizedKey.gd" id="2_68lwm"]
 [ext_resource type="PackedScene" uid="uid://bkefyn1ajy8bw" path="res://Scenes/Generic/VolumeSlider.tscn" id="3_68lwm"]
+
+[sub_resource type="Resource" id="Resource_ap2jx"]
+script = ExtResource("2_68lwm")
+raw_key = "MENU_OPTIONS_AUDIO_MASTER"
+metadata/_custom_type_script = "uid://khyn4ad5ggrv"
+
+[sub_resource type="Resource" id="Resource_g3tjg"]
+script = ExtResource("2_68lwm")
+raw_key = "MENU_OPTIONS_AUDIO_MUSIC"
+metadata/_custom_type_script = "uid://khyn4ad5ggrv"
+
+[sub_resource type="Resource" id="Resource_jvpbd"]
+script = ExtResource("2_68lwm")
+raw_key = "MENU_OPTIONS_AUDIO_SFX"
+metadata/_custom_type_script = "uid://khyn4ad5ggrv"
 
 [node name="Audio" type="Control" unique_id=518034022]
 layout_mode = 3
@@ -30,7 +46,7 @@ layout_mode = 2
 text = "MENU_OPTIONS_AUDIO_MASTER"
 horizontal_alignment = 2
 script = ExtResource("1_0ung2")
-localization_key = "MENU_OPTIONS_AUDIO_MASTER"
+localization_key = SubResource("Resource_ap2jx")
 metadata/_custom_type_script = "uid://yoweu1mlxnst"
 
 [node name="VolumeSlider" parent="VBoxContainer/Master" unique_id=11532611 instance=ExtResource("3_68lwm")]
@@ -47,7 +63,7 @@ layout_mode = 2
 text = "MENU_OPTIONS_AUDIO_MUSIC"
 horizontal_alignment = 2
 script = ExtResource("1_0ung2")
-localization_key = "MENU_OPTIONS_AUDIO_MUSIC"
+localization_key = SubResource("Resource_g3tjg")
 metadata/_custom_type_script = "uid://yoweu1mlxnst"
 
 [node name="VolumeSlider" parent="VBoxContainer/Music" unique_id=1318547294 instance=ExtResource("3_68lwm")]
@@ -65,7 +81,7 @@ layout_mode = 2
 text = "MENU_OPTIONS_AUDIO_SFX"
 horizontal_alignment = 2
 script = ExtResource("1_0ung2")
-localization_key = "MENU_OPTIONS_AUDIO_SFX"
+localization_key = SubResource("Resource_jvpbd")
 metadata/_custom_type_script = "uid://yoweu1mlxnst"
 
 [node name="VolumeSlider" parent="VBoxContainer/SFX" unique_id=440888563 instance=ExtResource("3_68lwm")]

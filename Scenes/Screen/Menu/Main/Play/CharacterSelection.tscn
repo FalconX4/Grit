@@ -5,6 +5,22 @@
 [ext_resource type="PackedScene" uid="uid://cmcoiise3672f" path="res://Scenes/Screen/Menu/Main/Play/CharacterSelectionChoice.tscn" id="2_i4h4c"]
 [ext_resource type="Script" uid="uid://yoweu1mlxnst" path="res://Scripts/Generic/LocalizedLabel.gd" id="3_jrd5a"]
 [ext_resource type="PackedScene" uid="uid://wkwb7xqgu4g1" path="res://Scenes/Screen/Menu/Main/Play/CharacterCreationScreen.tscn" id="3_wkmq8"]
+[ext_resource type="Script" uid="uid://khyn4ad5ggrv" path="res://Scripts/Generic/LocalizedKey.gd" id="4_inxgk"]
+
+[sub_resource type="Resource" id="Resource_u1ufa"]
+script = ExtResource("4_inxgk")
+raw_key = "MENU_CHARACTER_SELECTION_TITLE"
+metadata/_custom_type_script = "uid://khyn4ad5ggrv"
+
+[sub_resource type="Resource" id="Resource_inxgk"]
+script = ExtResource("4_inxgk")
+raw_key = "GENERIC_CREATE"
+metadata/_custom_type_script = "uid://khyn4ad5ggrv"
+
+[sub_resource type="Resource" id="Resource_pikgc"]
+script = ExtResource("4_inxgk")
+raw_key = "MENU_PLAY"
+metadata/_custom_type_script = "uid://khyn4ad5ggrv"
 
 [node name="CharacterSelection" type="Control" unique_id=515428330 node_paths=PackedStringArray("character_creation", "selection_choice_parent", "container", "control_to_close_on_stack_open")]
 layout_mode = 3
@@ -38,7 +54,7 @@ text = "MENU_CHARACTER_SELECTION_TITLE"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("3_jrd5a")
-localization_key = "MENU_CHARACTER_SELECTION_TITLE"
+localization_key = SubResource("Resource_u1ufa")
 metadata/_custom_type_script = "uid://yoweu1mlxnst"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control" unique_id=1294021845]
@@ -64,7 +80,7 @@ offset_bottom = -20.0
 grow_vertical = 0
 text = "GENERIC_CREATE"
 script = ExtResource("1_ri5el")
-localization_key = "GENERIC_CREATE"
+localization_key = SubResource("Resource_inxgk")
 metadata/_custom_type_script = "uid://cleyxi8wq54y5"
 
 [node name="Play" type="Button" parent="Control" unique_id=2034270935]
@@ -82,7 +98,7 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "MENU_PLAY"
 script = ExtResource("1_ri5el")
-localization_key = "MENU_PLAY"
+localization_key = SubResource("Resource_pikgc")
 metadata/_custom_type_script = "uid://cleyxi8wq54y5"
 
 [node name="CharacterCreationScreen" parent="." unique_id=1920993665 instance=ExtResource("3_wkmq8")]

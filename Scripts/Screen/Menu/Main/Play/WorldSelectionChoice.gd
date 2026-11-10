@@ -60,7 +60,7 @@ func rename_finished() -> void:
 	Helpers.node_enable(name_label)
 
 func _on_try_delete() -> void:
-	confirm_delete_dialog.localization_key_text_params[0] = data.name
+	confirm_delete_dialog.update_text_value_at(data.name, 0)
 	confirm_delete_dialog.popup_centered()
 
 func _on_delete() -> void:

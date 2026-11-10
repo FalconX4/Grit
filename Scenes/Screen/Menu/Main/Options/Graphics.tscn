@@ -2,6 +2,27 @@
 
 [ext_resource type="Script" uid="uid://yoweu1mlxnst" path="res://Scripts/Generic/LocalizedLabel.gd" id="1_3aijf"]
 [ext_resource type="Script" uid="uid://brjncp01nv1mj" path="res://Scripts/Screen/Menu/Main/Options/GraphicsScreen.gd" id="1_jx27h"]
+[ext_resource type="Script" uid="uid://khyn4ad5ggrv" path="res://Scripts/Generic/LocalizedKey.gd" id="3_wugg3"]
+
+[sub_resource type="Resource" id="Resource_cq02l"]
+script = ExtResource("3_wugg3")
+raw_key = "MENU_OPTIONS_GRAPHICS_SCREEN_ID"
+metadata/_custom_type_script = "uid://khyn4ad5ggrv"
+
+[sub_resource type="Resource" id="Resource_omlmk"]
+script = ExtResource("3_wugg3")
+raw_key = "MENU_OPTIONS_GRAPHICS_SCREEN_RESOLUTION"
+metadata/_custom_type_script = "uid://khyn4ad5ggrv"
+
+[sub_resource type="Resource" id="Resource_x4int"]
+script = ExtResource("3_wugg3")
+raw_key = "MENU_OPTIONS_GRAPHICS_WINDOW_MODE"
+metadata/_custom_type_script = "uid://khyn4ad5ggrv"
+
+[sub_resource type="Resource" id="Resource_2lqpr"]
+script = ExtResource("3_wugg3")
+raw_key = "MENU_OPTIONS_GRAPHICS_SCREEN_SHAKE"
+metadata/_custom_type_script = "uid://khyn4ad5ggrv"
 
 [node name="Graphics" type="Control" unique_id=80934804 node_paths=PackedStringArray("screen_id_control", "screen_id_dropdown", "screen_resolution_dropdown", "window_mode_dropdown", "screen_shake_checkbox")]
 layout_mode = 3
@@ -37,7 +58,7 @@ layout_mode = 2
 text = "MENU_OPTIONS_GRAPHICS_SCREEN_ID"
 horizontal_alignment = 2
 script = ExtResource("1_3aijf")
-localization_key = "MENU_OPTIONS_GRAPHICS_SCREEN_ID"
+localization_key = SubResource("Resource_cq02l")
 metadata/_custom_type_script = "uid://yoweu1mlxnst"
 
 [node name="OptionButton" type="OptionButton" parent="VBoxContainer/Screen" unique_id=1350759051]
@@ -55,7 +76,7 @@ layout_mode = 2
 text = "MENU_OPTIONS_GRAPHICS_SCREEN_RESOLUTION"
 horizontal_alignment = 2
 script = ExtResource("1_3aijf")
-localization_key = "MENU_OPTIONS_GRAPHICS_SCREEN_RESOLUTION"
+localization_key = SubResource("Resource_omlmk")
 metadata/_custom_type_script = "uid://yoweu1mlxnst"
 
 [node name="OptionButton" type="OptionButton" parent="VBoxContainer/ScreenResolution" unique_id=1782325433]
@@ -73,7 +94,7 @@ layout_mode = 2
 text = "MENU_OPTIONS_GRAPHICS_WINDOW_MODE"
 horizontal_alignment = 2
 script = ExtResource("1_3aijf")
-localization_key = "MENU_OPTIONS_GRAPHICS_WINDOW_MODE"
+localization_key = SubResource("Resource_x4int")
 metadata/_custom_type_script = "uid://yoweu1mlxnst"
 
 [node name="OptionButton" type="OptionButton" parent="VBoxContainer/WindowMode" unique_id=914508761]
@@ -91,7 +112,7 @@ layout_mode = 2
 text = "MENU_OPTIONS_GRAPHICS_SCREEN_SHAKE"
 horizontal_alignment = 2
 script = ExtResource("1_3aijf")
-localization_key = "MENU_OPTIONS_GRAPHICS_SCREEN_SHAKE"
+localization_key = SubResource("Resource_2lqpr")
 metadata/_custom_type_script = "uid://yoweu1mlxnst"
 
 [node name="CheckBox" type="CheckBox" parent="VBoxContainer/ScreenShake" unique_id=171933602]

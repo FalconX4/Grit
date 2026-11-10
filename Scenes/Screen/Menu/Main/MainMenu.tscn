@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bw8hbgqgmh14i" path="res://Scenes/Screen/Menu/Main/Play/WorldSelection.tscn" id="5_d66r3"]
 [ext_resource type="PackedScene" uid="uid://cgrlkm7jlxk86" path="res://Scenes/Screen/Menu/Main/Credit.tscn" id="5_id2sv"]
 [ext_resource type="PackedScene" uid="uid://cp0vocyabw8d1" path="res://Scenes/Screen/Menu/Main/Options.tscn" id="6_cotpb"]
+[ext_resource type="Script" uid="uid://khyn4ad5ggrv" path="res://Scripts/Generic/LocalizedKey.gd" id="8_4k54y"]
 [ext_resource type="PackedScene" uid="uid://b888g1wirnetu" path="res://Scenes/Generic/LocalizedInputButton.tscn" id="8_ejmxf"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_6kutn"]
@@ -15,6 +16,31 @@ font_size = 200
 font_color = Color(0, 0.49411765, 0, 1)
 shadow_size = 100
 shadow_color = Color(0, 0.6666667, 0, 1)
+
+[sub_resource type="Resource" id="Resource_dkxhx"]
+script = ExtResource("8_4k54y")
+raw_key = "MENU_PLAY"
+metadata/_custom_type_script = "uid://khyn4ad5ggrv"
+
+[sub_resource type="Resource" id="Resource_capb8"]
+script = ExtResource("8_4k54y")
+raw_key = "MENU_OPTIONS"
+metadata/_custom_type_script = "uid://khyn4ad5ggrv"
+
+[sub_resource type="Resource" id="Resource_4i6h3"]
+script = ExtResource("8_4k54y")
+raw_key = "MENU_CREDIT"
+metadata/_custom_type_script = "uid://khyn4ad5ggrv"
+
+[sub_resource type="Resource" id="Resource_54iqm"]
+script = ExtResource("8_4k54y")
+raw_key = "MENU_QUIT"
+metadata/_custom_type_script = "uid://khyn4ad5ggrv"
+
+[sub_resource type="Resource" id="Resource_mq86k"]
+script = ExtResource("8_4k54y")
+raw_key = "MENU_BACK"
+metadata/_custom_type_script = "uid://khyn4ad5ggrv"
 
 [node name="MainMenu" type="Control" unique_id=1682294781 node_paths=PackedStringArray("play_control", "options_control", "credit_control", "back_button", "buttons", "control_to_open_on_stack_open", "control_to_close_on_stack_open")]
 layout_mode = 3
@@ -90,25 +116,25 @@ grow_vertical = 2
 layout_mode = 2
 text = "Play"
 script = ExtResource("3_j80pn")
-localization_key = "MENU_PLAY"
+localization_key = SubResource("Resource_dkxhx")
 
 [node name="OptionsButton" type="Button" parent="Buttons" unique_id=1651439596]
 layout_mode = 2
 text = "Options"
 script = ExtResource("3_j80pn")
-localization_key = "MENU_OPTIONS"
+localization_key = SubResource("Resource_capb8")
 
 [node name="CreditButton" type="Button" parent="Buttons" unique_id=370179452]
 layout_mode = 2
 text = "Credit"
 script = ExtResource("3_j80pn")
-localization_key = "MENU_CREDIT"
+localization_key = SubResource("Resource_4i6h3")
 
 [node name="QuitButton" type="Button" parent="Buttons" unique_id=1292409412]
 layout_mode = 2
 text = "Quit"
 script = ExtResource("3_j80pn")
-localization_key = "MENU_QUIT"
+localization_key = SubResource("Resource_54iqm")
 
 [node name="Back" parent="." unique_id=1970132749 instance=ExtResource("8_ejmxf")]
 visible = false
@@ -125,6 +151,7 @@ offset_bottom = -20.0
 grow_horizontal = 0
 grow_vertical = 0
 show_keyboard_shortcut = false
+localization_key = SubResource("Resource_mq86k")
 
 [connection signal="pressed" from="Buttons/PlayButton" to="." method="play"]
 [connection signal="pressed" from="Buttons/OptionsButton" to="." method="options"]

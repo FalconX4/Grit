@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cjjasjwuyapmb" path="res://Scenes/Screen/Menu/Main/Options/Audio.tscn" id="1_kejxw"]
 [ext_resource type="PackedScene" uid="uid://bmrfncfawreai" path="res://Scenes/Screen/Menu/Main/Options/General.tscn" id="1_rw0g1"]
 [ext_resource type="Script" uid="uid://bba1f4comk508" path="res://Scripts/Screen/Menu/Main/Options/OptionsScreen.gd" id="1_yippd"]
+[ext_resource type="PackedScene" uid="uid://41ayunpkxfxt" path="res://Scenes/Screen/Menu/Main/Options/Accessibility.tscn" id="5_j57kc"]
 
 [node name="Options" type="Control" unique_id=832849360]
 layout_mode = 3
@@ -43,3 +44,8 @@ metadata/_tab_index = 2
 visible = false
 layout_mode = 2
 metadata/_tab_index = 3
+
+[node name="Accessibility" parent="TabContainer" unique_id=2058568756 instance=ExtResource("5_j57kc")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 4

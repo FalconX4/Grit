@@ -39,7 +39,7 @@ static func get_all_localizations() -> Array[StringName]:
 var inspector_plugin
 
 func _enter_tree() -> void:
-	inspector_plugin = preload("res://addons/LocalizationMapGeneratorScript/LocalizedLabelInspector.gd").new()
+	inspector_plugin = preload("res://addons/LocalizationMapGeneratorScript/LocalizedKeyInspector.gd").new()
 	print("Adding inspector plugin: %s" % inspector_plugin)
 	add_inspector_plugin(inspector_plugin)
 	add_tool_menu_item("Generate Localization Map", _on_button_pressed)

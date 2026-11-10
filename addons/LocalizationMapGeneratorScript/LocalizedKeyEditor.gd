@@ -19,10 +19,10 @@ func _init():
 	keys = map_names.LocalizedID.keys()
 	for key in keys:
 		property_control.add_item(key)
+		property_control.set_item_tooltip(property_control.item_count - 1, LocalizationEditorHelper.translate(key))
 
 	add_child(property_control)
 	add_focusable(property_control)
-	refresh_control_text()
 	property_control.search_bar_enabled = true
 	property_control.item_selected.connect(_on_item_selected)
 
@@ -42,22 +42,28 @@ func _update_property():
 
 	updating = true
 	current_value = new_value
+	property_control.select(0)
 	for i in len(keys):
 		if current_value == keys[i]:
 			property_control.select(i)
+			break
 	refresh_control_text()
 	updating = false
 
 
 func refresh_control_text():
 	property_control.text = current_value
-	var edited_object = get_edited_object()
+	if property_control.selected == 0:
+		current_value = ""
+	else:
+		property_control.tooltip_text = LocalizationEditorHelper.translate(current_value)
+	var edited_object = get_meta("object_edited", null)
 	if edited_object is LocalizedLabel or edited_object is LocalizedButton:
 		edited_object.text = current_value
 	elif edited_object is LocalizedLineEdit:
 		edited_object.placeholder_text = current_value
 	elif edited_object is LocalizedConfirmationDialog:
-		var edited_property = get_edited_property()
+		var edited_property = get_meta("property_edited", null)
 		if edited_property == "localization_key_title":
 			edited_object.title = current_value
 		elif edited_property == "localization_key_text":

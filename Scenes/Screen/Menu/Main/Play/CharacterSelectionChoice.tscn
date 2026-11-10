@@ -141,12 +141,5 @@ localization_key_ok = SubResource("Resource_jvkp8")
 localization_key_cancel = SubResource("Resource_rf8y6")
 metadata/_custom_type_script = "uid://6c40sl08d8wq"
 
-[node name="LocalizedLabel" type="Label" parent="." unique_id=1143171738]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-script = ExtResource("4_d5w85")
-metadata/_custom_type_script = "uid://yoweu1mlxnst"
-
 [connection signal="pressed" from="." to="." method="_on_selected"]
 [connection signal="pressed" from="Delete" to="." method="_on_try_delete"]

@@ -17,6 +17,11 @@ font_color = Color(0, 0.49411765, 0, 1)
 shadow_size = 100
 shadow_color = Color(0, 0.6666667, 0, 1)
 
+[sub_resource type="Resource" id="Resource_3wrtu"]
+script = ExtResource("8_4k54y")
+raw_key = "TITLE"
+metadata/_custom_type_script = "uid://khyn4ad5ggrv"
+
 [sub_resource type="Resource" id="Resource_dkxhx"]
 script = ExtResource("8_4k54y")
 raw_key = "MENU_PLAY"
@@ -71,7 +76,7 @@ grow_horizontal = 2
 text = "TITLE"
 label_settings = SubResource("LabelSettings_6kutn")
 script = ExtResource("2_kmbwo")
-localization_key = "TITLE"
+localization_key = SubResource("Resource_3wrtu")
 
 [node name="Menus" type="Control" parent="." unique_id=2071739120]
 layout_mode = 1
@@ -114,25 +119,25 @@ grow_vertical = 2
 
 [node name="PlayButton" type="Button" parent="Buttons" unique_id=2085311124]
 layout_mode = 2
-text = "Play"
+text = "MENU_PLAY"
 script = ExtResource("3_j80pn")
 localization_key = SubResource("Resource_dkxhx")
 
 [node name="OptionsButton" type="Button" parent="Buttons" unique_id=1651439596]
 layout_mode = 2
-text = "Options"
+text = "MENU_OPTIONS"
 script = ExtResource("3_j80pn")
 localization_key = SubResource("Resource_capb8")
 
 [node name="CreditButton" type="Button" parent="Buttons" unique_id=370179452]
 layout_mode = 2
-text = "Credit"
+text = "MENU_CREDIT"
 script = ExtResource("3_j80pn")
 localization_key = SubResource("Resource_4i6h3")
 
 [node name="QuitButton" type="Button" parent="Buttons" unique_id=1292409412]
 layout_mode = 2
-text = "Quit"
+text = "MENU_QUIT"
 script = ExtResource("3_j80pn")
 localization_key = SubResource("Resource_54iqm")
 
@@ -150,6 +155,7 @@ offset_right = -20.0
 offset_bottom = -20.0
 grow_horizontal = 0
 grow_vertical = 0
+text = "MENU_BACK"
 show_keyboard_shortcut = false
 localization_key = SubResource("Resource_mq86k")
 
